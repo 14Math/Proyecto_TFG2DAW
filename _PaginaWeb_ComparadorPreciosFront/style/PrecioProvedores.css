@@ -1,0 +1,124 @@
+/* BODY */
+body {
+    width: 100dvw;
+    height: 100dvh;
+
+    padding-top: 250px;
+}
+
+/* HEADER */
+header {
+    width: 100dvw;
+    height: 150px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+
+    top: 0px;
+    bottom: 0px;
+
+}
+
+#logo img {
+    width: 150px;
+    font-size: 25px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+    margin-right: 1%;
+}
+
+header div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+
+    font-size: 18px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+
+    margin-left: 2%;
+
+}
+
+header form input {
+    height: 50px;
+}
+
+#tablaPrecioProductos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* background-color: #3498db; */
+
+}
+/* HEADER */
+table {
+    cursor: pointer;
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th{
+    
+    background-color: #3498db;
+    /* Azul más oscuro para encabezados */
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+    /* Gris claro para filas pares */
+}
+
+tr:hover{
+    background-color: #bdc1c4;
+    /* Azul muy claro al pasar el ratón */
+}
+
+caption {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#ProductoDetalle{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: baseline;
+    padding-left: 10%;
+
+    height: 500px;
+    background-color: red;
+}
+
+.imagenProducto{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+    width: 30%;
+}
+
+.detalleProducto{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    background-color: green;
+    width: 60%;
+}

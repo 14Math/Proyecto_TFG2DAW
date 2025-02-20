@@ -1,0 +1,207 @@
+/* BODY */
+body {
+    width: 100dvw;
+    height: 100dvh;
+
+    padding-top: 250px;
+}
+
+/* HEADER */
+header {
+    width: 100dvw;
+    height: 150px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+
+    top: 0px;
+    bottom: 0px;
+
+}
+
+#logo img {
+    width: 150px;
+    font-size: 25px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+    margin-right: 1%;
+}
+
+header div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+
+    font-size: 18px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+
+    margin-left: 2%;
+
+}
+
+header form input {
+    height: 50px;
+}
+
+/* NAV */
+nav {
+    background: linear-gradient(180deg, #71cbff, 5%, #3ca0da, 50%, #2c7bd6);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+
+    width: 100dvw;
+    height: 75px;
+    top: 150px;
+}
+
+nav div {
+
+    margin-right: 70px;
+    font-family: Open, Arial, Helvetica, sans-serif;
+    font-size: 25px;
+}
+
+/* -------------- DIVS -------------- */
+
+/* .productos {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    color: rgb(34, 99, 160);
+} */
+
+/* CHATGPT */
+.productos {
+    font-family: var(--font-family);
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: var(--text-color);
+
+}
+
+
+.producto {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #b0d2ff;
+    padding: 20px;
+    text-align: center;
+    width: 20%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    transition: transform 0.3s ease;
+    
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+}
+
+/* CHATGPT */
+.producto div {
+
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: baseline;
+
+}
+
+.producto img {
+    width: 90%;
+    height: 250px;
+    border-radius: 5px;
+}
+
+.producto button {
+    background-color: #3b94cf;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* New */
+.imagen-container {
+    width: 200px;
+    /* Ajusta el ancho según tus necesidades */
+    margin: 0 auto;
+    /* Centra la imagen horizontalmente */
+    overflow: hidden;
+    /* Asegura que la imagen no se desborde del contenedor */
+}
+
+.producto-imagen {
+    width: 100%;
+    /* La imagen ocupa todo el ancho del contenedor */
+    height: auto;
+    /* La altura se ajusta automáticamente */
+    border-radius: 10px;
+    /* Borde redondeado */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra suave */
+    transition: transform 0.3s ease;
+    /* Transición suave para el efecto hover */
+}
+
+.producto-imagen:hover {
+    transform: scale(1.05);
+    /* Aumenta ligeramente el tamaño al pasar el mouse */
+}
+
+
+/* MODAL CARRITO */
+#carritoHTML {
+    width: 50%;
+    height: 70%;
+}
+
+dialog {
+    border: none;
+    border-radius: 5px;
+}
+
+/* MODAL LOGIN */
+
+.modal {
+    display: none;
+    /* Oculta la ventana modal por defecto */
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    /* Fija la ventana modal en la pantalla */
+    z-index: 1;
+    /* Asegura que la ventana modal esté por encima de otros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Ancho completo de la pantalla */
+    height: 100%;
+    /* Altura completa de la pantalla */
+    overflow: hidden;
+    /* Habilita la barra de desplazamiento si el contenido es demasiado largo */
+    background-color: rgba(43, 43, 43, 0.5);
+    /* Fondo oscuro semitransparente */
+}
