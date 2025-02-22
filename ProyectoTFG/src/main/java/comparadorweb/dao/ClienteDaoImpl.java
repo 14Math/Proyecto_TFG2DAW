@@ -28,6 +28,12 @@ public class ClienteDaoImpl implements ClienteDao{
 		return 0;
 	}
 
+	@Override
+	public Cliente buscarporUsuarioPassword(String username, String password) {
+		// TODO Auto-generated method stub
+		return crepo.findByUsernameAndPassword(username, password);
+	}
+
 
 
 }

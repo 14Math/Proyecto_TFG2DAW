@@ -9,7 +9,7 @@ import comparadorweb.entidades.ProductosProvedores;
 
 public interface ProductosProvedoresRepository extends JpaRepository<ProductosProvedores, Integer>{
 	
-	@Query("from ProductosProvedores pr where pr.producto.idProducto =?1 ")
+	@Query("from ProductosProvedores pr where pr.producto.idProducto =?1 order by pr.precioProvedor ASC")
 	public List<ProductosProvedores> findByProducto(int idProducto); 
 	
 

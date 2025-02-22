@@ -42,4 +42,11 @@ public class productoDaoImpl implements productoDao{
 		return prepo.findByNombre(nombre);
 	}
 
+
+	@Override
+	public List<Producto> buscarTodosPorCategoria(int idCategoria) {
+		// TODO Auto-generated method stub
+		return prepo.findByCategoria(idCategoria);
+	}
+
 }

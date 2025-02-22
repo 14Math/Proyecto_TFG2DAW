@@ -20,6 +20,7 @@ header {
 
     top: 0px;
     bottom: 0px;
+    z-index: 100;
     
 }
 
@@ -62,6 +63,7 @@ nav {
     width: 100dvw;
     height: 100px;
     top: 150px;
+    z-index: 100;
 }
 
 nav div {
@@ -84,7 +86,7 @@ nav div {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    color: rgb(34, 99, 160);
+    /* color: rgb(34, 99, 160); */
 }
 
 .producto {
@@ -98,7 +100,7 @@ nav div {
     text-align: center;
     
     width: 20%;
-    height: 600px;
+    height: 500px;
     border-radius: 5px;
     box-shadow: 2px 2px 5px rgba(78, 149, 255, 0.9);
     margin-right: 10px;
@@ -116,7 +118,12 @@ nav div {
 
 .producto img{
     width: 90%;
-    height: 250px;
+    height: 220px;
+    overflow:hidden;
+}
+
+.producto img:hover{
+    -webkit-transform:scale(1.1);transform:scale(1.1);
 }
 
 .producto button {
@@ -127,6 +134,41 @@ nav div {
     border-radius: 4px;
     cursor: pointer;
 }
+/* CHATGPT */
+/* .productos {
+    font-family: var(--font-family);
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: var(--text-color);
+
+} */
+
+
+/* .producto {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #b0d2ff;
+    padding: 20px;
+    text-align: center;
+    width: 20%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    transition: transform 0.3s ease;
+    
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+} */
+
+/* CHATGPT */
 
 /* MODAL CARRITO */
 #carritoHTML {
@@ -147,7 +189,7 @@ dialog{
     align-items: center;
     position: fixed;
     /* Fija la ventana modal en la pantalla */
-    z-index: 1;
+    z-index: 101;
     /* Asegura que la ventana modal esté por encima de otros elementos */
     left: 0;
     top: 0;

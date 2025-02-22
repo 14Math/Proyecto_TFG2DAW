@@ -11,4 +11,7 @@ public interface ProductoRepository extends JpaRepository<Producto, Integer>{
 	
 	
 	public Producto findByNombre(String nombre);
+	
+	@Query("from Producto p where p.categorias.idCategoria = ?1")
+	public List<Producto> findByCategoria(int idCategoria);
 }
