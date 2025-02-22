@@ -55,8 +55,11 @@ header form input {
     /* background-color: #3498db; */
 
 }
+
 /* HEADER */
-table {
+
+/* MI CSS */
+/* table {
     cursor: pointer;
     width: 80%;
     margin: 20px auto;
@@ -74,27 +77,121 @@ td {
 th{
     
     background-color: #3498db;
-    /* Azul más oscuro para encabezados */
+    
     color: white;
 }
 
 tr:nth-child(even) {
     background-color: #f2f2f2;
-    /* Gris claro para filas pares */
+    
 }
 
 tr:hover{
     background-color: #bdc1c4;
-    /* Azul muy claro al pasar el ratón */
+    
 }
 
 caption {
     font-size: 1.2em;
     font-weight: bold;
     margin-bottom: 10px;
+} */
+/* CHATGPT */
+.contenedor-precios {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* Centra las tarjetas horizontalmente */
+    margin: 20px;
+    /* Agrega margen al contenedor */
 }
 
-#ProductoDetalle{
+.tarjeta-precio {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 10px;
+    max-width: 300px;
+    /* Ancho máximo de las tarjetas */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Agrega sombra a las tarjetas */
+    border-radius: 8px;
+    /* Agrega bordes redondeados a las tarjetas */
+}
+
+.tarjeta-precio h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    /* Agrega margen inferior al título */
+}
+
+.tarjeta-precio .precio {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    /* Agrega margen inferior al precio */
+}
+
+.tarjeta-precio .empresa {
+    margin-bottom: 15px;
+    /* Agrega margen inferior a la empresa */
+}
+
+.tarjeta-precio button {
+    background-color: #4CAF50;
+    /* Color verde, puedes cambiarlo */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    /* Agrega bordes redondeados al botón */
+    transition: background-color 0.3s ease;
+    /* Agrega transición al botón */
+}
+
+.tarjeta-precio button:hover {
+    background-color: #45a049;
+    /* Color verde más oscuro al pasar el mouse */
+}
+
+#indicadorCarga,
+.mensaje {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Detalle Producto */
+.detalle-producto {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.detalle-producto-info {
+    display: flex;
+    align-items: flex-start;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+}
+
+.detalle-producto-info img {
+    max-width: 200px;
+    height: auto;
+    margin-right: 20px;
+}
+
+.info-producto h2 {
+    margin-top: 0;
+}
+
+/* CHAT GPT */
+
+
+/* #ProductoDetalle{
     display: flex;
     flex-wrap: wrap;
     justify-content: baseline;
@@ -111,9 +208,9 @@ caption {
     align-items: center;
     background-color: gray;
     width: 30%;
-}
+} */
 
-.detalleProducto{
+/* .detalleProducto{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -121,4 +218,4 @@ caption {
 
     background-color: green;
     width: 60%;
-}
+} */

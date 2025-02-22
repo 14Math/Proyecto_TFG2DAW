@@ -134,41 +134,20 @@ nav div {
     border-radius: 4px;
     cursor: pointer;
 }
-/* CHATGPT */
-/* .productos {
-    font-family: var(--font-family);
-    margin: 0 auto;
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    color: var(--text-color);
-
-} */
-
-
-/* .producto {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid #b0d2ff;
-    padding: 20px;
-    text-align: center;
-    width: 20%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-    transition: transform 0.3s ease;
-    
+.producto button:hover {
+    background-color: white;
+    color: #3b94cf;
+    border: 1px solid #3b94cf;
+    cursor: pointer;
 }
+#resultadoBusqueda{
+    margin: 0;
+    padding: 20px;
 
-.producto:hover {
-    transform: translateY(-5px);
-} */
-
-/* CHATGPT */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
 /* MODAL CARRITO */
 #carritoHTML {

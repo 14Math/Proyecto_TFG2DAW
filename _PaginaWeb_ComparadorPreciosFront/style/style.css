@@ -136,19 +136,18 @@ nav div {
     cursor: pointer;
 }
 
-/* MODAL CARRITO */
-#carritoHTML {
-    width: 50%;
-    height: 70%;
+#resultadoBusqueda{
+    margin: 0;
+    padding: 20px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-dialog {
-    border: none;
-    border-radius: 5px;
-}
+/* MODAL CARRITO */
 
 /* MODAL LOGIN */
-
 .modal {
     display: none;
     /* Oculta la ventana modal por defecto */
