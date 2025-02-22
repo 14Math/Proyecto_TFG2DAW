@@ -36,13 +36,16 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <!-- Buscador -->
-        <form class="d-flex" role="search" style="width: 50%;">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-                style="border-radius: 50px; border-color: #74C0FC;">
-
+        <form class="d-flex" role="search" style="width: 50%;" id="searchForm">
+            <input class="form-control me-2" type="search" placeholder="Search by ID" aria-label="Search"
+                style="border-radius: 50px; border-color: #74C0FC;" id="productIdInput">
+            <input type="hidden" id="searchType" value="id">
             <button class="btn" type="submit" style="width: 50px;">
-                <i class="fa-solid fa-magnifying-glass fa-2xl" style="color: #74C0FC;"></i></button>
+                <i class="fa-solid fa-magnifying-glass fa-2xl" style="color: #74C0FC;"></i>
+            </button>
+            <button class="btn" type="button" id="toggleSearchType" style="width: 150px;">Buscar por Nombre</button>
         </form>
+        
         <!-- Inicio de Sesión o Registro-->
         <div>
             <button class="nav-link" style="color: #74C0FC;" id="abrirModalLogin">
@@ -88,6 +91,8 @@
                     style="color: #ffffff;"></i> &nbsp;Juguetes</a>
         </div>
     </nav>
+
+    <div id="resultadoBusqueda"></div>
 
     <div id="verProductos" class="productos">
 

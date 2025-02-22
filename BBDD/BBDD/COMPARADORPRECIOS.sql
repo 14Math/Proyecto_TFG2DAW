@@ -143,7 +143,7 @@ INSERT INTO PRODUCTOS (ID_PRODUCTO,NOMBRE, MARCA, DESCRIPCION, PRECIO_VENTA, ID_
 (6087,'Marvel\'s Spider-Man 2', 'Insomniac Games', 'Juego exclusivo de PS5 con acción y aventura', 79.99, 2),
 (7194,'God of War Ragnarök', 'Santa Monica Studio', 'Juego exclusivo de PS5 con acción y aventura épica', 79.99, 2),
 (6194,'Horizon Forbidden West', 'Guerrilla Games', 'Juego exclusivo de PS5 con aventura y mundo abierto', 79.99, 2),
-(9253,'Ratchet & Clank Una Dimensión Aparte', 'Insomniac Games', 'Juego exclusivo de PS5 con acción y plataformas', 69.99, 2),
+(9253,'Ratchet & Clank: Una Dimensión Aparte', 'Insomniac Games', 'Juego exclusivo de PS5 con acción y plataformas', 69.99, 2),
 (1468,'Returnal', 'Housemarque', 'Juego exclusivo de PS5 con acción y ciencia ficción', 69.99, 2),
 (3601,'Demon\'s Souls', 'Bluepoint Games', 'Remake del clásico juego de PS3 con acción y rol', 69.99, 2),
 (8238,'Astro\'s Playroom', 'Team Asobi', 'Juego preinstalado en PS5 con plataformas y exploración', 0.00, 2),
@@ -162,7 +162,7 @@ INSERT INTO PRODUCTOS (ID_PRODUCTO,NOMBRE, MARCA, DESCRIPCION, PRECIO_VENTA, ID_
 (1295,'The Legend of Zelda Tears of the Kingdom', 'Nintendo', 'Juego exclusivo de Switch con aventura y exploración', 69.99, 2),
 (8537,'Super Mario Bros. Wonder', 'Nintendo', 'Juego exclusivo de Switch con plataformas y novedades', 59.99, 2),
 (7689,'Pokémon Púrpura', 'Nintendo', 'Juego exclusivo de Switch con rol y mundo abierto', 59.99, 2),
-(9860,'Animal Crossing New Horizons', 'Nintendo', 'Juego exclusivo de Switch con simulación y vida social', 59.99, 2),
+(9860,'Animal Crossing: New Horizons', 'Nintendo', 'Juego exclusivo de Switch con simulación y vida social', 59.99, 2),
 (4702,'Mario Kart 8 Deluxe', 'Nintendo', 'Juego exclusivo de Switch con carreras y multijugador', 59.99, 2),
 (6318,'Super Smash Bros. Ultimate', 'Nintendo', 'Juego exclusivo de Switch con lucha y multijugador', 69.99, 2);
 
@@ -170,7 +170,7 @@ INSERT INTO PRODUCTOS (ID_PRODUCTO,NOMBRE, MARCA, DESCRIPCION, PRECIO_VENTA, ID_
 INSERT INTO PRODUCTOS (ID_PRODUCTO,NOMBRE, MARCA, AUTOR, DESCRIPCION, PRECIO_VENTA, ID_CATEGORIA) VALUES
 (2459,'Cien años de soledad', 'Literatura', 'Gabriel García Márquez', 'Novela clásica latinoamericana', 19.99, 3),
 (0974,'El Quijote', 'Literatura', 'Miguel de Cervantes', 'Obra cumbre de la literatura española', 24.99, 3),
-(1307,'Sapiens De animales a dioses', 'Ensayo', 'Yuval Noah Harari', 'Historia de la humanidad desde sus orígenes', 29.99, 3),
+(1307,'Sapiens: De animales a dioses', 'Ensayo', 'Yuval Noah Harari', 'Historia de la humanidad desde sus orígenes', 29.99, 3),
 (9804,'El poder del ahora', 'Autoayuda', 'Eckhart Tolle', 'Libro sobre el presente y la conciencia', 14.99, 3),
 (1002,'Cosmos (Planeta)', 'Divulgación científica', 'Carl Sagan', 'Libro que explora el universo y nuestro lugar en él', 34.20, 3),
 (1003,'El nombre del viento', 'Fantasía épica', 'Patrick Rothfuss', 'Libro sobre un personaje legendario que se esconde bajo la identidad de un posadero', 12.30, 3),
