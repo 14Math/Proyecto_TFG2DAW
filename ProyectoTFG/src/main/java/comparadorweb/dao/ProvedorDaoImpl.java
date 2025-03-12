@@ -43,4 +43,12 @@ public class ProvedorDaoImpl implements ProvedorDao {
 		return 0;
 	}
 
+	@Override
+	public Provedor buscarUno(int idProvedor) {
+		// TODO Auto-generated method stub
+		return prorepo.findById(idProvedor).orElse(null);
+	}
+
+	
+
 }

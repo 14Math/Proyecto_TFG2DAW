@@ -12,5 +12,9 @@ public interface ProductosProvedoresRepository extends JpaRepository<ProductosPr
 	@Query("from ProductosProvedores pr where pr.producto.idProducto =?1 order by pr.precioProvedor ASC")
 	public List<ProductosProvedores> findByProducto(int idProducto); 
 	
+	
+	@Query("from ProductosProvedores pr where pr.provedor.idProvedor =?1")
+	public List<ProductosProvedores> findByProvedor(int idProvedor);
+	
 
 }

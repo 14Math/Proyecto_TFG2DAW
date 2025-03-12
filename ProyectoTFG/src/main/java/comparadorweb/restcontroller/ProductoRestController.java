@@ -17,10 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import comparadorweb.dao.ClienteDao;
 import comparadorweb.dao.ProductosProvedoresDao;
+import comparadorweb.dao.ProvedorDao;
 import comparadorweb.dao.productoDao;
+import comparadorweb.dtos.PrecioProveedorDto;
 import comparadorweb.entidades.Cliente;
 import comparadorweb.entidades.Producto;
 import comparadorweb.entidades.ProductosProvedores;
+import comparadorweb.entidades.Provedor;
 
 
 @RestController
@@ -35,7 +38,7 @@ public class ProductoRestController {
 	private ProductosProvedoresDao prodao;
 	
 	@Autowired
-	private ClienteDao cdao;
+	private ProvedorDao prdao;
 	
 	//------------------------------------BUSCAR TODOS-------------------------------------
 	@GetMapping("/todos/")
@@ -56,7 +59,8 @@ public class ProductoRestController {
 			 else
 				 return new ResponseEntity<String>("Categoria no existe", HttpStatus.NOT_FOUND);
 		}
-		//------------------------------------BUSCAR TODOS-------------------------------------
+	//------------------------------------BUSCAR TODOS-------------------------------------
+		
 	
 	//------------------------------------BUSCAR PRODUCTOS Y QUE SALGAN LOS PRECIO PROVEDORES-------------------------------------
 	@GetMapping("/precios/provedor/{idProducto}")
@@ -102,44 +106,23 @@ public class ProductoRestController {
 		
 		//-------------------------------------BUSCAR UNO POR NOMBRE---------------------------------------
 		
-		
-		
-		
-		//---------------------------------------LOGIN-----------------------------------------
-		
-		@PostMapping("/login")
-	    public ResponseEntity<?> login(@RequestParam String username,@RequestParam String password) {
-			
-			Cliente cliente = cdao.buscarporUsuarioPassword(username, password);
-			
-			if(cliente != null)
-				return new ResponseEntity<>(cliente,HttpStatus.ACCEPTED);
-			else
-				return new ResponseEntity<String>("USERNAME O CONTRASEÑA MAL", HttpStatus.NOT_FOUND);
-	        
-	    }
-		
-		
-		//---------------------------------------LOGIN-----------------------------------------
 	
 	//-------------------------------------ALTA---------------------------------------
-	/*
 	
-	@PostMapping("/alta/")
-	public ResponseEntity<Producto> alta(@RequestBody ProductoDto productoDto) {
+	
+	@PostMapping("/alta/precioProvedor")
+	public ResponseEntity<ProductosProvedores> alta(@RequestBody PrecioProveedorDto precioProveedorDto) {
 		
-	Producto producto = productoDto.convertToproducto();
+		ProductosProvedores pp = new ProductosProvedores();
+		pp.setPrecioProvedor(precioProveedorDto.getPrecioProveedor());
+		pp.setProducto(pdao.buscarUna(precioProveedorDto.getIdProducto()));
+		pp.setProvedor(prdao.buscarUno(precioProveedorDto.getIdProveedor()));
 		
-	 	producto.setIdProducto(pdao.buscarUna(productoDto.getIdProducto()));
-		
-		return 	new ResponseEntity<Producto>(pdao.insertOne(producto), HttpStatus.CREATED);
-		
-	//   	productoDto.setCodigo(producto.getCodigo());
-		// return productoDto;
+		return 	new ResponseEntity<ProductosProvedores>(prodao.insertProductoProvedor(pp), HttpStatus.CREATED);
+
 	}
 	
 	
-	*/
 	//-------------------------------------ALTA---------------------------------------
 	
 	

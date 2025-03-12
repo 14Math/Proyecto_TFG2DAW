@@ -8,7 +8,9 @@ import comparadorweb.entidades.Provedor;
 
 public interface ProvedorDao {
 	
-	 
+	Provedor buscarUno(int idProvedor); 
+	
+	
 	int insertOne (Provedor provedores);
 	int updateOne (Provedor provedores);
 	int deleteOne (int idProvedor);

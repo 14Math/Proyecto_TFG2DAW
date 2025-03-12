@@ -16,9 +16,20 @@ public class ProductosProvedoresDaoImpl implements ProductosProvedoresDao{
 	private ProductosProvedoresRepository proprorepo;
 
 	@Override
-	public int insertProductoProvedor(ProductosProvedores productosProvedores) {
+	public ProductosProvedores insertProductoProvedor(ProductosProvedores productosProvedores) {
 		// TODO Auto-generated method stub
-		return (proprorepo.save(productosProvedores) != null)? 1 : 0;
+		
+		try {
+			if (proprorepo.existsById(productosProvedores.getIdPro()))
+				return null;
+			else  
+				return proprorepo.save(productosProvedores);
+			 
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	@Override
@@ -37,6 +48,12 @@ public class ProductosProvedoresDaoImpl implements ProductosProvedoresDao{
 	public List<ProductosProvedores> buscarProductoYMostrarLosPreciosProvedores(int idProducto) {
 		// TODO Auto-generated method stub
 		return proprorepo.findByProducto(idProducto);
+	}
+
+	@Override
+	public List<ProductosProvedores> buscarLosPreciosOfertadosDelProvedor(int idProvedor) {
+		// TODO Auto-generated method stub
+		return proprorepo.findByProvedor(idProvedor);
 	}
 
 
