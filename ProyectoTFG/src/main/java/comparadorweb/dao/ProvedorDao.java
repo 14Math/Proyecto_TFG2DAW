@@ -9,10 +9,10 @@ import comparadorweb.entidades.Provedor;
 public interface ProvedorDao {
 	
 	Provedor buscarUno(int idProvedor); 
+	Provedor buscarporUsuarioPassword(String username, String password);
 	
 	
 	int insertOne (Provedor provedores);
-	int updateOne (Provedor provedores);
-	int deleteOne (int idProvedor);
+	Provedor updateOne (Provedor provedores);
 
 }

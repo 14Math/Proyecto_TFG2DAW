@@ -15,10 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import comparadorweb.dao.ClienteDao;
 import comparadorweb.dao.ProductosProvedoresDao;
-import comparadorweb.entidades.Cliente;
+import comparadorweb.dao.ProvedorDao;
 import comparadorweb.entidades.ProductosProvedores;
+import comparadorweb.entidades.Provedor;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -28,6 +28,9 @@ public class ProveedorRestController {
 	
 	@Autowired
 	private ProductosProvedoresDao prodao;
+	
+	@Autowired
+	private ProvedorDao prdao;
 
 	
 	//------------------------------------BUSCAR LOS PRECIOS OFERTADOS DEL PROVEDOR -------------------------------------
@@ -45,4 +48,32 @@ public class ProveedorRestController {
 					 
 			}
 		//------------------------------------BUSCAR LOS PRECIOS OFERTADOS DEL PROVEDOR-------------------------------------
+		
+		
+		//------------------------------------------LOGIN--------------------------------------------
+		
+		@PostMapping("/login")
+	    public ResponseEntity<?> login(@RequestParam String username,@RequestParam String password) {
+			
+			Provedor provedor = prdao.buscarporUsuarioPassword(username, password);
+			
+			if(provedor != null)
+				return new ResponseEntity<>(provedor,HttpStatus.ACCEPTED);
+			else
+				return new ResponseEntity<String>("USERNAME O CONTRASEÑA MAL", HttpStatus.NOT_FOUND);
+	        
+	    }
+		
+		
+		//---------------------------------------LOGIN-----------------------------------------
+		
+		//-------------------------------------MODIFICAR-----------------------------------------------
+		
+		@PutMapping("/modificar")
+		public Provedor modificar(@RequestBody Provedor provedor) {
+			return prdao.updateOne(provedor);
+		}
+		
+		
+		//-------------------------------------MODIFICAR-----------------------------------------------
 }
