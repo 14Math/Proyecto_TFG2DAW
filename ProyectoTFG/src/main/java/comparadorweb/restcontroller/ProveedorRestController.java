@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import comparadorweb.dao.ProductosProvedoresDao;
 import comparadorweb.dao.ProvedorDao;
+import comparadorweb.entidades.Cliente;
 import comparadorweb.entidades.ProductosProvedores;
 import comparadorweb.entidades.Provedor;
 
@@ -66,6 +67,29 @@ public class ProveedorRestController {
 		
 		
 		//---------------------------------------LOGIN-----------------------------------------
+		
+		//--------------------------------------ALTA-------------------------------------------
+		@PostMapping("/alta")
+		public ResponseEntity<?> altaProveedor(@RequestBody Provedor nuevoProveedor) {
+	        try {
+	            // Validar que los datos del proveedor no estén vacíos
+	            if (nuevoProveedor == null || nuevoProveedor.getUsername() == null || nuevoProveedor.getUsername().isEmpty()) {
+	                return new ResponseEntity<>("Datos inválidos. El nombre de usuario es obligatorio.", HttpStatus.BAD_REQUEST);
+	            }
+
+	            // Insertar el proveedor en la base de datos
+	            Provedor proveedorGuardado = prdao.insertOne(nuevoProveedor);
+	            if (proveedorGuardado != null) {
+	                return new ResponseEntity<>(proveedorGuardado, HttpStatus.CREATED);
+	            } else {
+	                return new ResponseEntity<>("Error al registrar el proveedor.", HttpStatus.INTERNAL_SERVER_ERROR);
+	            }
+	        } catch (Exception e) {
+	            return new ResponseEntity<>("Error inesperado: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+	        }
+	    }
+		
+		//--------------------------------------ALTA-------------------------------------------
 		
 		//-------------------------------------MODIFICAR-----------------------------------------------
 		

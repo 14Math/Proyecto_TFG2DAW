@@ -16,10 +16,21 @@ public class ProvedorDaoImpl implements ProvedorDao {
 	private ProvedorRepository prorepo;
 
 	@Override
-	public int insertOne(Provedor provedores) {
+	public Provedor insertOne(Provedor provedores) {
 		// TODO Auto-generated method stub
-		return (prorepo.save(provedores) != null) ? 1 : 0;
+		try {
+			if (prorepo.existsById(provedores.getIdProvedor()))
+				return null;
+			else  
+				return prorepo.save(provedores);
+			 
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
+	
 
 	@Override
 	public Provedor updateOne(Provedor provedores) {

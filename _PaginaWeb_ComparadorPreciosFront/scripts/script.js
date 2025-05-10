@@ -137,13 +137,9 @@ async function getProductosPreciosProvedor() {
     console.log("los productos de los Provedores: ", productos);
 }
 
-function getBuscarProducto() {
-    try {
-        axios.id(`http://localhost:8084/productos/buscar/${id}`);
-    } catch (error) {
-        console.error("Producto No esta o No introducido bien el Codigo de barra ");
-    }
-}
+
+
+
 /*
 async function addProduct(id,descripcion, precioUnitario, marca = null, color = null) {
     try {

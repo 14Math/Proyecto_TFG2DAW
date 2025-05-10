@@ -7,10 +7,6 @@ ID_CLIENTE INT NOT NULL auto_increment primary KEY,
 USERNAME VARCHAR(45) NOT NULL,
 PASSWORD VARCHAR(200) NOT NULL,
 EMAIL VARCHAR(100) NOT NULL UNIQUE,
-NOMBRE VARCHAR(30) NOT NULL,
-APELLIDOS VARCHAR(45) NOT NULL,
-DIRECCION VARCHAR(100) NOT NULL,
-ENABLED INT NOT NULL DEFAULT 1,
 FECHA_REGISTRO DATE
 );
 
@@ -26,11 +22,11 @@ FECHA_REGISTRO DATE
 
 
 -- Insertar datos en la tabla CLIENTE
-INSERT INTO CLIENTES (USERNAME, PASSWORD, EMAIL, NOMBRE, APELLIDOS, DIRECCION, FECHA_REGISTRO)
+INSERT INTO CLIENTES (USERNAME, PASSWORD, EMAIL,   FECHA_REGISTRO)
 VALUES
-('Matrix', 'Matrix1234', 'mathew@ifp.com', 'Mathew', 'Loor Muñoz', 'Paseo de la Castellana, 100', '2023-10-26'),
-('Savg', 'Savg1234', 'alejandra@ifp.com', 'Alejandra', 'Villalva González', 'Calle de Alcalá, 50', '2023-10-25'),
-('keven100', 'keven1234', 'keven@ifp.com', 'Keven', 'Pereira', 'Gran Vía, 25', '2023-10-24');
+('Matrix', 'Matrix1234', 'mathew@ifp.com', '2023-10-26'),
+('Savg', 'Savg1234', 'alejandra@ifp.com',  '2023-10-25'),
+('keven100', 'keven1234', 'keven@ifp.com',   '2023-10-24');
 
 -- Insertar datos en la tabla PROVEDOR
 INSERT INTO PROVEDORES (USERNAME, PASSWORD, EMAIL, EMPRESA, FECHA_REGISTRO)
@@ -143,7 +139,7 @@ INSERT INTO PRODUCTOS (ID_PRODUCTO,NOMBRE, MARCA, DESCRIPCION, PRECIO_VENTA, ID_
 (6087,'Marvel\'s Spider-Man 2', 'Insomniac Games', 'Juego exclusivo de PS5 con acción y aventura', 79.99, 2),
 (7194,'God of War Ragnarök', 'Santa Monica Studio', 'Juego exclusivo de PS5 con acción y aventura épica', 79.99, 2),
 (6194,'Horizon Forbidden West', 'Guerrilla Games', 'Juego exclusivo de PS5 con aventura y mundo abierto', 79.99, 2),
-(9253,'Ratchet & Clank Una Dimensión Aparte', 'Insomniac Games', 'Juego exclusivo de PS5 con acción y plataformas', 69.99, 2),
+(9253,'Ratchet & Clank: Una Dimensión Aparte', 'Insomniac Games', 'Juego exclusivo de PS5 con acción y plataformas', 69.99, 2),
 (1468,'Returnal', 'Housemarque', 'Juego exclusivo de PS5 con acción y ciencia ficción', 69.99, 2),
 (3601,'Demon\'s Souls', 'Bluepoint Games', 'Remake del clásico juego de PS3 con acción y rol', 69.99, 2),
 (8238,'Astro\'s Playroom', 'Team Asobi', 'Juego preinstalado en PS5 con plataformas y exploración', 0.00, 2),
@@ -162,7 +158,7 @@ INSERT INTO PRODUCTOS (ID_PRODUCTO,NOMBRE, MARCA, DESCRIPCION, PRECIO_VENTA, ID_
 (1295,'The Legend of Zelda Tears of the Kingdom', 'Nintendo', 'Juego exclusivo de Switch con aventura y exploración', 69.99, 2),
 (8537,'Super Mario Bros. Wonder', 'Nintendo', 'Juego exclusivo de Switch con plataformas y novedades', 59.99, 2),
 (7689,'Pokémon Púrpura', 'Nintendo', 'Juego exclusivo de Switch con rol y mundo abierto', 59.99, 2),
-(9860,'Animal Crossing New Horizons', 'Nintendo', 'Juego exclusivo de Switch con simulación y vida social', 59.99, 2),
+(9860,'Animal Crossing: New Horizons', 'Nintendo', 'Juego exclusivo de Switch con simulación y vida social', 59.99, 2),
 (4702,'Mario Kart 8 Deluxe', 'Nintendo', 'Juego exclusivo de Switch con carreras y multijugador', 59.99, 2),
 (6318,'Super Smash Bros. Ultimate', 'Nintendo', 'Juego exclusivo de Switch con lucha y multijugador', 69.99, 2);
 
@@ -170,7 +166,7 @@ INSERT INTO PRODUCTOS (ID_PRODUCTO,NOMBRE, MARCA, DESCRIPCION, PRECIO_VENTA, ID_
 INSERT INTO PRODUCTOS (ID_PRODUCTO,NOMBRE, MARCA, AUTOR, DESCRIPCION, PRECIO_VENTA, ID_CATEGORIA) VALUES
 (2459,'Cien años de soledad', 'Literatura', 'Gabriel García Márquez', 'Novela clásica latinoamericana', 19.99, 3),
 (0974,'El Quijote', 'Literatura', 'Miguel de Cervantes', 'Obra cumbre de la literatura española', 24.99, 3),
-(1307,'Sapiens De animales a dioses', 'Ensayo', 'Yuval Noah Harari', 'Historia de la humanidad desde sus orígenes', 29.99, 3),
+(1307,'Sapiens: De animales a dioses', 'Ensayo', 'Yuval Noah Harari', 'Historia de la humanidad desde sus orígenes', 29.99, 3),
 (9804,'El poder del ahora', 'Autoayuda', 'Eckhart Tolle', 'Libro sobre el presente y la conciencia', 14.99, 3),
 (1002,'Cosmos (Planeta)', 'Divulgación científica', 'Carl Sagan', 'Libro que explora el universo y nuestro lugar en él', 34.20, 3),
 (1003,'El nombre del viento', 'Fantasía épica', 'Patrick Rothfuss', 'Libro sobre un personaje legendario que se esconde bajo la identidad de un posadero', 12.30, 3),
@@ -229,6 +225,83 @@ CREATE TABLE PRODUCTOS_PROVEDORES (
   FOREIGN KEY (ID_PRODUCTO) REFERENCES PRODUCTOS(ID_PRODUCTO)
 );
 -- Insertar datos en la tabla PRODUCTOS_PROVEEDORES
+-- PRODUCTOS_PROVEDORES
+INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES
+(2460, 1, 950.00),  -- IPhone 16
+(3088, 2, 880.00),  -- IPhone 14
+(5791, 3, 480.00),  -- IPhone SE (2022)
+(0658, 2, 750.00),  -- IPhone 13 mini
+(2877, 1, 1100.00), -- IPhone 16 Plus
+(6095, 1, 1200.00), -- IPhone 15 Pro
+(9653, 2, 1300.00), -- IPhone 16 Pro Max
+(3827, 3, 900.00),  -- IPhone 15
+(4962, 1, 1000.00), -- IPhone 15 Plus
+(5256, 3, 1750.00), -- Galaxy Z Fold5
+(8052, 1, 1100.00), -- Galaxy Z Flip5
+(7531, 2, 450.00),  -- Galaxy A54
+(3690, 3, 200.00),  -- Galaxy M14
+(2045, 3, 1100.00), -- Galaxy S23 Ultra
+(3786, 1, 800.00),  -- Galaxy S23
+(6304, 1, 1000.00), -- Find X6 Pro
+(2789, 2, 1350.00), -- Find N2
+(1947, 3, 550.00),  -- Reno11 Pro
+(9152, 2, 370.00),  -- A98 5G
+(0921, 1, 280.00),  -- A1 Pro 5G
+(3498, 1, 190.00),  -- A57e
+(0001, 2, 1000.00), -- 13 Ultra
+(0002, 3, 1350.00), -- MIX Fold 3
+(0003, 2, 550.00),  -- POCO X5 Pro 5G
+(0004, 2, 370.00),  -- Redmi 12C
+(0005, 1, 280.00),  -- Redmi A2
+(0006, 2, 190.00),  -- Redmi Note 12 Pro+ 5G
+(1357, 3, 130.00),  -- AirPods (2.ª generación)
+(9864, 2, 180.00),  -- AirPods (3.ª generación)
+(5296, 1, 270.00),  -- AirPods Pro (2.ª generación)
+(6890, 1, 600.00),  -- AirPods Max
+(1023, 2, 320.00),  -- WH-1000XM5
+(2345, 3, 260.00),  -- WH-1000XM4
+(7214, 1, 140.00),  -- WH-CH720N
+(8742, 1, 170.00),  -- WF-SP800N
+(3068, 1, 220.00),  -- WF-SP900
+(7140, 2, 230.00),  -- WF-1000XM4
+(4952, 3, 90.00),   -- WF-C500
+(9012, 3, 280.00),  -- INZONE H9
+(6543, 2, 450.00),  -- PlayStation 5
+(3210, 1, 360.00),  -- PlayStation 5 Digital Edition
+(1928, 2, 750.00),  -- PlayStation 5 Pro
+(2817, 3, 420.00),  -- PlayStation 5 Slim
+(8351, 1, 500.00),  -- PlayStation 5 Edición Limitada Marvel's Spider-Man 2
+(9416, 2, 500.00),  -- PlayStation 5 Edición Limitada God of War Ragnarök
+(3746, 1, 500.00),  -- PlayStation 5 Edición Limitada Horizon Forbidden West
+(6158, 2, 450.00),  -- Xbox Series X
+(0524, 3, 270.00),  -- Xbox Series S
+(8532, 1, 220.00),  -- Xbox One
+(1448, 3, 270.00),  -- Nintendo Switch
+(8526, 1, 320.00),  -- Nintendo Switch OLED
+(4712, 2, 180.00),  -- Nintendo Switch Lite
+(6087, 3, 70.00),   -- Marvel's Spider-Man 2
+(7194, 2, 70.00),   -- God of War Ragnarök
+(6194, 3, 70.00),   -- Horizon Forbidden West
+(9253, 1, 60.00),   -- Ratchet & Clank: Una Dimensión Aparte
+(1468, 2, 60.00),   -- Returnal
+(3601, 3, 60.00),   -- Demon's Souls
+(8238, 3, 0.00),    -- Astro's Playroom
+(1593, 1, 70.00),   -- The Last of Us Parte I
+(8241, 1, 70.00),   -- Gran Turismo 7
+(16449, 2, 60.00),  -- Halo Infinite
+(8372, 3, 60.00),   -- Forza Horizon 5
+(3105, 3, 60.00),   -- Gears 5
+(7584, 1, 35.00),   -- Sea of Thieves
+(5026, 1, 60.00),   -- Fable
+(1295, 2, 60.00),  -- The Legend of Zelda Tears of the Kingdom
+(8537, 3, 50.00),   -- Super Mario Bros. Wonder
+(7689, 2, 50.00),   -- Pokémon Púrpura
+(9860, 1, 50.00),   -- Animal Crossing: New Horizons
+(4702, 1, 50.00),   -- Mario Kart 8 Deluxe
+(6318, 2, 60.00),   -- Super Smash Bros. Ultimate
+(2459, 3, 18.00),   -- Cien años de soledad
+(0974, 2, 23.00),   -- El Quijote
+(1307, 1, 28.00);   -- Sapiens
 
 -- iPhone 15 Pro
 INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES

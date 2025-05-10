@@ -1,22 +1,24 @@
-// --------------------SCRIPT MODAL--------------------------------
-// Obtén los elementos
-const modal = document.getElementById("ventanaModalLogin");
-const btn = document.getElementById("abrirModalLogin");
-const span = document.getElementsByClassName("cerrar");
+document.addEventListener('DOMContentLoaded', () => {
+    const modalLogin = document.getElementById('ventanaModalLogin');
+    const openModalButton = document.getElementById('abrirModalLogin');
+    const closeModalButton = modalLogin.querySelector('.close-btn'); // Opcional, si tienes un botón de cierre
 
-// Abre la ventana modal al hacer clic en el botón
-btn.onclick = function () {
-    modal.style.display = "flex";
-}
+    // Abrir el modal al hacer clic en el botón
+    openModalButton.addEventListener('click', () => {
+        modalLogin.style.display = 'flex'; // Muestra el modal
+    });
 
-// Cierra la ventana modal al hacer clic en la "x"
-span.onclick = function () {
-    modal.style.display = "none";
-}
-
-// Cierra la ventana modal si el usuario hace clic fuera del contenido
-window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+    // Cerrar el modal si hay un botón de cierre
+    if (closeModalButton) {
+        closeModalButton.addEventListener('click', () => {
+            modalLogin.style.display = 'none'; // Oculta el modal
+        });
     }
-}
+
+    // Cerrar el modal al hacer clic fuera del contenedor
+    window.addEventListener('click', (event) => {
+        if (event.target === modalLogin) {
+            modalLogin.style.display = 'none';
+        }
+    });
+});

@@ -29,8 +29,6 @@ public class Cliente implements Serializable{
 	private String username;
 	private String password;
 	private String email;
-	private String direccion;
-	private int enabled;
 	
 	@Column(name="FECHA_REGISTRO")
 	@Temporal(TemporalType.DATE)

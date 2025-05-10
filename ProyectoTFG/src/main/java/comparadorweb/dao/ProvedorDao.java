@@ -12,7 +12,7 @@ public interface ProvedorDao {
 	Provedor buscarporUsuarioPassword(String username, String password);
 	
 	
-	int insertOne (Provedor provedores);
+	Provedor insertOne (Provedor provedores);
 	Provedor updateOne (Provedor provedores);
 
 }

@@ -61,15 +61,9 @@ document.getElementById('searchForm').addEventListener('submit', async function 
     event.preventDefault();
 
     const searchTerm = document.getElementById('productIdInput').value;
-    const searchType = document.getElementById('searchType').value;
 
     if (searchTerm) {
-        let producto;
-        if (searchType === 'id') {
-            producto = await getBuscarProducto(searchTerm);
-        } else if (searchType === 'nombre') {
-            producto = await getBuscarProductoPorNombre(searchTerm);
-        }
+        const producto = await getBuscarProductoPorNombre(searchTerm);
 
         if (producto) {
             console.log("Producto encontrado:", producto);
@@ -79,10 +73,11 @@ document.getElementById('searchForm').addEventListener('submit', async function 
             document.getElementById('resultadoBusqueda').textContent = "Producto no encontrado.";
         }
     } else {
-        console.log("Por favor, ingrese un término de búsqueda.");
-        document.getElementById('resultadoBusqueda').textContent = "Por favor, ingrese un término de búsqueda.";
+        console.log("Por favor, ingrese un nombre de producto.");
+        document.getElementById('resultadoBusqueda').textContent = "Por favor, ingrese un nombre de producto.";
     }
 });
+
 
 document.getElementById('toggleSearchType').addEventListener('click', function () {
     const searchTypeInput = document.getElementById('searchType');
@@ -98,15 +93,7 @@ document.getElementById('toggleSearchType').addEventListener('click', function (
     }
 });
 
-async function getBuscarProducto(id) {
-    try {
-        const response = await axios.get(`http://localhost:8084/productos/buscar/${id}`);
-        return response.data;
-    } catch (error) {
-        console.error("Producto no encontrado o código de barras incorrecto:", error);
-        return null;
-    }
-}
+
 
 async function getBuscarProductoPorNombre(nombre) {
     try {

@@ -42,8 +42,15 @@ public class ProductoRestController {
 	
 	//------------------------------------BUSCAR TODOS-------------------------------------
 	@GetMapping("/todos/")
-	public ResponseEntity<List<Producto>>  todos() {
-		return new ResponseEntity<List<Producto>>(pdao.buscarTodos(), HttpStatus.OK);
+	public ResponseEntity<List<Producto>> todos(@RequestParam(value = "limit", required = false, defaultValue = "50") int limit) {
+	    List<Producto> productos = pdao.buscarTodos();
+
+	    // Limitar el número de productos devueltos
+	    if (productos.size() > limit) {
+	        productos = productos.subList(0, limit); // Tomar solo los primeros 'limit' productos
+	    }
+
+	    return new ResponseEntity<>(productos, HttpStatus.OK);
 	}
 	//------------------------------------BUSCAR TODOS-------------------------------------
 	
@@ -79,6 +86,19 @@ public class ProductoRestController {
 				 
 		}
 	//------------------------------------BUSCAR PRODUCTOS Y QUE SALGAN LOS PRECIO PROVEDORES-------------------------------------
+	
+	//-------------------------------------BUSCAR UNO---------------------------------------
+	@GetMapping("/buscar/{idProducto}")
+	public ResponseEntity<?> uno(@PathVariable int idProducto) {
+		 Producto producto = pdao.buscarUna(idProducto);
+		 if ( producto != null)
+			 return new ResponseEntity<Producto>(producto, HttpStatus.OK);
+		 else
+			 return new ResponseEntity<String>("Producto no existe", HttpStatus.NOT_FOUND);
+			 
+	}
+	
+	//-------------------------------------BUSCAR UNO---------------------------------------
 	
 	//-------------------------------------BUSCAR UNO POR NOMBRE---------------------------------------
 		@GetMapping("/buscarPorNombre/{nombre}")
