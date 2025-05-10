@@ -168,3 +168,19 @@ nav div {
     background-color: rgba(43, 43, 43, 0.5);
     /* Fondo oscuro semitransparente */
 }
+.input-box select {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    margin-top: 8px;
+    appearance: none; /* elimina el estilo por defecto del navegador */
+}
+
+.input-box select:focus {
+    background-color: #e0e0e0;
+}

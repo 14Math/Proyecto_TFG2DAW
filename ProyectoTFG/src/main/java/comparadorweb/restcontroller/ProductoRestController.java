@@ -80,19 +80,6 @@ public class ProductoRestController {
 		}
 	//------------------------------------BUSCAR PRODUCTOS Y QUE SALGAN LOS PRECIO PROVEDORES-------------------------------------
 	
-	//-------------------------------------BUSCAR UNO---------------------------------------
-	@GetMapping("/buscar/{idProducto}")
-	public ResponseEntity<?> uno(@PathVariable int idProducto) {
-		 Producto producto = pdao.buscarUna(idProducto);
-		 if ( producto != null)
-			 return new ResponseEntity<Producto>(producto, HttpStatus.OK);
-		 else
-			 return new ResponseEntity<String>("Producto no existe", HttpStatus.NOT_FOUND);
-			 
-	}
-	
-	//-------------------------------------BUSCAR UNO---------------------------------------
-	
 	//-------------------------------------BUSCAR UNO POR NOMBRE---------------------------------------
 		@GetMapping("/buscarPorNombre/{nombre}")
 		public ResponseEntity<?> unoPorNombre(@PathVariable String nombre) {

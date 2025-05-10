@@ -11,46 +11,54 @@ loginBtn.addEventListener('click', () => {
     container.classList.remove('active');
 });
 
-loginForm.addEventListener('submit', (event) => {
+
+loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    const username = loginForm.querySelector('input[placeholder="Username"]').value;
+    const username = loginForm.querySelector('input[placeholder="Username"]').value.trim();
     const password = loginForm.querySelector('input[placeholder="Password"]').value;
+    const tipoUsuario = document.getElementById('tipoUsuario').value;
 
-    const data = {
-        username: username,
-        password: password
-    };
+    if (!username || !password) {
+        alert("Por favor, completa todos los campos.");
+        return;
+    }
 
-    fetch(`http://localhost:8084/productos/login?username=${username}&password=${password}`, { // URL absoluta
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => {
+    // Determina la URL según el tipo de usuario
+    const url = `http://localhost:8084/${tipoUsuario}/login?username=${username}&password=${password}`;
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username, password })
+        });
+
         if (!response.ok) {
-            return response.text().then(errorMessage => {
-                throw new Error(errorMessage || 'Error en la solicitud');
-            });
+            const errorMessage = await response.text();
+            throw new Error(errorMessage || 'Error en el login');
         }
-        return response.json();
-    })
-    .then(responseData => {
-        console.log('Login successful:', responseData);
-        localStorage.setItem('username', username); // Guarda el username
-        mostrarUsername(); // Muestra el username en el HTML
+
+        const responseData = await response.json();
+        console.log('Login exitoso:', responseData);
+
+        localStorage.setItem('username', username);
+        localStorage.setItem('tipoUsuario', tipoUsuario); // opcional
+
+        mostrarUsername();
+
         document.getElementById('abrirModalLogin').style.display = "none";
         document.getElementById('boton-cerrar-sesion').style.display = 'block';
-        document.getElementById('ventanaModalLogin').style.display="none";
-        
-    })
-    .catch(error => {
-        console.error('Login error:', error);
-        alert("Login failed: " + error.message);
-    });
+        document.getElementById('ventanaModalLogin').style.display = "none";
+
+    } catch (error) {
+        console.error('Error en el login:', error);
+        alert("Error al iniciar sesión: " + error.message);
+    }
 });
+
 
 function mostrarUsername() {
     const username = localStorage.getItem('username');

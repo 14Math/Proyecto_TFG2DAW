@@ -38,7 +38,7 @@
         </button>
         <!-- Buscador -->
         <form class="d-flex" role="search" style="width: 50%;" id="searchForm">
-            <input class="form-control me-2" type="search" placeholder="Search by ID" aria-label="Search"
+            <input class="form-control me-2" type="search" placeholder="Search by the name product" aria-label="Search"
                 style="border-radius: 50px; border-color: #74C0FC;" id="productIdInput">
 
             <input type="hidden" id="searchType" value="id">
@@ -47,7 +47,7 @@
                 <i class="fa-solid fa-magnifying-glass fa-2xl" style="color: #74C0FC;"></i>
             </button>
 
-            <button class="btn" type="button" id="toggleSearchType" style="width: 150px;color: #74C0FC;">Buscar por Nombre</button>
+
         </form>
         <!-- Inicio de Sesión o Registro-->
         <div>
@@ -109,21 +109,33 @@
         <div class="container">
             <div class="form-box login">
                 <form action="#">
-
                     <h1>Login</h1>
+
                     <div class="input-box">
                         <input type="text" placeholder="Username" required value="keven100">
                         <i class='bx bxs-user'></i>
                     </div>
+
                     <div class="input-box">
                         <input type="password" placeholder="Password" required value="keven1234">
                         <i class='bx bxs-lock-alt'></i>
                     </div>
-                    <div class="forgot-link">
-                        <a href="#">Forgot Password?</a>
+
+                    <div class="input-box">
+                        <select id="tipoUsuario" required>
+                            <option value="" disabled selected>Selecciona tipo de usuario</option>
+                            <option value="cliente">Cliente</option>
+                            <option value="proveedor">Proveedor</option>
+                        </select>
                     </div>
+
+                    <div class="forgot-link">
+                        <a href="#">¿Olvidaste tu contraseña?</a>
+                    </div>
+
                     <button type="submit" class="btn">Login</button>
-                    <p>or login with social platforms</p>
+
+                    <p>O inicia sesión con:</p>
                     <div class="social-icons">
                         <a href="#"><i class='bx bxl-google'></i></a>
                         <a href="#"><i class='bx bxl-facebook'></i></a>
@@ -135,21 +147,34 @@
 
             <div class="form-box register">
                 <form action="#">
-                    <h1>Registration</h1>
+                    <h1>Registro</h1>
+
                     <div class="input-box">
                         <input type="text" placeholder="Username" required>
                         <i class='bx bxs-user'></i>
                     </div>
+
                     <div class="input-box">
                         <input type="email" placeholder="Email" required>
                         <i class='bx bxs-envelope'></i>
                     </div>
+
                     <div class="input-box">
                         <input type="password" placeholder="Password" required>
                         <i class='bx bxs-lock-alt'></i>
                     </div>
-                    <button type="submit" class="btn">Register</button>
-                    <p>or register with social platforms</p>
+
+                    <div class="input-box">
+                        <select id="tipoUsuarioRegistro" required>
+                            <option value="" disabled selected>Selecciona tipo de usuario</option>
+                            <option value="cliente">Cliente</option>
+                            <option value="proveedor">Proveedor</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn">Registrar</button>
+
+                    <p>O regístrate con:</p>
                     <div class="social-icons">
                         <a href="#"><i class='bx bxl-google'></i></a>
                         <a href="#"><i class='bx bxl-facebook'></i></a>
@@ -158,6 +183,7 @@
                     </div>
                 </form>
             </div>
+
 
             <div class="toggle-box">
                 <div class="toggle-panel toggle-left">
