@@ -1,8 +1,14 @@
+// Elementos del DOM
 const container = document.querySelector('.container');
 const registerBtn = document.querySelector('.register-btn');
 const loginBtn = document.querySelector('.login-btn');
 const loginForm = document.querySelector('.login form');
+const modalLogin = document.getElementById('ventanaModalLogin');
 
+// Verificar sesión al cargar la página
+document.addEventListener('DOMContentLoaded', verificarSesion);
+
+// Mostrar/ocultar formularios de login/registro
 registerBtn.addEventListener('click', () => {
     container.classList.add('active');
 });
@@ -11,12 +17,62 @@ loginBtn.addEventListener('click', () => {
     container.classList.remove('active');
 });
 
+// Función para verificar el estado de sesión
+function verificarSesion() {
+    const username = localStorage.getItem('username');
+    const tipoUsuario = localStorage.getItem('tipoUsuario');
+    
+    if (username) {
+        // Usuario está logueado
+        mostrarUsername();
+        document.getElementById('abrirModalLogin').style.display = "none";
+        document.getElementById('boton-cerrar-sesion').style.display = 'block';
+        modalLogin.style.display = "none";
+        
+        // Mostrar elementos según el tipo de usuario
+        if (tipoUsuario === 'admin') {
+            document.querySelectorAll('.admin-only').forEach(el => el.style.display = 'block');
+        }
+    } else {
+        // Usuario no está logueado
+        document.getElementById('abrirModalLogin').style.display = "block";
+        document.getElementById('boton-cerrar-sesion').style.display = 'none';
+    }
+}
 
+// Función para mostrar el username
+function mostrarUsername() {
+    const username = localStorage.getItem('username');
+    const elementoUsername = document.getElementById('elemento-username');
+    if (elementoUsername) {
+        elementoUsername.textContent = username;
+    }
+}
+
+// Función para cerrar sesión
+function cerrarSesion() {
+    localStorage.removeItem('username');
+    localStorage.removeItem('tipoUsuario');
+    
+    // Limpiar favoritos temporales
+    localStorage.removeItem('favoritos_temp');
+    
+    // Actualizar UI
+    verificarSesion();
+    
+    // Redirigir a la página principal
+    window.location.href = "index.html";
+}
+
+// Evento de submit del login
 loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
-    const username = loginForm.querySelector('input[placeholder="Username"]').value.trim();
-    const password = loginForm.querySelector('input[placeholder="Password"]').value;
+    const usernameInput = loginForm.querySelector('input[placeholder="Username"]');
+    const passwordInput = loginForm.querySelector('input[placeholder="Password"]');
+    
+    const username = usernameInput.value.trim();
+    const password = passwordInput.value;
     const tipoUsuario = document.getElementById('tipoUsuario').value;
 
     if (!username || !password) {
@@ -24,7 +80,6 @@ loginForm.addEventListener('submit', async (event) => {
         return;
     }
 
-    // Determina la URL según el tipo de usuario
     const url = `http://localhost:8084/${tipoUsuario}/login?username=${username}&password=${password}`;
 
     try {
@@ -44,39 +99,47 @@ loginForm.addEventListener('submit', async (event) => {
         const responseData = await response.json();
         console.log('Login exitoso:', responseData);
 
+        // Guardar datos de sesión
         localStorage.setItem('username', username);
-        localStorage.setItem('tipoUsuario', tipoUsuario); // opcional
+        localStorage.setItem('tipoUsuario', tipoUsuario);
 
-        mostrarUsername();
+        // Migrar favoritos temporales a permanentes si existen
+        migrarFavoritosTemporales(username);
 
-        document.getElementById('abrirModalLogin').style.display = "none";
-        document.getElementById('boton-cerrar-sesion').style.display = 'block';
-        document.getElementById('ventanaModalLogin').style.display = "none";
+        // Actualizar UI
+        verificarSesion();
+
+        // Cerrar modal de login
+        modalLogin.style.display = "none";
+
+        // Disparar evento para actualizar favoritos
+        window.dispatchEvent(new Event('storage'));
 
     } catch (error) {
         console.error('Error en el login:', error);
         alert("Error al iniciar sesión: " + error.message);
+        
+        // Limpiar campos en caso de error
+        passwordInput.value = '';
     }
 });
 
-
-function mostrarUsername() {
-    const username = localStorage.getItem('username');
-    const elementoUsername = document.getElementById('elemento-username'); // Reemplaza con el ID de tu elemento HTML
-    if (elementoUsername) {
-        elementoUsername.textContent = "Hola "+username;
+// Función para migrar favoritos temporales a permanentes
+function migrarFavoritosTemporales(username) {
+    const tempFavs = JSON.parse(localStorage.getItem('favoritos_temp')) || [];
+    if (tempFavs.length > 0) {
+        const userFavsKey = `favoritos_${username}`;
+        const existingFavs = JSON.parse(localStorage.getItem(userFavsKey)) || [];
+        
+        // Combinar evitando duplicados
+        const combinedFavs = [...existingFavs];
+        tempFavs.forEach(tempFav => {
+            if (!existingFavs.some(fav => fav.id === tempFav.id)) {
+                combinedFavs.push(tempFav);
+            }
+        });
+        
+        localStorage.setItem(userFavsKey, JSON.stringify(combinedFavs));
+        localStorage.removeItem('favoritos_temp');
     }
 }
-
-function cerrarSesion() {
-    localStorage.removeItem('username');
-    // Mostrar botón "Iniciar Sesión" y ocultar "Cerrar Sesión"
-    document.getElementById('abrirModalLogin').style.display = 'block';
-    document.getElementById('boton-cerrar-sesion').style.display = 'none';
-
-    // Redirigir a la página de inicio (o recargar la página actual)
-    window.location.href = "../index.html"; // Reemplaza con la URL de tu página de inicio
-}
-
-// Mostrar el username al cargar la página (si el usuario ya ha iniciado sesión)
-window.addEventListener('DOMContentLoaded', mostrarUsername)

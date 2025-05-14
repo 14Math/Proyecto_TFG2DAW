@@ -1,0 +1,69 @@
+/* Estilos generales para productos */
+.producto {
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    transition: transform 0.3s ease;
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+}
+
+/* Imagen del producto */
+.producto img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Información del producto */
+.producto .Nombre {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.producto .Precio {
+    color: #4dabf7;
+    font-weight: bold;
+}
+
+.producto .Marca {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+/* Botones de favoritos y ofertas */
+.btnFavorito {
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+.btnFavorito.active {
+    color: red;
+}
+
+.btnVerOfertas button {
+    background-color: #74c0fc;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btnVerOfertas button:hover {
+    background-color: #4dabf7;
+}
