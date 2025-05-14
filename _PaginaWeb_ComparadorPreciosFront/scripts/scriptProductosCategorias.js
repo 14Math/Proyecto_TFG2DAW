@@ -1,313 +1,97 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // Función principal para cargar productos por categoría
+    const cargarProductosPorCategoria = async (idCategoria, contenedorId) => {
+        try {
+            const response = await axios.get(`http://localhost:8084/productos/categorias/productos/${idCategoria}`);
+            const productos = response.data;
 
+            if (productos && productos.length > 0) {
+                renderizarProductos(productos, contenedorId);
+            } else {
+                mostrarMensaje("No se encontraron productos para esta categoría.", contenedorId);
+            }
+        } catch (error) {
+            console.error(`Error al cargar productos de la categoría ${idCategoria}:`, error);
+            mostrarMensaje("Hubo un error al cargar los productos. Por favor, intenta más tarde.", contenedorId);
+        }
+    };
 
-async function getProductosCategorias1() {
-    let productos1 = await axios.get("http://localhost:8084/productos/categorias/productos/1");
+    // Función para renderizar los productos en el DOM
+    const renderizarProductos = (productos, contenedorId) => {
+        const contenedor = document.getElementById(contenedorId);
+        contenedor.innerHTML = ''; // Limpiar el contenedor
 
-    console.log("los productos: ", productos1.data);
+        productos.forEach((producto) => {
+            const productoDiv = crearProductoHTML(producto);
+            contenedor.appendChild(productoDiv);
+        });
+    };
 
+    // Función para crear el HTML de un producto (similar a la de script.js)
+    const crearProductoHTML = (producto) => {
+        const divProducto = document.createElement('div');
+        divProducto.classList.add('producto');
+        divProducto.dataset.productId = producto.idProducto;
 
-    let Productos = document.getElementById('verProductosElectronicos');
-    console.log(Productos);
+        divProducto.innerHTML = `
+            <div class="ProductoImagen">
+                <img src="../imagenes/${producto.nombre}.jpg" alt="${producto.nombre}">
+            </div>
+            <div class="Nombre">${producto.nombre}</div>
+            <div class="Marca">Marca: ${producto.marca}</div>
+            <div class="Precio">Desde: ${producto.precioVenta}€</div>
+            <div class="btnVerOfertas">
+                <button onclick="verOfertas(${producto.idProducto})">Ver Ofertas</button>
+                <button class="favorite" onclick="toggleFavorite(this, ${producto.idProducto})">
+                    <i class="far fa-heart"></i>
+                </button>
+            </div>
+        `;
 
-    productos1.data.forEach(item => {
-        console.log(item);
+        return divProducto;
+    };
 
-        // Crear un div para cada producto
-        let divProducto = document.createElement('div');
-        divProducto.classList.add('producto'); // Agrega una clase para estilos
+    // Función para mostrar un mensaje en el contenedor específico
+    const mostrarMensaje = (mensaje, contenedorId) => {
+        const contenedor = document.getElementById(contenedorId);
+        contenedor.innerHTML = `<p class="mensaje">${mensaje}</p>`;
+    };
 
+    // Función para manejar redirección a ofertas (compartida con script.js)
+    window.verOfertas = (idProducto) => {
+        localStorage.setItem("id", idProducto);
+        window.location.href = "../precioProvedores.html";
+    };
 
-        // Crear div para la imagen
-        let divImagen = document.createElement('div');
-        divImagen.classList.add('ProductoImagen');
+    // Función para alternar favoritos (compartida con script.js)
+    window.toggleFavorite = (element, idProducto) => {
+        element.classList.toggle('active');
+        // Aquí podrías añadir lógica para guardar en localStorage o API
+        showConfetti(element);
+    };
 
-        let imagen = document.createElement('img');
-        imagen.src = `../imagenes/${item.nombre}.jpg`; // Ruta dinámica
-        imagen.alt = item.nombre; // Texto alternativo
-        divImagen.appendChild(imagen);
-        divProducto.appendChild(divImagen);
+    // Cargar productos para cada categoría
+    cargarProductosPorCategoria(1, 'verProductosElectronicos');
+    cargarProductosPorCategoria(2, 'verProductosVideojuegos');
+    cargarProductosPorCategoria(3, 'verProductosLibros');
+    cargarProductosPorCategoria(4, 'verProductosPerfumes');
+    cargarProductosPorCategoria(5, 'verProductosJuguetes');
+});
 
-        // Crear divs para cada dato del producto
-        // let divCategoria = document.createElement('div');
-        // divCategoria.textContent = item.categorias.nombre;
-        // divCategoria.classList.add('Categoria');
-
-        // divProducto.appendChild(divCategoria);
-
-        let divNombre = document.createElement('div');
-        divNombre.textContent = item.nombre;
-        divNombre.classList.add('Nombre');
-
-        divProducto.appendChild(divNombre);
-
-        let divMarca = document.createElement('div');
-        divMarca.textContent = 'Marca: ' + item.marca;
-        divMarca.classList.add('Marca');
-
-        divProducto.appendChild(divMarca);
-
-        let divPrecio = document.createElement('div');
-        divPrecio.textContent = 'Desde: ' + item.precioVenta + '€';
-        divPrecio.classList.add('Precio');
-
-        divProducto.appendChild(divPrecio);
-
-        let divOfertas = document.createElement('div');
-        divOfertas.innerHTML = '<button onclick="verOfertas('+item.idProducto+')">Ver Ofertas</button>'; // Botón con HTML
-        divOfertas.classList.add('btnVerOfertas')
-
-        divProducto.appendChild(divOfertas);
-
-        // Agregar el div del producto al contenedor principal
-        Productos.appendChild(divProducto);
+// Efecto de confeti (compartido con script.js)
+function showConfetti(element) {
+    const confetti = document.createElement('div');
+    confetti.style.position = 'absolute';
+    confetti.innerHTML = '🎉';
+    document.body.appendChild(confetti);
+    
+    anime({
+        targets: confetti,
+        translateY: [-20, 100],
+        translateX: () => anime.random(-50, 50),
+        opacity: [1, 0],
+        duration: 1000,
+        easing: 'easeOutExpo',
+        complete: () => confetti.remove()
     });
 }
-
-async function getProductosCategorias2() {
-
-    let productos2 = await axios.get("http://localhost:8084/productos/categorias/productos/2");
-
-    console.log("los productos: ", productos2.data);
-
-    let Productos = document.getElementById('verProductosVideojuegos');
-    console.log(Productos);
-
-    productos2.data.forEach(item => {
-        console.log(item);
-
-        // Crear un div para cada producto
-        let divProducto = document.createElement('div');
-        divProducto.classList.add('producto'); // Agrega una clase para estilos
-
-        // Crear div para la imagen
-        let divImagen = document.createElement('div');
-        let imagen = document.createElement('img');
-        imagen.src = `../imagenes/${item.nombre}.jpg`; // Ruta dinámica
-        imagen.alt = item.nombre; // Texto alternativo
-        divImagen.appendChild(imagen);
-        divProducto.appendChild(divImagen);
-
-        // Crear divs para cada dato del producto
-        // let divCategoria = document.createElement('div');
-        // divCategoria.textContent = item.categorias.nombre;
-        // divCategoria.classList.add('Categoria');
-
-        // divProducto.appendChild(divCategoria);
-
-        let divNombre = document.createElement('div');
-        divNombre.textContent = item.nombre;
-        divNombre.classList.add('Nombre');
-
-        divProducto.appendChild(divNombre);
-
-        let divMarca = document.createElement('div');
-        divMarca.textContent = 'Marca: ' + item.marca;
-        divMarca.classList.add('Marca');
-
-        divProducto.appendChild(divMarca);
-
-        let divPrecio = document.createElement('div');
-        divPrecio.textContent = 'Desde: ' + item.precioVenta + '€';
-        divPrecio.classList.add('Precio');
-
-        divProducto.appendChild(divPrecio);
-
-        let divOfertas = document.createElement('div');
-        divOfertas.innerHTML = '<button onclick="verOfertas('+item.idProducto+')">Ver Ofertas</button>'; // Botón con HTML
-        divOfertas.classList.add('btnVerOfertas')
-
-        divProducto.appendChild(divOfertas);
-
-        // Agregar el div del producto al contenedor principal
-        Productos.appendChild(divProducto);
-    });
-}
-
-async function getProductosCategorias3() {
-
-    let productos3 = await axios.get("http://localhost:8084/productos/categorias/productos/3");
-    console.log("los productos: ", productos3.data);
-
-    let Productos = document.getElementById('verProductosLibros');
-    console.log(Productos);
-
-    productos3.data.forEach(item => {
-        console.log(item);
-
-        // Crear un div para cada producto
-        let divProducto = document.createElement('div');
-        divProducto.classList.add('producto'); // Agrega una clase para estilos
-
-        // Crear div para la imagen
-        let divImagen = document.createElement('div');
-        let imagen = document.createElement('img');
-        imagen.src = `../imagenes/${item.nombre}.jpg`; // Ruta dinámica
-        imagen.alt = item.nombre; // Texto alternativo
-        divImagen.appendChild(imagen);
-        divProducto.appendChild(divImagen);
-
-        // Crear divs para cada dato del producto
-        // let divCategoria = document.createElement('div');
-        // divCategoria.textContent = item.categorias.nombre;
-        // divCategoria.classList.add('Categoria');
-
-        // divProducto.appendChild(divCategoria);
-
-        let divNombre = document.createElement('div');
-        divNombre.textContent = item.nombre;
-        divNombre.classList.add('Nombre');
-
-        divProducto.appendChild(divNombre);
-
-        let divMarca = document.createElement('div');
-        divMarca.textContent = 'Marca: ' + item.marca;
-        divMarca.classList.add('Marca');
-
-        divProducto.appendChild(divMarca);
-
-        let divPrecio = document.createElement('div');
-        divPrecio.textContent = 'Desde: ' + item.precioVenta + '€';
-        divPrecio.classList.add('Precio');
-
-        divProducto.appendChild(divPrecio);
-
-        let divOfertas = document.createElement('div');
-        divOfertas.innerHTML = '<button onclick="verOfertas('+item.idProducto+')">Ver Ofertas</button>'; // Botón con HTML
-        divOfertas.classList.add('btnVerOfertas')
-
-        divProducto.appendChild(divOfertas);
-
-        // Agregar el div del producto al contenedor principal
-        Productos.appendChild(divProducto);
-    });
-}
-
-async function getProductosCategorias4() {
-    let productos4 = await axios.get("http://localhost:8084/productos/categorias/productos/4");
-    console.log("los productos: ", productos4.data);
-
-    let Productos = document.getElementById('verProductosPerfumes');
-    console.log(Productos);
-
-    productos4.data.forEach(item => {
-        console.log(item);
-
-        // Crear un div para cada producto
-        let divProducto = document.createElement('div');
-        divProducto.classList.add('producto'); // Agrega una clase para estilos
-
-        // Crear div para la imagen
-        let divImagen = document.createElement('div');
-        let imagen = document.createElement('img');
-        imagen.src = `../imagenes/${item.nombre}.jpg`; // Ruta dinámica
-        imagen.alt = item.nombre; // Texto alternativo
-        divImagen.appendChild(imagen);
-        divProducto.appendChild(divImagen);
-
-        // Crear divs para cada dato del producto
-        // let divCategoria = document.createElement('div');
-        // divCategoria.textContent = item.categorias.nombre;
-        // divCategoria.classList.add('Categoria');
-
-        // divProducto.appendChild(divCategoria);
-
-        let divNombre = document.createElement('div');
-        divNombre.textContent = item.nombre;
-        divNombre.classList.add('Nombre');
-
-        divProducto.appendChild(divNombre);
-
-        let divMarca = document.createElement('div');
-        divMarca.textContent = 'Marca: ' + item.marca;
-        divMarca.classList.add('Marca');
-
-        divProducto.appendChild(divMarca);
-
-        let divPrecio = document.createElement('div');
-        divPrecio.textContent = 'Desde: ' + item.precioVenta + '€';
-        divPrecio.classList.add('Precio');
-
-        divProducto.appendChild(divPrecio);
-
-        let divOfertas = document.createElement('div');
-        divOfertas.innerHTML = '<button onclick="verOfertas('+item.idProducto+')">Ver Ofertas</button>'; // Botón con HTML
-        divOfertas.classList.add('btnVerOfertas')
-
-        divProducto.appendChild(divOfertas);
-
-        // Agregar el div del producto al contenedor principal
-        Productos.appendChild(divProducto);
-    });
-}
-
-async function getProductosCategorias5() {
-    let productos5 = await axios.get("http://localhost:8084/productos/categorias/productos/5");
-    console.log("los productos: ", productos5.data);
-
-    let Productos = document.getElementById('verProductosJuguetes');
-    console.log(Productos);
-
-    productos5.data.forEach(item => {
-        console.log(item);
-
-        // Crear un div para cada producto
-        let divProducto = document.createElement('div');
-        divProducto.classList.add('producto'); // Agrega una clase para estilos
-
-        // Crear div para la imagen
-        let divImagen = document.createElement('div');
-        let imagen = document.createElement('img');
-        imagen.src = `../imagenes/${item.nombre}.jpg`; // Ruta dinámica
-        imagen.alt = item.nombre; // Texto alternativo
-        divImagen.appendChild(imagen);
-        divProducto.appendChild(divImagen);
-
-        // Crear divs para cada dato del producto
-        // let divCategoria = document.createElement('div');
-        // divCategoria.textContent = item.categorias.nombre;
-        // divCategoria.classList.add('Categoria');
-
-        // divProducto.appendChild(divCategoria);
-
-        let divNombre = document.createElement('div');
-        divNombre.textContent = item.nombre;
-        divNombre.classList.add('Nombre');
-
-        divProducto.appendChild(divNombre);
-
-        let divMarca = document.createElement('div');
-        divMarca.textContent = 'Marca: ' + item.marca;
-        divMarca.classList.add('Marca');
-
-        divProducto.appendChild(divMarca);
-
-        let divPrecio = document.createElement('div');
-        divPrecio.textContent = 'Desde: ' + item.precioVenta + '€';
-        divPrecio.classList.add('Precio');
-
-        divProducto.appendChild(divPrecio);
-
-        let divOfertas = document.createElement('div');
-        divOfertas.innerHTML = '<button onclick="verOfertas('+item.idProducto+')">Ver Ofertas</button>'; // Botón con HTML
-        divOfertas.classList.add('btnVerOfertas')
-
-        divProducto.appendChild(divOfertas);
-
-        // Agregar el div del producto al contenedor principal
-        Productos.appendChild(divProducto);
-    });
-}
-
-function verOfertas(idProducto) {
-    window.location.href = "../precioProvedores.html";
-    console.log('Ver ofertas del producto con ID:', idProducto);
-    localStorage.setItem("id", idProducto);
-    console.log("local: ", localStorage.getItem("id"));
-    // Aquí puedes agregar la lógica para mostrar las ofertas del producto con el ID especificado
-}
-
-getProductosCategorias1();
-getProductosCategorias2();
-getProductosCategorias3();
-getProductosCategorias4();
-getProductosCategorias5();
