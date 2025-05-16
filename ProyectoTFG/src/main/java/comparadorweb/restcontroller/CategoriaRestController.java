@@ -36,7 +36,7 @@ public class CategoriaRestController {
     }
 	
 	//------------------------------------BUSCAR TODOS-------------------------------------
-			@GetMapping("/categorias/productos/{idCategoria}")
+			@GetMapping("/productos/{idCategoria}")
 			public ResponseEntity<?>  todosPorCategoria(@PathVariable int idCategoria) {
 				List<Producto> producto = pdao.buscarTodosPorCategoria(idCategoria);
 				

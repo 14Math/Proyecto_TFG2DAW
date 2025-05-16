@@ -40,7 +40,7 @@ function verificarSesion() {
     }
 }
 
-// Función para mostrar el username
+
 function mostrarUsername() {
     const username = localStorage.getItem('username');
     const elementoUsername = document.getElementById('elemento-username');
@@ -49,22 +49,17 @@ function mostrarUsername() {
     }
 }
 
-// Función para cerrar sesión
 function cerrarSesion() {
     localStorage.removeItem('username');
     localStorage.removeItem('tipoUsuario');
-    
-    // Limpiar favoritos temporales
     localStorage.removeItem('favoritos_temp');
-    
-    // Actualizar UI
+ 
     verificarSesion();
     
     // Redirigir a la página principal
-    window.location.href = "index.html";
+    window.location.href = "../index.html";
 }
 
-// Evento de submit del login
 loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
@@ -99,14 +94,10 @@ loginForm.addEventListener('submit', async (event) => {
         const responseData = await response.json();
         console.log('Login exitoso:', responseData);
 
-        // Guardar datos de sesión
         localStorage.setItem('username', username);
         localStorage.setItem('tipoUsuario', tipoUsuario);
 
-        // Migrar favoritos temporales a permanentes si existen
         migrarFavoritosTemporales(username);
-
-        // Actualizar UI
         verificarSesion();
 
         // Cerrar modal de login

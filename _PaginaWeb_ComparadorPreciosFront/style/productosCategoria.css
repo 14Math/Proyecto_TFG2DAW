@@ -1,0 +1,184 @@
+/* Contenedor de todos los productos */
+.productos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Estilo de cada producto individual */
+.producto {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Imagen del producto */
+.producto img {
+    width: 85%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 0.75rem;
+    transition: transform 0.3s ease;
+}
+
+.producto:hover img {
+    transform: scale(1.03);
+}
+
+/* Texto del producto */
+.Nombre {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+    color: #333;
+}
+
+.Marca {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.Precio {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #e74c3c;
+    margin: 0.5rem 0;
+}
+
+/* Botones */
+.btnVerOfertas {
+    margin-top: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.btnVerOfertas button {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btnVerOfertas button:first-child {
+    flex: 1;
+    margin-right: 0.5rem;
+    background-color: #74c0fc;
+    color: white;
+}
+
+.btnVerOfertas button:first-child:hover {
+    background-color: #4dabf7;
+}
+
+.btnVerOfertas button.favorite {
+    width: 36px;
+    padding: 0;
+    background-color: #f1f1f1;
+    color: #7f8c8d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btnVerOfertas button.favorite:hover {
+    background-color: #ffecec;
+    color: #e74c3c;
+}
+
+/* Icono favorito activo */
+.btnVerOfertas button.favorite.active {
+    color: #e74c3c;
+}
+
+/* Animación */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Retrasos para animación escalonada */
+.producto:nth-child(1) { animation-delay: 0.1s; }
+.producto:nth-child(2) { animation-delay: 0.2s; }
+.producto:nth-child(3) { animation-delay: 0.3s; }
+.producto:nth-child(4) { animation-delay: 0.4s; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .productos-container {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .productos-container {
+        grid-template-columns: 1fr;
+    }
+
+    .btnVerOfertas {
+        flex-direction: column;
+    }
+
+    .btnVerOfertas button {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    .btnVerOfertas button:first-child {
+        margin-right: 0;
+    }
+}
+
+/* Título de la categoría */
+#tituloCategoria {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #efefef;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: fadeInDown 0.6s ease forwards;
+    opacity: 0;
+}
+
+/* Animación para el título */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

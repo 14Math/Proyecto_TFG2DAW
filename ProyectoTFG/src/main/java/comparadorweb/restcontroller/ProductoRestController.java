@@ -20,7 +20,9 @@ import comparadorweb.dao.ProductosProvedoresDao;
 import comparadorweb.dao.ProvedorDao;
 import comparadorweb.dao.productoDao;
 import comparadorweb.dtos.PrecioProveedorDto;
+import comparadorweb.entidades.Categoria;
 import comparadorweb.entidades.Cliente;
+import comparadorweb.entidades.ClienteProducto;
 import comparadorweb.entidades.Producto;
 import comparadorweb.entidades.ProductosProvedores;
 import comparadorweb.entidades.Provedor;
@@ -40,6 +42,7 @@ public class ProductoRestController {
 	@Autowired
 	private ProvedorDao prdao;
 	
+	
 	//------------------------------------BUSCAR TODOS-------------------------------------
 	@GetMapping("/todos/")
 	public ResponseEntity<List<Producto>> todos(@RequestParam(value = "limit", required = false, defaultValue = "50") int limit) {
@@ -52,20 +55,6 @@ public class ProductoRestController {
 
 	    return new ResponseEntity<>(productos, HttpStatus.OK);
 	}
-	//------------------------------------BUSCAR TODOS-------------------------------------
-	
-	//------------------------------------BUSCAR TODOS-------------------------------------
-		@GetMapping("/categorias/productos/{idCategoria}")
-		public ResponseEntity<?>  todosPorCategoria(@PathVariable int idCategoria) {
-			List<Producto> producto = pdao.buscarTodosPorCategoria(idCategoria);
-			
-
-			 if ( producto != null)
-		 
-				 return new ResponseEntity<> (producto, HttpStatus.OK);
-			 else
-				 return new ResponseEntity<String>("Categoria no existe", HttpStatus.NOT_FOUND);
-		}
 	//------------------------------------BUSCAR TODOS-------------------------------------
 		
 	
@@ -112,6 +101,21 @@ public class ProductoRestController {
 		}
 		
 		//-------------------------------------BUSCAR UNO POR NOMBRE---------------------------------------
+		
+		
+		//-----------------------------------MOSTRAR VALORACIONES-----------------------------------------
+		
+		@GetMapping("/valoraciones/{idProducto}")
+	    public ResponseEntity<?> valoraciones(@PathVariable int idProducto) {
+	        List<ClienteProducto> valoraciones = pdao.mostrarValoraciones(idProducto);
+	        if ( valoraciones != null)
+	   		 
+				 return new ResponseEntity<> (valoraciones, HttpStatus.OK);
+			 else
+				 return new ResponseEntity<String>("No hay valoraciones para este producto", HttpStatus.NOT_FOUND);
+	    }
+		
+		//----------------------------------MOSTRAR VALORACIONES-----------------------------------------
 		
 	
 	//-------------------------------------ALTA---------------------------------------

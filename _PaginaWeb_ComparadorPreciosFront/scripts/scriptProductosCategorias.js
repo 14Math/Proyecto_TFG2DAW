@@ -1,97 +1,85 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Función principal para cargar productos por categoría
-    const cargarProductosPorCategoria = async (idCategoria, contenedorId) => {
-        try {
-            const response = await axios.get(`http://localhost:8084/productos/categorias/productos/${idCategoria}`);
-            const productos = response.data;
+// scriptProductosCategorias.js - Versión compatible con tu CSS
+document.addEventListener('DOMContentLoaded', async () => {
+    const productosContainer = document.getElementById('productosCategoria');
+    const tituloCategoria = document.getElementById('tituloCategoria');
 
-            if (productos && productos.length > 0) {
-                renderizarProductos(productos, contenedorId);
+    // Obtener parámetros de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const idCategoria = urlParams.get('id');
+    const nombreCategoria = urlParams.get('nombre');
+
+    // Mostrar título de categoría
+    if (nombreCategoria) {
+        tituloCategoria.textContent = nombreCategoria;
+    }
+
+    // Función para cargar productos de la categoría
+    const cargarProductosPorCategoria = async () => {
+        try {
+            if (!idCategoria) {
+                mostrarMensaje("No se ha especificado una categoría.");
+                return;
+            }
+
+            productosContainer.innerHTML = '<p>Cargando productos...</p>';
+            
+            const response = await axios.get(`http://localhost:8084/categorias/productos/${idCategoria}`);
+            
+            if (response.data && response.data.length > 0) {
+                renderizarProductos(response.data);
             } else {
-                mostrarMensaje("No se encontraron productos para esta categoría.", contenedorId);
+                mostrarMensaje("No hay productos en esta categoría.");
             }
         } catch (error) {
-            console.error(`Error al cargar productos de la categoría ${idCategoria}:`, error);
-            mostrarMensaje("Hubo un error al cargar los productos. Por favor, intenta más tarde.", contenedorId);
+            console.error("Error al cargar productos:", error);
+            mostrarMensaje("Error al cargar los productos. Intente más tarde.");
         }
     };
 
-    // Función para renderizar los productos en el DOM
-    const renderizarProductos = (productos, contenedorId) => {
-        const contenedor = document.getElementById(contenedorId);
-        contenedor.innerHTML = ''; // Limpiar el contenedor
-
-        productos.forEach((producto) => {
-            const productoDiv = crearProductoHTML(producto);
-            contenedor.appendChild(productoDiv);
+    // Función para renderizar productos (adaptada a tu CSS)
+    const renderizarProductos = (productos) => {
+        productosContainer.innerHTML = '';
+        
+        productos.forEach((producto, index) => {
+            const productoHTML = `
+    <div class="producto">
+        <img src="../imagenes/${producto.nombre}.jpg" alt="${producto.nombre}">
+        <div class="Categoria">${producto.categorias?.nombre || "Sin Categoría"}</div>
+        <div class="Nombre">${producto.nombre}</div>
+        <div class="Marca">Marca: ${producto.marca}</div>
+        <div class="Precio">Desde: ${producto.precioVenta}€</div>
+        <div class="btnVerOfertas">
+            <button onclick="verOfertas(${producto.idProducto})">Ver Ofertas</button>
+            <button class="favorite" onclick="toggleFavorite(this, ${producto.idProducto})">
+                <i class="far fa-heart"></i>
+            </button>
+        </div>
+    </div>
+`;
+            productosContainer.insertAdjacentHTML('beforeend', productoHTML);
         });
     };
 
-    // Función para crear el HTML de un producto (similar a la de script.js)
-    const crearProductoHTML = (producto) => {
-        const divProducto = document.createElement('div');
-        divProducto.classList.add('producto');
-        divProducto.dataset.productId = producto.idProducto;
-
-        divProducto.innerHTML = `
-            <div class="ProductoImagen">
-                <img src="../imagenes/${producto.nombre}.jpg" alt="${producto.nombre}">
-            </div>
-            <div class="Nombre">${producto.nombre}</div>
-            <div class="Marca">Marca: ${producto.marca}</div>
-            <div class="Precio">Desde: ${producto.precioVenta}€</div>
-            <div class="btnVerOfertas">
-                <button onclick="verOfertas(${producto.idProducto})">Ver Ofertas</button>
-                <button class="favorite" onclick="toggleFavorite(this, ${producto.idProducto})">
-                    <i class="far fa-heart"></i>
-                </button>
-            </div>
-        `;
-
-        return divProducto;
+    // Función para mostrar mensajes
+    const mostrarMensaje = (mensaje) => {
+        productosContainer.innerHTML = `<p class="mensaje">${mensaje}</p>`;
     };
-
-    // Función para mostrar un mensaje en el contenedor específico
-    const mostrarMensaje = (mensaje, contenedorId) => {
-        const contenedor = document.getElementById(contenedorId);
-        contenedor.innerHTML = `<p class="mensaje">${mensaje}</p>`;
-    };
-
-    // Función para manejar redirección a ofertas (compartida con script.js)
-    window.verOfertas = (idProducto) => {
-        localStorage.setItem("id", idProducto);
-        window.location.href = "../precioProvedores.html";
-    };
-
-    // Función para alternar favoritos (compartida con script.js)
-    window.toggleFavorite = (element, idProducto) => {
-        element.classList.toggle('active');
-        // Aquí podrías añadir lógica para guardar en localStorage o API
-        showConfetti(element);
-    };
-
-    // Cargar productos para cada categoría
-    cargarProductosPorCategoria(1, 'verProductosElectronicos');
-    cargarProductosPorCategoria(2, 'verProductosVideojuegos');
-    cargarProductosPorCategoria(3, 'verProductosLibros');
-    cargarProductosPorCategoria(4, 'verProductosPerfumes');
-    cargarProductosPorCategoria(5, 'verProductosJuguetes');
+    if (idCategoria) {
+        cargarProductosPorCategoria();
+    }
 });
 
-// Efecto de confeti (compartido con script.js)
-function showConfetti(element) {
-    const confetti = document.createElement('div');
-    confetti.style.position = 'absolute';
-    confetti.innerHTML = '🎉';
-    document.body.appendChild(confetti);
-    
-    anime({
-        targets: confetti,
-        translateY: [-20, 100],
-        translateX: () => anime.random(-50, 50),
-        opacity: [1, 0],
-        duration: 1000,
-        easing: 'easeOutExpo',
-        complete: () => confetti.remove()
-    });
-}
+// Función global para ver ofertas
+window.verOfertas = function(idProducto) {
+    localStorage.setItem("idProducto", idProducto);
+    window.location.href = "../precioProvedores.html";
+};
+
+// Función para favoritos
+window.toggleFavorite = function(button, productId) {
+    button.classList.toggle('active');
+    const icon = button.querySelector('i');
+    icon.classList.toggle('far');
+    icon.classList.toggle('fas');
+    // Aquí deberías añadir la lógica para guardar en favoritos
+};
