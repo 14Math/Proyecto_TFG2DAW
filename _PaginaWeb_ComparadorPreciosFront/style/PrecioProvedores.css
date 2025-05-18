@@ -1,221 +1,416 @@
-/* BODY */
-body {
-    width: 100dvw;
-    height: 100dvh;
-
-    padding-top: 250px;
+/* Variables de color */
+:root {
+  --color-primario: #4285f4;
+  --color-secundario: #3367d6;
+  --color-oferta: #e53935;
+  --color-texto: #333;
+  --color-texto-secundario: #666;
+  --color-borde: #e0e0e0;
+  --color-fondo: #f5f5f5;
+  --color-estrella: #FFD700;
+  --color-error: #e53935;
 }
 
-/* HEADER */
-header {
-    width: 100dvw;
-    height: 150px;
-
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-
-    top: 0px;
-    bottom: 0px;
-
-}
-
-#logo img {
-    width: 150px;
-    font-size: 25px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-
-    margin-right: 1%;
-}
-
-header div {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-
-
-    font-size: 18px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
-
-    margin-left: 2%;
-
-}
-
-header form input {
-    height: 50px;
-}
-
-#tablaPrecioProductos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    /* background-color: #3498db; */
-
-}
-
-/* HEADER */
-
-/* MI CSS */
-/* table {
-    cursor: pointer;
-    width: 80%;
-    margin: 20px auto;
-    border-collapse: collapse;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-th,
-td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-th{
-    
-    background-color: #3498db;
-    
-    color: white;
-}
-
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-    
-}
-
-tr:hover{
-    background-color: #bdc1c4;
-    
-}
-
-caption {
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-bottom: 10px;
-} */
-/* CHATGPT */
+/* ------------------------- */
+/* CONTENEDOR PRINCIPAL */
+/* ------------------------- */
 .contenedor-precios {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    /* Centra las tarjetas horizontalmente */
-    margin: 20px;
-    /* Agrega margen al contenedor */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  background-color: var(--color-fondo);
 }
 
+/* ------------------------- */
+/* ESTILO PARA OFERTAS (TEXTO CENTRADO) */
+/* ------------------------- */
 .tarjeta-precio {
-    border: 1px solid #ddd;
-    padding: 20px;
-    margin: 10px;
-    max-width: 300px;
-    /* Ancho máximo de las tarjetas */
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Agrega sombra a las tarjetas */
-    border-radius: 8px;
-    /* Agrega bordes redondeados a las tarjetas */
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrado horizontal */
+  text-align: center; /* Centrado texto */
+  padding: 20px;
+  
+  /* Apariencia */
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  background: white;
 }
 
-.tarjeta-precio h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    /* Agrega margen inferior al título */
+/* Nombre del producto */
+.producto-nombre {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-texto);
+  margin: 0 0 10px 0;
+  width: 100%;
 }
 
-.tarjeta-precio .precio {
-    font-size: 1.2em;
+/* Texto "Sin valoraciones" */
+.sin-valoraciones {
+  font-size: 0.85rem;
+  color: var(--color-texto-secundario);
+  margin: 0 0 15px 0;
+  width: 100%;
+}
+
+/* Precio */
+.precio-container {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--color-texto);
+  margin: 0 0 15px 0;
+  width: 100%;
+}
+
+/* Proveedor */
+.proveedor-info {
+  font-size: 0.95rem;
+  color: var(--color-texto-secundario);
+  margin: 0 0 20px 0;
+  width: 100%;
+}
+
+/* Botón "Ver oferta" */
+.btn-ver-oferta {
+  background: var(--color-primario);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  width: 100%;
+  max-width: 200px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-ver-oferta:hover {
+  background: var(--color-secundario);
+}
+
+/* ------------------------- */
+/* ESTILOS DE VALORACIONES (EXACTAMENTE IGUAL QUE ANTES) */
+/* ------------------------- */
+.valoraciones-container {
+  margin: 10px 0;
+  min-height: 40px;
+}
+
+.estrellas-valoracion {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+  margin-bottom: 5px;
+}
+
+.estrella {
+  font-size: 1.5rem;
+  color: #ddd;
+}
+
+.estrella.activa {
+  color: var(--color-estrella);
+  filter: drop-shadow(0 0 2px rgba(255, 215, 0, 0.7));
+}
+
+.contador-valoraciones {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--color-texto-secundario);
+}
+
+.precio-container {
+  margin: 15px 0;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.precio-normal {
+  font-weight: bold;
+  color: var(--color-texto);
+}
+
+.precio-original {
+  text-decoration: line-through;
+  color: #999;
+  margin-right: 8px;
+}
+
+.precio-oferta {
+  font-weight: bold;
+  color: var(--color-oferta);
+  font-size: 1.3rem;
+}
+
+.descuento {
+  background: var(--color-oferta);
+  color: white;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  margin-left: 8px;
+}
+
+.proveedor-info {
+  color: var(--color-texto-secundario);
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.btn-ver-oferta {
+  background: var(--color-primario);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: auto;
+}
+
+.btn-ver-oferta:hover {
+  background: var(--color-secundario);
+}
+
+/* Opiniones */
+.opiniones-container {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px dashed var(--color-borde);
+}
+
+.titulo-opiniones {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: var(--color-texto-secundario);
+  margin-bottom: 10px;
+}
+
+.opinion {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.opinion:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.opinion-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.opinion-usuario {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.opinion-comentario {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+.opinion-fecha {
+  font-size: 0.7rem;
+  color: #999;
+  font-style: italic;
+}
+
+.btn-ver-mas-opiniones {
+  background: none;
+  border: none;
+  color: var(--color-primario);
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 5px 0;
+  margin-top: 10px;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.btn-ver-mas-opiniones:hover {
+  text-decoration: underline;
+}
+
+.cargando-precios, 
+.cargando-valoraciones,
+.sin-valoraciones {
+  text-align: center;
+  padding: 20px;
+  color: var(--color-texto-secundario);
+}
+
+.error-valoraciones,
+.mensaje-error {
+  color: var(--color-error);
+  text-align: center;
+  padding: 20px;
+}
+
+.mensaje-sistema {
+  text-align: center;
+  padding: 20px;
+  color: var(--color-texto-secundario);
+}
+.estrellas-valoracion {
+    font-size: 1.6em;
+    color: #f3c623;
+    margin-bottom: 8px;
+}
+.estrella {
+    opacity: 0.4;
+    transition: opacity 0.2s;
+}
+.estrella.activa {
+    opacity: 1;
+}
+.opiniones-container {
+    margin-top: 10px;
+    text-align: left;
+}
+.titulo-opiniones {
     font-weight: bold;
-    margin-bottom: 10px;
-    /* Agrega margen inferior al precio */
+    margin-bottom: 4px;
 }
-
-.tarjeta-precio .empresa {
-    margin-bottom: 15px;
-    /* Agrega margen inferior a la empresa */
+.opinion {
+    background: #f5f5f5;
+    border-radius: 4px;
+    padding: 6px 10px;
+    margin-bottom: 6px;
 }
-
-.tarjeta-precio button {
-    background-color: #4CAF50;
-    /* Color verde, puedes cambiarlo */
-    color: white;
-    padding: 10px 20px;
+.btn-ver-mas-opiniones, .btn-ver-menos-opiniones {
+    margin-top: 6px;
+    background: #74C0FC;
+    color: #fff;
     border: none;
+    border-radius: 3px;
+    padding: 4px 12px;
     cursor: pointer;
-    border-radius: 5px;
-    /* Agrega bordes redondeados al botón */
-    transition: background-color 0.3s ease;
-    /* Agrega transición al botón */
 }
 
-.tarjeta-precio button:hover {
-    background-color: #45a049;
-    /* Color verde más oscuro al pasar el mouse */
-}
+/* Añade esto al final de tu CSS existente */
 
-#indicadorCarga,
-.mensaje {
-    text-align: center;
-    margin-top: 20px;
-}
-
-/* Detalle Producto */
-.detalle-producto {
+/* Contenedor principal */
+.contenedor-principal {
     display: flex;
-    justify-content: center;
-    margin: 20px;
-}
-
-.detalle-producto-info {
-    display: flex;
-    align-items: flex-start;
-    border: 1px solid #ddd;
+    gap: 30px;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
-.detalle-producto-info img {
-    max-width: 200px;
-    height: auto;
-    margin-right: 20px;
+/* Secciones izquierda y derecha */
+.seccion-izquierda, 
+.seccion-derecha {
+    flex: 1;
 }
 
-.info-producto h2 {
-    margin-top: 0;
+.seccion-izquierda {
+    max-width: 400px;
 }
 
-/* CHAT GPT */
+/* Estilos para la sección de valoraciones */
+#resumen-valoraciones {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
 
+#todas-valoraciones {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
 
-/* #ProductoDetalle{
+/* Adaptación para móviles */
+@media (max-width: 768px) {
+    .contenedor-principal {
+        flex-direction: column;
+    }
+    
+    .seccion-izquierda {
+        max-width: 100%;
+        order: 2; /* Las valoraciones abajo en móvil */
+    }
+    
+    .seccion-derecha {
+        order: 1; /* Las ofertas arriba en móvil */
+    }
+}
+
+.estrellas-valoracion-grandes {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.estrellas-valoracion-grandes .estrellas-container {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.media-valoracion {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.total-valoraciones {
+    color: var(--color-texto-secundario);
+    font-size: 0.9rem;
+}
+
+.opinion-completa {
+    padding: 15px 0;
+    border-bottom: 1px solid var(--color-borde);
+}
+
+.opinion-completa:last-child {
+    border-bottom: none;
+}
+
+.opinion-cabecera {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: baseline;
-    padding-left: 10%;
-
-    height: 500px;
-    background-color: red;
+    justify-content: space-between;
+    margin-bottom: 5px;
 }
 
-.imagenProducto{
+.opinion-usuario {
+    font-weight: bold;
+}
+
+.opinion-fecha {
+    color: var(--color-texto-secundario);
+    font-size: 0.8rem;
+}
+
+.opinion-estrellas {
+    margin: 5px 0;
+}
+
+.opinion-texto {
+    line-height: 1.5;
+}
+
+.estrella.grande {
+    font-size: 2rem;
+}
+.seccion-derecha > h2 {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    background-color: gray;
-    width: 30%;
-} */
-
-/* .detalleProducto{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-
-    background-color: green;
-    width: 60%;
-} */
+}

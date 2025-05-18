@@ -68,11 +68,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         cargarProductosPorCategoria();
     }
 });
-
 // Función global para ver ofertas
-window.verOfertas = function(idProducto) {
-    localStorage.setItem("idProducto", idProducto);
-    window.location.href = "../precioProvedores.html";
+// window.verOfertas = function(idProducto) {
+//     localStorage.setItem("idProducto", idProducto);
+//     window.location.href = "../precioProvedores.html";
+// };
+window.verOfertas = (idProducto) => {
+    localStorage.setItem("id", idProducto); // Guardar el ID en localStorage
+    window.location.href = "../precioProvedores.html"; // Redirigir
 };
 
 // Función para favoritos
@@ -83,3 +86,4 @@ window.toggleFavorite = function(button, productId) {
     icon.classList.toggle('fas');
     // Aquí deberías añadir la lógica para guardar en favoritos
 };
+
