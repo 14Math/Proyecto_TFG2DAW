@@ -28,6 +28,60 @@ VALUES
 ('Savg', 'Savg1234', 'alejandra@ifp.com',  '2023-10-25'),
 ('keven100', 'keven1234', 'keven@ifp.com',   '2023-10-24');
 
+-- Inserts para nuevos clientes
+INSERT INTO CLIENTES (USERNAME, PASSWORD, EMAIL, FECHA_REGISTRO) VALUES
+('AlexGamer', 'AlexGamer1234', 'alexgamer@gmail.com', '2021-03-15'),
+('TechLover', 'TechLover1234', 'techlover@gmail.com', '2022-05-22'),
+('BookWorm', 'BookWorm1234', 'bookworm@gmail.com', '2020-11-30'),
+('GadgetFan', 'GadgetFan1234', 'gadgetfan@gmail.com', '2023-01-10'),
+('MusicAddict', 'MusicAddict1234', 'musicaddict@gmail.com', '2021-07-18'),
+('GameMaster', 'GameMaster1234', 'gamemaster@gmail.com', '2022-09-05'),
+('ShopAholic', 'ShopAholic1234', 'shopaholic@gmail.com', '2020-12-25'),
+('TechGeek', 'TechGeek1234', 'techgeek@gmail.com', '2023-02-14'),
+('ReadMore', 'ReadMore1234', 'readmore@gmail.com', '2021-04-01'),
+('Fashionista', 'Fashionista1234', 'fashionista@gmail.com', '2022-06-30'),
+('MovieBuff', 'MovieBuff1234', 'moviebuff@gmail.com', '2020-10-15'),
+('SportsFan', 'SportsFan1234', 'sportsfan@gmail.com', '2023-03-22'),
+('TravelBug', 'TravelBug1234', 'travelbug@gmail.com', '2021-05-11'),
+('Foodie', 'Foodie1234', 'foodie@gmail.com', '2022-07-19'),
+('PhotoPro', 'PhotoPro1234', 'photopro@gmail.com', '2020-09-28'),
+('ArtLover', 'ArtLover1234', 'artlover@gmail.com', '2023-04-17'),
+('FitnessGuru', 'FitnessGuru1234', 'fitnessguru@gmail.com', '2021-06-03'),
+('PetLover', 'PetLover1234', 'petlover@gmail.com', '2022-08-21'),
+('DIYQueen', 'DIYQueen1234', 'diyqueen@gmail.com', '2020-08-12'),
+('GardenMaster', 'GardenMaster1234', 'gardenmaster@gmail.com', '2023-05-09'),
+('CoffeeSnob', 'CoffeeSnob1234', 'coffeesnob@gmail.com', '2021-09-27'),
+('WineConnoisseur', 'WineConnoisseur1234', 'wineconnoisseur@gmail.com', '2022-10-14'),
+('AdventureSeeker', 'AdventureSeeker1234', 'adventureseeker@gmail.com', '2020-07-23'),
+('NightOwl', 'NightOwl1234', 'nightowl@gmail.com', '2023-06-08'),
+('EarlyBird', 'EarlyBird1234', 'earlybird@gmail.com', '2021-10-31'),
+('TechSavvy', 'TechSavvy1234', 'techsavvy@gmail.com', '2022-11-25'),
+('GamingPro', 'GamingPro1234', 'gamingpro@gmail.com', '2020-06-19'),
+('BookDragon', 'BookDragon1234', 'bookdragon@gmail.com', '2023-07-12'),
+('MusicMaestro', 'MusicMaestro1234', 'musicmaestro@gmail.com', '2021-11-28'),
+('FilmCritic', 'FilmCritic1234', 'filmcritic@gmail.com', '2022-12-15'),
+('FitnessFreak', 'FitnessFreak1234', 'fitnessfreak@gmail.com', '2020-05-21'),
+('NatureLover', 'NatureLover1234', 'naturelover@gmail.com', '2023-08-03'),
+('CarEnthusiast', 'CarEnthusiast1234', 'carenthusiast@gmail.com', '2021-12-30'),
+('BikeRider', 'BikeRider1234', 'bikerider@gmail.com', '2023-01-18'),
+('YogaMaster', 'YogaMaster1234', 'yogamaster@gmail.com', '2020-04-17'),
+('ChefExtraordinaire', 'ChefExtraordinaire1234', 'chefextraordinaire@gmail.com', '2023-09-22'),
+('BakingQueen', 'BakingQueen1234', 'bakingqueen@gmail.com', '2022-02-11'),
+('CraftyCreator', 'CraftyCreator1234', 'craftycreator@gmail.com', '2020-03-09'),
+('TechWizard', 'TechWizard1234', 'techwizard@gmail.com', '2023-10-14'),
+('GamingLegend', 'GamingLegend1234', 'gaminglegend@gmail.com', '2022-03-28'),
+('BookishBelle', 'BookishBelle1234', 'bookishbelle@gmail.com', '2020-02-15'),
+('MusicMaven', 'MusicMaven1234', 'musicmaven@gmail.com', '2023-11-05'),
+('FilmFanatic', 'FilmFanatic1234', 'filmfanatic@gmail.com', '2022-04-19'),
+('FitnessJunkie', 'FitnessJunkie1234', 'fitnessjunkie@gmail.com', '2020-01-12'),
+('OutdoorExplorer', 'OutdoorExplorer1234', 'outdoorexplorer@gmail.com', '2023-12-08'),
+('AutoExpert', 'AutoExpert1234', 'autoexpert@gmail.com', '2022-05-30'),
+('CyclingPro', 'CyclingPro1234', 'cyclingpro@gmail.com', '2021-01-25'),
+('MeditationGuru', 'MeditationGuru1234', 'meditationguru@gmail.com', '2024-01-15'),
+('CulinaryArtist', 'CulinaryArtist1234', 'culinaryartist@gmail.com', '2022-06-22'),
+('PastryChef', 'PastryChef1234', 'pastrychef@gmail.com', '2021-02-14'),
+('CreativeMind', 'CreativeMind1234', 'creativemind@gmail.com', '2024-02-28');
+
 -- Insertar datos en la tabla PROVEDOR
 INSERT INTO PROVEDORES (USERNAME, PASSWORD, EMAIL, EMPRESA, FECHA_REGISTRO)
 VALUES
@@ -742,6 +796,167 @@ INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VAL
 (1295, 2, 59.00),
 (1295, 3, 65.00);
 
+-- Chanel N°5 (Perfume - ID 2468)
+INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES
+(2468, 1, 115.00),
+(2468, 2, 120.00),
+(2468, 3, 110.00);
+
+-- LEGO City Police Station (Juguete - ID 4180)
+INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES
+(4180, 1, 85.00),
+(4180, 2, 90.00),
+(4180, 3, 80.00);
+
+-- iPhone 13 mini (ID 0658)
+INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES
+(0658, 1, 720.00),
+(0658, 2, 740.00),
+(0658, 3, 700.00);
+
+-- iPhone 15 Plus (ID 4962)
+INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES
+(4962, 1, 950.00),
+(4962, 2, 970.00),
+(4962, 3, 930.00);
+
+-- iPhone 15 (ID 3827)
+INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES
+(3827, 1, 850.00),
+(3827, 2, 870.00),
+(3827, 3, 830.00);
+
+-- iPhone 15 Pro (ID 6095)
+INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES
+(6095, 1, 1150.00),
+(6095, 2, 1170.00),
+(6095, 3, 1130.00);
+
+-- Galaxy S23 Ultra (ID 2045)
+INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES
+(2045, 1, 1050.00),
+(2045, 2, 1070.00),
+(2045, 3, 1030.00);
+
+-- AirPods Pro (2.ª generación) (ID 5296)
+INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES
+(5296, 1, 250.00),
+(5296, 2, 260.00),
+(5296, 3, 240.00);
+
+-- iPhone 14 (ID 3088)
+INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES
+(3088, 1, 899.00),
+(3088, 2, 919.00),
+(3088, 3, 879.00);
+
+-- iPhone 16 (ID 2460)
+INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES
+(2460, 1, 999.00),
+(2460, 2, 1019.00),
+(2460, 3, 979.00);
+
+-- Galaxy S23 (ID 3786)
+INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES
+(3786, 1, 799.00),
+(3786, 2, 819.00),
+(3786, 3, 779.00);
+
+-- Galaxy M14 (ID 3690)
+INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES
+(3690, 1, 189.00),
+(3690, 2, 199.00),
+(3690, 3, 179.00);
+
+-- Galaxy Z Fold5 (ID 5256)
+INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES
+(5256, 1, 1699.00),
+(5256, 2, 1719.00),
+(5256, 3, 1679.00);
+
+-- AirPods (2.ª generación) (ID 1357)
+INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES
+(1357, 1, 129.00),
+(1357, 2, 139.00),
+(1357, 3, 119.00);
+
+-- iPhone SE (2022) (ID 5791)
+INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES
+(5791, 1, 469.00),
+(5791, 2, 489.00),
+(5791, 3, 449.00);
+
+-- Find X6 Pro (ID 6304)
+INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES
+(6304, 1, 949.00),
+(6304, 2, 969.00),
+(6304, 3, 929.00);
+--
+-- AirPods (3.ª generación) (ID 9864)
+INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES
+(9864, 1, 179.00),
+(9864, 2, 189.00),
+(9864, 3, 169.00);
+
+-- iPhone 16 Pro Max (ID 9653)
+INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES
+(9653, 1, 1249.00),
+(9653, 2, 1279.00),
+(9653, 3, 1229.00);
+
+-- Galaxy Z Flip5 (ID 8052)
+INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES
+(8052, 1, 999.00),
+(8052, 2, 1029.00),
+(8052, 3, 979.00);
+
+-- Galaxy A54 (ID 7531)
+INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES
+(7531, 1, 429.00),
+(7531, 2, 449.00),
+(7531, 3, 419.00);
+
+-- iPhone 16 Plus (ID 2877)
+INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES
+(2877, 1, 1099.00),
+(2877, 2, 1129.00),
+(2877, 3, 1079.00);
+--
+-- Halo Infinite (Xbox - ID 16449)
+INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES
+(16449, 1, 59.00),
+(16449, 2, 62.00),
+(16449, 3, 57.00);
+
+-- Xbox Series X (ID 6158)
+INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES
+(6158, 1, 449.00),
+(6158, 2, 469.00),
+(6158, 3, 439.00);
+--
+-- Nintendo Switch (ID 1448)
+INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES
+(1448, 1, 250.00),  -- Proveedor 1 (La Fuente)
+(1448, 2, 265.00),  -- Proveedor 2 (El Corte Inglés)
+(1448, 3, 245.00);  -- Proveedor 3 (Almacén General)
+
+-- Cien años de soledad (ID 2459)
+INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES
+(2459, 1, 16.50),  -- Proveedor 1
+(2459, 2, 17.75),  -- Proveedor 2
+(2459, 3, 15.99);  -- Proveedor 3
+
+-- Marvel's Spider-Man 2 (ID 6087)
+INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES
+(6087, 1, 65.00),  -- Proveedor 1
+(6087, 2, 69.00),  -- Proveedor 2
+(6087, 3, 63.50);  -- Proveedor 3
+
+-- PlayStation 5 (ID 6543)
+INSERT INTO PRODUCTOS_PROVEDORES (ID_PRODUCTO, ID_PROVEDOR, PRECIO_PROVEDOR) VALUES
+(6543, 1, 430.00),  -- Proveedor 1
+(6543, 2, 450.00),  -- Proveedor 2
+(6543, 3, 425.00);  -- Proveedor 3
 
 
 CREATE TABLE CLIENTES_PRODUCTOS(
@@ -755,10 +970,476 @@ FOREIGN KEY(ID_PRODUCTO) REFERENCES PRODUCTOS(ID_PRODUCTO),
 check(VALORACION between 1 and 5)
 );
 
--- Tabla CLIENTE_PRODUCTOS
+-- Tabla CLIENTE_PRODUCTOS ( Valoraciones )
+
+-- The Legend of Zelda Tears of the Kingdom
 INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
-(1, 1295, 'Excelente juego, los gráficos son increíble', 5),   
-(2, 2468, 'Me encantan estos auriculares, la cancelación de ruido es top', 5), 
-(2, 2817, 'Una consola muy potente, los juegos se ven espectaculares', 5), 
-(3, 4180, 'Un juego muy divertido para jugar con amigos', 4),
+(1, 1295, 'Excelente juego, los gráficos son increíble', 5);
+
+-- N°5
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES   
+(2, 2468, 'Me encantan estos auriculares, la cancelación de ruido es top', 5);
+
+-- PlayStation 5 Slim
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES 
+(2, 2817, 'Una consola muy potente, los juegos se ven espectaculares', 5); 
+
+-- LEGO City Police Station
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(3, 4180, 'Un juego muy divertido para jugar con amigos', 4);
+
+-- El Quijote
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
 (3, 0974, 'Un libro muy interesante, me ha hecho reflexionar mucho', 4);
+
+-- iPhone 16
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(4, 2460, 'El diseño es espectacular y la cámara supera todas mis expectativas', 5);
+
+-- iPhone 14
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(5, 3088, 'Buen rendimiento pero la batería podría durar más', 4);
+
+-- iPhone SE (2022)
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(6, 5791, 'Perfecto tamaño para mi, muy cómodo de usar', 5);
+
+-- iPhone 13 mini
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(7, 0658, 'Me encanta el tamaño compacto, ideal para mis manos pequeñas', 4);
+
+-- iPhone 16 Plus
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(8, 2877, 'Pantalla enorme y brillante, perfecta para multimedia', 5);
+
+-- iPhone 15 Pro
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(9, 6095, 'El titanio hace que se sienta premium, cámara profesional', 5);
+
+-- iPhone 16 Pro Max
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(10, 9653, 'Demasiado grande para mi gusto, aunque potente', 3);
+
+-- iPhone 15
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(11, 3827, 'Excelente equilibrio entre precio y características', 4);
+
+-- iPhone 15 Plus
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(12, 4962, 'Batería que dura todo el día con uso intensivo', 5);
+
+-- Galaxy Z Fold5
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(13, 5256, 'Innovador pero la bisagra me da miedo que se rompa', 4);
+
+-- Galaxy Z Flip5
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(14, 8052, 'Tan compacto cuando está plegado, me encanta', 5);
+
+-- Galaxy A54
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(15, 7531, 'Buena relación calidad-precio en gama media', 4);
+
+-- Galaxy M14
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(16, 3690, 'Batería increíble pero rendimiento justito', 3);
+
+-- Galaxy S23 Ultra
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(17, 2045, 'La cámara de 200MP es simplemente alucinante', 5);
+
+-- Galaxy S23
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(18, 3786, 'Diseño elegante y potente, muy satisfecho', 5);
+
+-- Find X6 Pro
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(19, 6304, 'OPPO ha creado un auténtico flagship', 5);
+
+-- Find N2
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(20, 2789, 'Plegable premium con cámara Hasselblad', 4);
+
+-- Reno11 Pro
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(21, 1947, 'Sorprende por su rendimiento a este precio', 4);
+
+-- A98 5G
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(22, 9152, 'Batería de larga duración y carga rápida', 4);
+
+-- A1 Pro 5G
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(23, 0921, 'Pantalla fluida y cámara decente por el precio', 3);
+
+-- A57e
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(24, 3498, 'Básico pero cumple para uso diario', 3);
+
+-- Xiaomi 13 Ultra
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(25, 0001, 'Cámara profesional en un smartphone', 5);
+
+-- Xiaomi MIX Fold 3
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(26, 0002, 'Tecnología plegable muy bien implementada', 4);
+
+-- POCO X5 Pro 5G
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(27, 0003, 'Rendimiento flagship a precio de gama media', 5);
+
+-- Redmi 12C
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(28, 0004, 'Buen teléfono para regalar a adolescentes', 3);
+
+-- Redmi A2
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(29, 0005, 'Demasiado básico para mis necesidades', 2);
+
+-- Redmi Note 12 Pro+ 5G
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(30, 0006, 'Excelente relación calidad-precio', 4);
+
+-- AirPods (2.ª generación)
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(31, 1357, 'Sonido decente pero falta cancelación de ruido', 3);
+
+-- AirPods (3.ª generación)
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(32, 9864, 'Sonido espacial impresionante', 5);
+
+-- AirPods Pro (2.ª generación)
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(33, 5296, 'Cancelación de ruido que cambia la experiencia', 5);
+
+-- AirPods Max
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(34, 6890, 'Demasiado pesados para uso prolongado', 3);
+
+-- WH-1000XM5
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(35, 1023, 'Los reyes de la cancelación de ruido', 5);
+
+-- WH-1000XM4
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(36, 2345, 'Versión anterior pero casi igual de buena', 4);
+
+-- WH-CH720N
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(37, 7214, 'Buenos para el precio pero hay mejores', 3);
+
+-- WF-SP800N
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(38, 8742, 'Perfectos para correr, no se caen', 4);
+
+-- WF-SP900
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(39, 3068, 'Resistentes al agua, ideales para natación', 5);
+
+-- WF-1000XM4
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(40, 7140, 'Pequeños pero con gran sonido y ANC', 4);
+
+-- WF-C500
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(41, 4952, 'Económicos y con buen sonido', 3);
+
+-- INZONE H9
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(42, 9012, 'Immersión total en los juegos', 5);
+
+-- PlayStation 5
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(43, 6543, 'La mejor consola que he tenido', 5);
+
+-- PlayStation 5 Digital Edition
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(44, 3210, 'Echo de menos el lector de discos', 3);
+
+-- PlayStation 5 Pro
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(45, 1928, 'Potencia bruta para jugar en 8K', 5);
+
+-- PlayStation 5 Slim
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(46, 2817, 'Más compacta pero igual de potente', 4);
+
+-- PS5 Edición Limitada Marvel's Spider-Man 2
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(47, 8351, 'Diseño espectacular para fans', 5);
+
+-- PS5 Edición Limitada God of War Ragnarök
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(48, 9416, 'La consola más bonita que he visto', 5);
+
+-- PS5 Edición Limitada Horizon Forbidden West
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(49, 3746, 'Para fans de Horizon es imprescindible', 5);
+
+-- Xbox Series X
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(50, 6158, 'Potencia pura para jugar en 4K', 5);
+
+-- Xbox Series S
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(4, 0524, 'Buena opción económica para entrar en nueva generación', 4);
+
+-- Xbox One
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(5, 8532, 'Se está quedando obsoleta pero buen catálogo', 3);
+
+-- Nintendo Switch
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(6, 1448, 'La versatilidad de jugar donde quieras es increíble', 5);
+
+-- Nintendo Switch OLED
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(7, 8526, 'La pantalla OLED marca la diferencia', 4);
+
+-- Nintendo Switch Lite
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(8, 4712, 'Perfecta para viajes, muy portable', 4);
+
+-- Marvel's Spider-Man 2
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(9, 6087, 'El mejor juego de Spider-Man hasta la fecha', 5);
+
+-- God of War Ragnarök
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(10, 7194, 'Kratos nunca defrauda, obra maestra', 5);
+
+-- Horizon Forbidden West
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(11, 6194, 'Mundo abierto espectacular y gráficos impresionantes', 5);
+
+-- Ratchet & Clank: Una Dimensión Aparte
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(12, 9253, 'Divertido y colorido, ideal para jugar en familia', 4);
+
+-- Returnal
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(13, 1468, 'Dificultad desafiante pero muy satisfactorio', 4);
+
+-- Demon's Souls
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(14, 3601, 'Remake espectacular de un clásico', 5);
+
+-- Astro's Playroom
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(15, 8238, 'Demostración perfecta del DualSense', 4);
+
+-- The Last of Us Parte I
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(16, 1593, 'Remake fiel al original con gráficos impresionantes', 5);
+
+-- Gran Turismo 7
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(17, 8241, 'El mejor simulador de conducción', 5);
+
+-- Halo Infinite
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(18, 16449, 'Halo vuelve a sus raíces con éxito', 4);
+
+-- Forza Horizon 5
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(19, 8372, 'Diversión asegurada al volante', 5);
+
+-- Gears 5
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(20, 3105, 'Buena entrega de la saga Gears', 4);
+
+-- Sea of Thieves
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(21, 7584, 'Divertido con amigos, solo se queda corto', 3);
+
+-- Fable
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(22, 5026, 'Esperando con ansias el nuevo Fable', 4);
+
+-- The Legend of Zelda Tears of the Kingdom
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(1, 1295, 'Zelda en su máxima expresión, juego imprescindible', 5);
+
+-- Super Mario Bros. Wonder
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(23, 8537, 'Mario como siempre, diversión garantizada', 5);
+
+-- Pokémon Púrpura
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(24, 7689, 'Pokémon en mundo abierto funciona mejor de lo esperado', 4);
+
+-- Animal Crossing: New Horizons
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(25, 9860, 'Relajante y adictivo, perfecto para desconectar', 5);
+
+-- Mario Kart 8 Deluxe
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(26, 4702, 'El mejor Mario Kart de la historia', 5);
+
+-- Super Smash Bros. Ultimate
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(27, 6318, 'El crossover definitivo con todos los personajes', 5);
+
+-- Cien años de soledad
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(28, 2459, 'Obra maestra de la literatura universal', 5);
+
+-- El Quijote
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(29, 0974, 'Un clásico que todo el mundo debería leer', 4);
+
+-- Sapiens: De animales a dioses
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(30, 1307, 'Libro que cambia tu perspectiva de la humanidad', 5);
+
+-- El poder del ahora
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(31, 9804, 'Enseñanzas valiosas sobre el presente', 4);
+
+-- Cosmos (Planeta)
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(32, 1002, 'Carl Sagan explica el universo como nadie', 5);
+
+-- El nombre del viento
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(33, 1003, 'Fantasía épica de la mejor calidad', 5);
+
+-- El principito
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(34, 1004, 'Atemporal, lo releo cada año', 5);
+
+-- Harry Potter y la piedra filosofal
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(35, 1005, 'El libro que inició la magia', 5);
+
+-- La ciudad de los libros soñadores
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(36, 1007, 'Imaginación desbordante, muy original', 4);
+
+-- La ladrona de libros
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(37, 1008, 'Historia conmovedora y bien escrita', 4);
+
+-- Los juegos del hambre
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(38, 1009, 'Adictiva trilogía, este es el mejor', 5);
+
+-- Los pilares de la Tierra
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(39, 1010, 'Novela histórica magistral', 5);
+
+-- Orgullo y prejuicio
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(40, 1011, 'Romance clásico que sigue siendo relevante', 4);
+
+-- Una breve historia de casi todo
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(41, 1012, 'Divulgación científica accesible y entretenida', 5);
+
+-- Chanel N°5
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(2, 2468, 'Fragancia icónica, elegante y sofisticada', 5);
+
+-- Sì (Giorgio Armani)
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(42, 2400, 'Olor fresco y duradero, muy recomendable', 4);
+
+-- La Vie Est Belle (Lancôme)
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(43, 2401, 'Dulce pero no empalagoso, perfecto para el día a día', 4);
+
+-- lady Million (Paco Rabanne)
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(44, 2402, 'Fragancia potente para noches especiales', 5);
+
+-- Opium (Yves Saint Laurent)
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(45, 2403, 'Olor intenso y sensual, muy personal', 4);
+
+-- J'adore (Dior)
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(46, 7131, 'Elegancia en botella, mi favorito', 5);
+
+-- Eau Sauvage (Dior)
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(47, 3001, 'Frescura que perdura, ideal para verano', 4);
+
+-- Acqua di Giò (Giorgio Armani)
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(48, 3002, 'Clásico que nunca pasa de moda', 5);
+
+-- Terre d'Hermès (Hermès)
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(49, 3003, 'Sofisticación en estado puro', 5);
+
+-- Le Mâle (Jean Paul Gaultier)
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(50, 3004, 'Diseño icónico y fragancia memorable', 4);
+
+-- Kouros (Yves Saint Laurent)
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(3, 3090, 'Demasiado intenso para mi gusto', 2);
+
+-- 1 Million (Paco Rabanne)
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(4, 6925, 'Dulce y juvenil, perfecto para salir', 4);
+
+-- LEGO City Police Station
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(5, 4180, 'Divertido set para construir con niños', 4);
+
+-- LEGO Friends Mansion moderna de Andrea
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(6, 4181, 'Detalles increíbles, a mi hija le encantó', 5);
+
+-- LEGO Harry Potter Castillo de Hogwarts
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(7, 4182, 'Para fans de Harry Potter, es impresionante', 5);
+
+-- LEGO Star Wars Millennium Falcon
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(8, 4184, 'El set definitivo para fans de Star Wars', 5);
+
+-- Bratz Alwayz Cloe
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(9, 8852, 'Muñeca con mucho estilo y accesorios', 4);
+
+-- Bratz Alwayz Yasmin
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(10, 8853, 'A mi niña le encanta el estilo bohemio', 4);
+
+-- Bratz Alwayz Sasha
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(11, 8854, 'Representación diversa muy necesaria', 5);
+
+-- Bratz Alwayz Jade
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(12, 8855, 'Diseño moderno y atrevido', 4);
+
+-- Rainbow High Fantastic Fashion Doll
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(13, 8856, 'Calidad premium en las muñecas', 5);
+
+-- Rainbow High Fantastic Fashion Violet
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(14, 8857, 'El pelo es suave y se puede peinar fácilmente', 4);
+
+-- Rainbow High Fantastic Muñeca Ruby
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(15, 8858, 'Colorido y divertido', 4);
+
+-- Rainbow High Fashion Studio
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(16, 8859, 'Perfecto para desarrollar la creatividad', 5);
+
+-- UNO Attack
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(17, 5291, 'Versión más divertida del UNO clásico', 4);
+
+-- UNO Flip
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(18, 5292, 'Giro interesante al juego tradicional', 3);
+
+-- UNO Original
+INSERT INTO CLIENTES_PRODUCTOS (ID_CLIENTE, ID_PRODUCTO, OPINION, VALORACION) VALUES
+(19, 5293, 'El clásico que nunca falla', 5);
