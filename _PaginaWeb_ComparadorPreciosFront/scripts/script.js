@@ -3,6 +3,29 @@
 document.addEventListener('DOMContentLoaded', () => {
     const productosContainer = document.getElementById('verProductos'); // Contenedor de productos
 
+    // Función para verificar estado de sesión y mostrar botones correspondientes
+    function verificarEstadoSesion() {
+        const username = localStorage.getItem('username');
+        const botonLogin = document.getElementById('abrirModalLogin');
+        const botonVerPerfil = document.getElementById('boton-ver-perfil');
+        const elementoUsername = document.getElementById('elemento-username');
+
+        if (username) {
+            // Usuario logueado
+            if (botonLogin) botonLogin.style.display = 'none';
+            if (botonVerPerfil) {
+                botonVerPerfil.style.display = 'inline-block';
+                if (elementoUsername) {
+                    elementoUsername.textContent = username;
+                }
+            }
+        } else {
+            // Usuario no logueado
+            if (botonLogin) botonLogin.style.display = 'inline-block';
+            if (botonVerPerfil) botonVerPerfil.style.display = 'none';
+        }
+    }
+
     // Función principal para cargar los productos
     const cargarProductos = async () => {
         try {
@@ -30,31 +53,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // En la función crearProductoHTML, modificar el botón de favoritos:
-// Función para crear el HTML de un producto
-const crearProductoHTML = (producto) => {
-    const divProducto = document.createElement('div');
-    divProducto.classList.add('producto');
-    divProducto.dataset.productId = producto.idProducto;
+    // Función para crear el HTML de un producto
+    const crearProductoHTML = (producto) => {
+        const divProducto = document.createElement('div');
+        divProducto.classList.add('producto');
+        divProducto.dataset.productId = producto.idProducto;
 
-    divProducto.innerHTML = `
-        <div>
-            <img src="../imagenes/${producto.nombre}.jpg" alt="${producto.nombre}">
-        </div>
-        <div class="Categoria">${producto.categorias?.nombre || "Sin Categoría"}</div>
-        <div class="Nombre">${producto.nombre}</div>
-        <div class="Marca">Marca: ${producto.marca}</div>
-        <div class="Precio">Desde: ${producto.precioVenta}€</div>
-        <div class="btnVerOfertas">
-            <button onclick="verOfertas(${producto.idProducto})">Ver Ofertas</button>
-            <button class="favorite" onclick="toggleFavorite(this, ${producto.idProducto})">
-                <i class="far fa-heart"></i>
-            </button>
-        </div>
-    `;
+        divProducto.innerHTML = `
+            <div>
+                <img src="../imagenes/${producto.nombre}.jpg" alt="${producto.nombre}">
+            </div>
+            <div class="Categoria">${producto.categorias?.nombre || "Sin Categoría"}</div>
+            <div class="Nombre">${producto.nombre}</div>
+            <div class="Marca">Marca: ${producto.marca}</div>
+            <div class="Precio">Desde: ${producto.precioVenta}€</div>
+            <div class="btnVerOfertas">
+                <button onclick="verOfertas(${producto.idProducto})">Ver Ofertas</button>
+                <button class="favorite" onclick="toggleFavorite(this, ${producto.idProducto})">
+                    <i class="far fa-heart"></i>
+                </button>
+            </div>
+        `;
 
-    return divProducto;
-};
+        return divProducto;
+    };
 
     // Función para mostrar un mensaje en el contenedor
     const mostrarMensaje = (mensaje) => {
@@ -63,27 +85,19 @@ const crearProductoHTML = (producto) => {
 
     // Función para manejar redirección a ofertas
     window.verOfertas = (idProducto) => {
-        localStorage.setItem("idProducto", idProducto)
-        window.location.href = "precioProvedores.html"; // Redirigir
+        localStorage.setItem("idProducto", idProducto);
+        window.location.href = "precioProvedores.html";
     };
 
-    // Inicializar la carga de productos
+    // Inicializar
+    verificarEstadoSesion();
     cargarProductos();
-});
-// Efecto de confeti (opcional)
-function showConfetti(element) {
-    const confetti = document.createElement('div');
-    confetti.style.position = 'absolute';
-    confetti.innerHTML = '🎉';
-    document.body.appendChild(confetti);
-    
-    anime({
-        targets: confetti,
-        translateY: [-20, 100],
-        translateX: () => anime.random(-50, 50),
-        opacity: [1, 0],
-        duration: 1000,
-        easing: 'easeOutExpo',
-        complete: () => confetti.remove()
+
+    // Escuchar cambios en el estado de autenticación
+    window.addEventListener('storage', (e) => {
+        if (e.key === 'username') {
+            verificarEstadoSesion();
+        }
     });
-}
+});
+

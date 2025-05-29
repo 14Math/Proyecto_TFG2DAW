@@ -26,7 +26,6 @@ function verificarSesion() {
         // Usuario está logueado
         mostrarUsername();
         document.getElementById('abrirModalLogin').style.display = "none";
-        document.getElementById('boton-cerrar-sesion').style.display = 'block';
         modalLogin.style.display = "none";
         
         // Mostrar elementos según el tipo de usuario
@@ -36,7 +35,6 @@ function verificarSesion() {
     } else {
         // Usuario no está logueado
         document.getElementById('abrirModalLogin').style.display = "block";
-        document.getElementById('boton-cerrar-sesion').style.display = 'none';
     }
 }
 
