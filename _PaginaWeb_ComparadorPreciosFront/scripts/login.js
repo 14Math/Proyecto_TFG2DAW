@@ -40,7 +40,6 @@ function verificarSesion() {
     }
 }
 
-
 function mostrarUsername() {
     const username = localStorage.getItem('username');
     const elementoUsername = document.getElementById('elemento-username');
@@ -52,11 +51,11 @@ function mostrarUsername() {
 function cerrarSesion() {
     localStorage.removeItem('username');
     localStorage.removeItem('tipoUsuario');
+    localStorage.removeItem('idCliente');
+    localStorage.removeItem('email');
     localStorage.removeItem('favoritos_temp');
- 
+
     verificarSesion();
-    
-    // Redirigir a la página principal
     window.location.href = "../index.html";
 }
 
@@ -97,6 +96,21 @@ loginForm.addEventListener('submit', async (event) => {
         localStorage.setItem('username', username);
         localStorage.setItem('tipoUsuario', tipoUsuario);
 
+        // Guarda el ID del cliente si el usuario es cliente y viene en la respuesta
+        if (tipoUsuario === 'cliente' && (responseData.ID_CLIENTE || responseData.idCliente)) {
+            // Usa el campo correcto según cómo lo devuelva tu backend
+            const idCliente = responseData.ID_CLIENTE ? responseData.ID_CLIENTE : responseData.idCliente;
+            localStorage.setItem('idCliente', idCliente);
+        } else {
+            localStorage.removeItem('idCliente');
+        }
+
+        // Guarda también el email si viene en la respuesta
+        if (responseData.EMAIL || responseData.email) {
+            const email = responseData.EMAIL ? responseData.EMAIL : responseData.email;
+            localStorage.setItem('email', email);
+        }
+
         migrarFavoritosTemporales(username);
         verificarSesion();
 
@@ -109,12 +123,9 @@ loginForm.addEventListener('submit', async (event) => {
     } catch (error) {
         console.error('Error en el login:', error);
         alert("Error al iniciar sesión: " + error.message);
-        
-        // Limpiar campos en caso de error
         passwordInput.value = '';
     }
 });
-
 
 function migrarFavoritosTemporales(username) {
     const tempFavs = JSON.parse(localStorage.getItem('favoritos_temp')) || [];
