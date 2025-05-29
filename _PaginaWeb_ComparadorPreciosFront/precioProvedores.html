@@ -12,13 +12,13 @@
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/login.css">
     <link rel="stylesheet" href="style/favoritos.css">
-     <link rel="stylesheet" href="style/PrecioProvedores.css">   
-    
+    <link rel="stylesheet" href="style/PrecioProvedores.css">
+
     <!-- <link rel="stylesheet" href="style/productoImagen.css"> -->
 
     <!-- BoxIcons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-   
+
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/15a853df81.js" crossorigin="anonymous"></script>
     <!-- Axios -->
@@ -68,55 +68,63 @@
         </div>
 
         <div class="menu-header">
-				<button id="button-header-favorite">
-					<i class="fa-solid fa-heart"></i>
-					<span class="counter-favorite">0</span>
-				</button>
-			</div>
-
-
-
-        
-
-
+            <button id="button-header-favorite">
+                <i class="fa-solid fa-heart"></i>
+                <span class="counter-favorite">0</span>
+            </button>
         </div>
-        </div>
-        </div>
-        </div>
+
     </header>
 
     <!-- Nav -->
     <nav>
-        
+
         <div class="container-list-favorites">
-    <div class="header-favorite">
-        <h3>Mis Favoritos</h3>
-        <button id="btn-close"><i class="fas fa-times"></i></button>
-    </div>
-    <div class="list-favorites"></div>
-</div>
+            <div class="header-favorite">
+                <h3>Mis Favoritos</h3>
+                <button id="btn-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="list-favorites"></div>
+        </div>
 
     </nav>
-   
+
 
     <div class="contenedor-principal">
-    <div class="seccion-izquierda">
-        <h2>Valoraciones del Producto</h2>
-        <div id="resumen-valoraciones">
-            <!-- Aquí irá el resumen de valoraciones -->
+        <div class="seccion-izquierda">
+            <h2>Valoraciones del Producto</h2>
+            <!-- Resumen de valoraciones (media, nº valoraciones, etc.) -->
+            <div id="resumen-valoraciones"></div>
+            <!-- Lista de valoraciones -->
+            <div id="todas-valoraciones"></div>
+            <!-- Formulario para añadir valoración -->
+            <div id="bloqueAgregarValoracion">
+                <h4>Añadir valoración</h4>
+                <form id="formValoracion">
+                    <textarea id="opinion" placeholder="Escribe tu opinión..." required></textarea>
+                    <select id="valoracion" required>
+                        <option value="" disabled selected>Selecciona valoración</option>
+                        <option value="1">★☆☆☆☆</option>
+                        <option value="2">★★☆☆☆</option>
+                        <option value="3">★★★☆☆</option>
+                        <option value="4">★★★★☆</option>
+                        <option value="5">★★★★★</option>
+                    </select>
+                    <button type="submit">Enviar valoración</button>
+                </form>
+            </div>
+
         </div>
-        <div id="todas-valoraciones">
-            <!-- Aquí irán todas las valoraciones -->
-        </div>
+
+            <div class="seccion-derecha">
+                <h2>Ofertas de Proveedores</h2>
+                <div id="tablaPrecioProductos" class="contenedor-precios">
+                    <!-- Aquí se cargan las ofertas JS -->
+                </div>
+            </div>
+        
+
     </div>
-    
-    <div class="seccion-derecha">
-        <h2>Ofertas de Proveedores</h2>
-        <div id="tablaPrecioProductos" class="contenedor-precios">
-            <!-- Aquí seguirán apareciendo las ofertas como antes -->
-        </div>
-    </div>
-</div>
 
     <!-------------------------------- Modal Inicio Sesión y Registro ------------------------------>
     <div id="ventanaModalLogin" class="modal">
@@ -223,11 +231,13 @@
 
     <!-- Mis Js -->
     <script src="scripts/precioProvedores.js"></script>
-     <script src="scripts/favoritos.js"></script>
-     <script src="scripts/modal.js"></script>
+    <script src="scripts/valoracion.js"></script>
+    <script src="scripts/favoritos.js"></script>
+    <script src="scripts/modal.js"></script>
     <script src="scripts/login.js"></script>
     <script src="scripts/buscador.js"></script>
     <script src="scripts/registro.js"></script>
+
 
     <!-- <script src="scripts/modal.js"></script> -->
     <!-- <script src="scripts/login.js"></script> -->

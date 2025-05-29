@@ -48,6 +48,10 @@ public class ClienteDaoImpl implements ClienteDao{
 			return null;
 		}
 	}
+	@Override
+	public Cliente buscarporUsuario(String username) {
+	    return crepo.findByUsername(username); 
+	}
 
 	
 

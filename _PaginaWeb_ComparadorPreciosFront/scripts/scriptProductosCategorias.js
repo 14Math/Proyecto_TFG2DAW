@@ -68,13 +68,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         cargarProductosPorCategoria();
     }
 });
-// Función global para ver ofertas
-// window.verOfertas = function(idProducto) {
-//     localStorage.setItem("idProducto", idProducto);
-//     window.location.href = "../precioProvedores.html";
-// };
+
 window.verOfertas = (idProducto) => {
-    localStorage.setItem("id", idProducto); // Guardar el ID en localStorage
+    localStorage.setItem("idProducto", idProducto);
     window.location.href = "../precioProvedores.html"; // Redirigir
 };
 

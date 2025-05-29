@@ -139,8 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Cargar los nuevos favoritos
             favoritos = JSON.parse(localStorage.getItem(favoritosKey)) || [];
-            
-            // Actualizar UI
+
             actualizarContador();
             mostrarFavoritos();
             

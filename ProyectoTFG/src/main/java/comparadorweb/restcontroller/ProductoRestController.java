@@ -26,6 +26,7 @@ import comparadorweb.entidades.ClienteProducto;
 import comparadorweb.entidades.Producto;
 import comparadorweb.entidades.ProductosProvedores;
 import comparadorweb.entidades.Provedor;
+import comparadorweb.repository.ClienteProductoRepository;
 
 
 @RestController
@@ -41,6 +42,12 @@ public class ProductoRestController {
 	
 	@Autowired
 	private ProvedorDao prdao;
+	
+	@Autowired
+	private ClienteDao cdao;
+	
+	@Autowired
+	private ClienteProductoRepository cprepo;
 	
 	
 	//------------------------------------BUSCAR TODOS-------------------------------------
@@ -116,6 +123,27 @@ public class ProductoRestController {
 	    }
 		
 		//----------------------------------MOSTRAR VALORACIONES-----------------------------------------
+		
+		//-------------------------------------AÑADIR VALORACIONES------------------------------------
+		
+		@PostMapping("/valoracion")
+		public ResponseEntity<?> anadirValoracion(@RequestBody ClienteProducto valoracion, @RequestParam String username) {
+		    // Buscar cliente por username
+		    Cliente cliente = cdao.buscarporUsuario(username);
+		    if (cliente == null) {
+		        return new ResponseEntity<>("Usuario no encontrado", HttpStatus.UNAUTHORIZED);
+		    }
+		    valoracion.setClientes(cliente);
+		   
+		    ClienteProducto guardado = cprepo.save(valoracion);
+		    if (guardado != null) {
+		        return new ResponseEntity<>(guardado, HttpStatus.CREATED);
+		    } else {
+		        return new ResponseEntity<>("Error al guardar valoración", HttpStatus.INTERNAL_SERVER_ERROR);
+		    }
+		}
+		
+		//-------------------------------------AÑADIR VALORACIONES-----------------------------------
 		
 	
 	//-------------------------------------ALTA---------------------------------------

@@ -63,7 +63,7 @@ const crearProductoHTML = (producto) => {
 
     // Función para manejar redirección a ofertas
     window.verOfertas = (idProducto) => {
-        localStorage.setItem("id", idProducto); // Guardar el ID en localStorage
+        localStorage.setItem("idProducto", idProducto)
         window.location.href = "precioProvedores.html"; // Redirigir
     };
 

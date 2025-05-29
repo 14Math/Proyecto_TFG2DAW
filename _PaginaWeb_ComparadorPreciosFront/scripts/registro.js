@@ -48,7 +48,7 @@ async function registrarUsuario(event) {
 
         // Mostrar mensaje de éxito y redirigir a la página de inicio (index.html)
         alert("Usuario registrado exitosamente.");
-        window.location.href = "index.html"; // Cambiar a la página principal
+        window.location.href = "../index.html"; // Cambiar a la página principal
     } catch (error) {
         console.error('Error en el registro:', error);
         alert("Error al registrar usuario: " + error.message);

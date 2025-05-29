@@ -115,7 +115,7 @@ loginForm.addEventListener('submit', async (event) => {
     }
 });
 
-// Función para migrar favoritos temporales a permanentes
+
 function migrarFavoritosTemporales(username) {
     const tempFavs = JSON.parse(localStorage.getItem('favoritos_temp')) || [];
     if (tempFavs.length > 0) {

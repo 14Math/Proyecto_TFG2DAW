@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import comparadorweb.dao.ClienteDao;
 import comparadorweb.entidades.Cliente;
+import comparadorweb.entidades.ClienteProducto;
+import comparadorweb.repository.ClienteProductoRepository;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -21,6 +23,8 @@ public class ClienteRestController {
 	
 	@Autowired
 	private ClienteDao cdao;
+	
+	
 	
 	
 	

@@ -1,416 +1,175 @@
-/* Variables de color */
-:root {
-  --color-primario: #4285f4;
-  --color-secundario: #3367d6;
-  --color-oferta: #e53935;
-  --color-texto: #333;
-  --color-texto-secundario: #666;
-  --color-borde: #e0e0e0;
-  --color-fondo: #f5f5f5;
-  --color-estrella: #FFD700;
-  --color-error: #e53935;
-}
-
-/* ------------------------- */
-/* CONTENEDOR PRINCIPAL */
-/* ------------------------- */
-.contenedor-precios {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  background-color: var(--color-fondo);
-}
-
-/* ------------------------- */
-/* ESTILO PARA OFERTAS (TEXTO CENTRADO) */
-/* ------------------------- */
-.tarjeta-precio {
-  /* Layout */
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centrado horizontal */
-  text-align: center; /* Centrado texto */
-  padding: 20px;
-  
-  /* Apariencia */
-  border: 1px solid var(--color-borde);
-  border-radius: 8px;
-  background: white;
-}
-
-/* Nombre del producto */
-.producto-nombre {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--color-texto);
-  margin: 0 0 10px 0;
-  width: 100%;
-}
-
-/* Texto "Sin valoraciones" */
-.sin-valoraciones {
-  font-size: 0.85rem;
-  color: var(--color-texto-secundario);
-  margin: 0 0 15px 0;
-  width: 100%;
-}
-
-/* Precio */
-.precio-container {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: var(--color-texto);
-  margin: 0 0 15px 0;
-  width: 100%;
-}
-
-/* Proveedor */
-.proveedor-info {
-  font-size: 0.95rem;
-  color: var(--color-texto-secundario);
-  margin: 0 0 20px 0;
-  width: 100%;
-}
-
-/* Botón "Ver oferta" */
-.btn-ver-oferta {
-  background: var(--color-primario);
-  color: white;
-  border: none;
-  padding: 12px;
-  border-radius: 6px;
-  font-size: 1rem;
-  font-weight: 500;
-  width: 100%;
-  max-width: 200px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.btn-ver-oferta:hover {
-  background: var(--color-secundario);
-}
-
-/* ------------------------- */
-/* ESTILOS DE VALORACIONES (EXACTAMENTE IGUAL QUE ANTES) */
-/* ------------------------- */
-.valoraciones-container {
-  margin: 10px 0;
-  min-height: 40px;
-}
-
-.estrellas-valoracion {
-  display: flex;
-  justify-content: center;
-  gap: 3px;
-  margin-bottom: 5px;
-}
-
-.estrella {
-  font-size: 1.5rem;
-  color: #ddd;
-}
-
-.estrella.activa {
-  color: var(--color-estrella);
-  filter: drop-shadow(0 0 2px rgba(255, 215, 0, 0.7));
-}
-
-.contador-valoraciones {
-  text-align: center;
-  font-size: 0.8rem;
-  color: var(--color-texto-secundario);
-}
-
-.precio-container {
-  margin: 15px 0;
-  font-size: 1.1rem;
-  text-align: center;
-}
-
-.precio-normal {
-  font-weight: bold;
-  color: var(--color-texto);
-}
-
-.precio-original {
-  text-decoration: line-through;
-  color: #999;
-  margin-right: 8px;
-}
-
-.precio-oferta {
-  font-weight: bold;
-  color: var(--color-oferta);
-  font-size: 1.3rem;
-}
-
-.descuento {
-  background: var(--color-oferta);
-  color: white;
-  padding: 3px 8px;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  margin-left: 8px;
-}
-
-.proveedor-info {
-  color: var(--color-texto-secundario);
-  font-size: 0.9rem;
-  margin-bottom: 15px;
-}
-
-.btn-ver-oferta {
-  background: var(--color-primario);
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 100%;
-  transition: background 0.3s ease;
-  font-size: 1rem;
-  font-weight: 500;
-  margin-top: auto;
-}
-
-.btn-ver-oferta:hover {
-  background: var(--color-secundario);
-}
-
-/* Opiniones */
-.opiniones-container {
-  margin-top: 15px;
-  padding-top: 15px;
-  border-top: 1px dashed var(--color-borde);
-}
-
-.titulo-opiniones {
-  font-weight: bold;
-  font-size: 0.9rem;
-  color: var(--color-texto-secundario);
-  margin-bottom: 10px;
-}
-
-.opinion {
-  margin-bottom: 12px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-.opinion:last-child {
-  border-bottom: none;
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
-
-.opinion-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 5px;
-}
-
-.opinion-usuario {
-  font-weight: bold;
-  font-size: 0.9rem;
-}
-
-.opinion-comentario {
-  font-size: 0.9rem;
-  color: #555;
-  line-height: 1.4;
-}
-
-.opinion-fecha {
-  font-size: 0.7rem;
-  color: #999;
-  font-style: italic;
-}
-
-.btn-ver-mas-opiniones {
-  background: none;
-  border: none;
-  color: var(--color-primario);
-  cursor: pointer;
-  font-size: 0.8rem;
-  padding: 5px 0;
-  margin-top: 10px;
-  display: block;
-  width: 100%;
-  text-align: center;
-}
-
-.btn-ver-mas-opiniones:hover {
-  text-decoration: underline;
-}
-
-.cargando-precios, 
-.cargando-valoraciones,
-.sin-valoraciones {
-  text-align: center;
-  padding: 20px;
-  color: var(--color-texto-secundario);
-}
-
-.error-valoraciones,
-.mensaje-error {
-  color: var(--color-error);
-  text-align: center;
-  padding: 20px;
-}
-
-.mensaje-sistema {
-  text-align: center;
-  padding: 20px;
-  color: var(--color-texto-secundario);
-}
-.estrellas-valoracion {
-    font-size: 1.6em;
-    color: #f3c623;
-    margin-bottom: 8px;
-}
-.estrella {
-    opacity: 0.4;
-    transition: opacity 0.2s;
-}
-.estrella.activa {
-    opacity: 1;
-}
-.opiniones-container {
-    margin-top: 10px;
-    text-align: left;
-}
-.titulo-opiniones {
-    font-weight: bold;
-    margin-bottom: 4px;
-}
-.opinion {
-    background: #f5f5f5;
-    border-radius: 4px;
-    padding: 6px 10px;
-    margin-bottom: 6px;
-}
-.btn-ver-mas-opiniones, .btn-ver-menos-opiniones {
-    margin-top: 6px;
-    background: #74C0FC;
-    color: #fff;
-    border: none;
-    border-radius: 3px;
-    padding: 4px 12px;
-    cursor: pointer;
-}
-
-/* Añade esto al final de tu CSS existente */
-
-/* Contenedor principal */
+/* ======== Layout principal: Valoraciones Izquierda | Precios Derecha ======== */
 .contenedor-principal {
     display: flex;
-    gap: 30px;
-    padding: 20px;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-/* Secciones izquierda y derecha */
-.seccion-izquierda, 
-.seccion-derecha {
-    flex: 1;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 40px auto 0 auto;
+    align-items: flex-start;
+    min-height: 500px;
 }
 
 .seccion-izquierda {
-    max-width: 400px;
+    flex: 1 1 350px;
+    background: #fff;
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    min-width: 320px;
+    margin-right: 20px;
 }
 
-/* Estilos para la sección de valoraciones */
-#resumen-valoraciones {
-    background: white;
-    padding: 20px;
+.seccion-derecha {
+    flex: 1 1 350px;
+    background: #f8f9fa;
+    padding: 24px;
     border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    min-width: 320px;
+}
+
+/* ======== Valoraciones ======== */
+#resumen-valoraciones {
     margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 1.1em;
 }
 
 #todas-valoraciones {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
 }
 
-/* Adaptación para móviles */
-@media (max-width: 768px) {
+.valoracion {
+    background: #f3f6fa;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+.valoracion strong {
+    color: #2a5298;
+    font-size: 1em;
+}
+
+.valoracion span {
+    color: #FFD700;
+    font-size: 1.1em;
+    margin-left: 8px;
+}
+
+.valoracion p {
+    margin: 5px 0 0 0;
+    font-size: 0.97em;
+    color: #222;
+}
+
+#bloqueAgregarValoracion {
+    margin-top: 15px;
+}
+
+#formValoracion {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#formValoracion textarea {
+    min-height: 60px;
+    resize: vertical;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #b6c7e4;
+    font-size: 1em;
+}
+
+#formValoracion select {
+    width: 170px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #b6c7e4;
+}
+
+#formValoracion button {
+    background-color: #2a5298;
+    color: #fff;
+    border: none;
+    padding: 9px 0;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#formValoracion button:hover {
+    background: #1d3557;
+}
+
+/* ======== Precios de proveedores ======== */
+.contenedor-precios {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Tarjeta de precio */
+.tarjeta-precio {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(42, 82, 152, 0.10);
+    padding: 14px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+}
+
+.tarjeta-precio h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.07em;
+    color: #2a5298;
+}
+
+.tarjeta-precio .precio {
+    font-weight: bold;
+    font-size: 1.08em;
+    color: #1d3557;
+}
+
+.tarjeta-precio .empresa {
+    color: #222;
+    font-size: 0.97em;
+}
+
+.tarjeta-precio button {
+    background: #2a5298;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 18px;
+    margin-top: 7px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+.tarjeta-precio button:hover {
+    background: #1d3557;
+}
+
+.mensaje {
+    color: #c00;
+    font-size: 1.05em;
+    padding: 8px 0;
+}
+
+/* ======== Responsive ======== */
+@media (max-width: 900px) {
     .contenedor-principal {
         flex-direction: column;
+        gap: 0;
     }
-    
-    .seccion-izquierda {
-        max-width: 100%;
-        order: 2; /* Las valoraciones abajo en móvil */
+    .seccion-izquierda, .seccion-derecha {
+        margin-right: 0;
+        margin-bottom: 32px;
+        min-width: 0;
     }
-    
-    .seccion-derecha {
-        order: 1; /* Las ofertas arriba en móvil */
-    }
-}
-
-.estrellas-valoracion-grandes {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.estrellas-valoracion-grandes .estrellas-container {
-    font-size: 2rem;
-    margin-bottom: 10px;
-}
-
-.media-valoracion {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 5px 0;
-}
-
-.total-valoraciones {
-    color: var(--color-texto-secundario);
-    font-size: 0.9rem;
-}
-
-.opinion-completa {
-    padding: 15px 0;
-    border-bottom: 1px solid var(--color-borde);
-}
-
-.opinion-completa:last-child {
-    border-bottom: none;
-}
-
-.opinion-cabecera {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-}
-
-.opinion-usuario {
-    font-weight: bold;
-}
-
-.opinion-fecha {
-    color: var(--color-texto-secundario);
-    font-size: 0.8rem;
-}
-
-.opinion-estrellas {
-    margin: 5px 0;
-}
-
-.opinion-texto {
-    line-height: 1.5;
-}
-
-.estrella.grande {
-    font-size: 2rem;
-}
-.seccion-derecha > h2 {
-    display: flex;
-    justify-content: center;
 }
