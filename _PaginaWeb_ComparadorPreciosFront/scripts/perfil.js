@@ -1,54 +1,40 @@
+// PERFIL DE USUARIO (MUESTRA DATOS)
+
 document.addEventListener('DOMContentLoaded', () => {
-    // Verificar sesión
-    const idUsuario = localStorage.getItem('idCliente') || localStorage.getItem('idProveedor');
-    if (!idUsuario) {
-        window.location.href = '../index.html';
+    if (!verificarSesion()) {
+        console.warn('No hay sesión activa');
         return;
     }
-
-    // Cargar datos del perfil
     cargarDatosPerfil();
-
-    // Configurar cerrar sesión
     const btnCerrarSesion = document.getElementById('boton-cerrar-sesion');
     if (btnCerrarSesion) {
         btnCerrarSesion.addEventListener('click', cerrarSesion);
     }
 });
 
-async function cargarDatosPerfil() {
-    const idUsuario = localStorage.getItem('idCliente') || localStorage.getItem('idProveedor');
-    const tipoUsuario = localStorage.getItem('tipoUsuario');
-    
-    if (!idUsuario || !tipoUsuario) return;
+function verificarSesion() {
+    return localStorage.getItem('tipoUsuario') && localStorage.getItem('username');
+}
 
-    try {
-        // Solo mostrar datos de localStorage
-        document.getElementById('profile-username').textContent = localStorage.getItem('username') || 'Usuario';
-        document.getElementById('profile-email').textContent = localStorage.getItem('email') || 'No especificado';
-        document.getElementById('profile-type').textContent = tipoUsuario === 'proveedor' ? 'Proveedor' : 'Cliente';
-        
-        if (tipoUsuario === 'proveedor') {
-            const empresaContainer = document.getElementById('profile-company-container');
-            if (empresaContainer) {
-                empresaContainer.style.display = 'flex';
-                document.getElementById('profile-company').textContent = localStorage.getItem('empresa') || 'No especificada';
-            }
-        }
-    } catch (error) {
-        console.error('Error al cargar perfil:', error);
+function cargarDatosPerfil() {
+    const tipoUsuario = localStorage.getItem('tipoUsuario');
+    const usernameElement = document.getElementById('profile-username');
+    const emailElement = document.getElementById('profile-email');
+    const typeElement = document.getElementById('profile-type');
+    if (usernameElement) usernameElement.textContent = localStorage.getItem('username') || 'Usuario';
+    if (emailElement) emailElement.textContent = localStorage.getItem('email') || 'No especificado';
+    if (typeElement) typeElement.textContent = tipoUsuario === 'proveedor' ? 'Proveedor' : 'Cliente';
+    if (tipoUsuario === 'proveedor') {
+        const empresaContainer = document.getElementById('profile-company-container');
+        const empresaElement = document.getElementById('profile-company');
+        if (empresaContainer) empresaContainer.style.display = 'flex';
+        if (empresaElement) empresaElement.textContent = localStorage.getItem('empresa') || 'No especificada';
     }
 }
 
 function cerrarSesion() {
-    // Limpiar localStorage
-    localStorage.removeItem('idCliente');
-    localStorage.removeItem('idProveedor');
-    localStorage.removeItem('username');
-    localStorage.removeItem('email');
-    localStorage.removeItem('tipoUsuario');
-    localStorage.removeItem('empresa');
-    
-    // Redirigir al inicio
+    ['username', 'tipoUsuario', 'email', 'empresa', 'favoritos_temp', 'idCliente', 'idProveedor'].forEach(item => {
+        localStorage.removeItem(item);
+    });
     window.location.href = '../index.html';
 }

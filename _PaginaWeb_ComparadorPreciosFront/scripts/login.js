@@ -1,71 +1,18 @@
-// Elementos del DOM
-const container = document.querySelector('.container');
-const registerBtn = document.querySelector('.register-btn');
-const loginBtn = document.querySelector('.login-btn');
 const loginForm = document.querySelector('.login form');
 const modalLogin = document.getElementById('ventanaModalLogin');
-
-// Verificar sesión al cargar la página
-document.addEventListener('DOMContentLoaded', verificarSesion);
-
-// Mostrar/ocultar formularios de login/registro
-registerBtn.addEventListener('click', () => {
-    container.classList.add('active');
-});
-
-loginBtn.addEventListener('click', () => {
-    container.classList.remove('active');
-});
-
-// Función para verificar el estado de sesión
-function verificarSesion() {
-    const username = localStorage.getItem('username');
-    const tipoUsuario = localStorage.getItem('tipoUsuario');
-    
-    if (username) {
-        // Usuario está logueado
-        mostrarUsername();
-        document.getElementById('abrirModalLogin').style.display = "none";
-        modalLogin.style.display = "none";
-        
-        // Mostrar elementos según el tipo de usuario
-        if (tipoUsuario === 'admin') {
-            document.querySelectorAll('.admin-only').forEach(el => el.style.display = 'block');
-        }
-    } else {
-        // Usuario no está logueado
-        document.getElementById('abrirModalLogin').style.display = "block";
-    }
-}
-
-function mostrarUsername() {
-    const username = localStorage.getItem('username');
-    const elementoUsername = document.getElementById('elemento-username');
-    if (elementoUsername) {
-        elementoUsername.textContent = username;
-    }
-}
-
-function cerrarSesion() {
-    localStorage.removeItem('username');
-    localStorage.removeItem('tipoUsuario');
-    localStorage.removeItem('idCliente');
-    localStorage.removeItem('email');
-    localStorage.removeItem('favoritos_temp');
-
-    verificarSesion();
-    window.location.href = "../index.html";
-}
 
 loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     const usernameInput = loginForm.querySelector('input[placeholder="Username"]');
     const passwordInput = loginForm.querySelector('input[placeholder="Password"]');
-    
     const username = usernameInput.value.trim();
     const password = passwordInput.value;
     const tipoUsuario = document.getElementById('tipoUsuario').value;
+
+    console.log("Intentando login con:");
+    console.log("username:", username);
+    console.log("tipoUsuario:", tipoUsuario);
 
     if (!username || !password) {
         alert("Por favor, completa todos los campos.");
@@ -77,9 +24,7 @@ loginForm.addEventListener('submit', async (event) => {
     try {
         const response = await fetch(url, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password })
         });
 
@@ -89,57 +34,54 @@ loginForm.addEventListener('submit', async (event) => {
         }
 
         const responseData = await response.json();
-        console.log('Login exitoso:', responseData);
+        console.log('[LOGIN] Respuesta del backend:', responseData);
 
         localStorage.setItem('username', username);
         localStorage.setItem('tipoUsuario', tipoUsuario);
 
-        // Guarda el ID del cliente si el usuario es cliente y viene en la respuesta
+        // CLIENTE
         if (tipoUsuario === 'cliente' && (responseData.ID_CLIENTE || responseData.idCliente)) {
-            // Usa el campo correcto según cómo lo devuelva tu backend
             const idCliente = responseData.ID_CLIENTE ? responseData.ID_CLIENTE : responseData.idCliente;
             localStorage.setItem('idCliente', idCliente);
+            localStorage.removeItem('idProveedor');
+            console.log('[LOGIN] Guardado idCliente:', idCliente);
+        }
+        // PROVEEDOR
+       if (tipoUsuario === 'proveedor' && responseData.idProvedor) {
+    localStorage.setItem('idProveedor', responseData.idProvedor);
+    console.log('Guardado idProveedor en localStorage:', responseData.idProvedor);
+    localStorage.removeItem('idCliente');
+}
+
+        // Empresa proveedor
+        if (tipoUsuario === 'proveedor' && (responseData.empresa || responseData.EMPRESA)) {
+            const emp = responseData.empresa ? responseData.empresa : responseData.EMPRESA;
+            localStorage.setItem('empresa', emp);
+            console.log('[LOGIN] Guardada empresa:', emp);
         } else {
-            localStorage.removeItem('idCliente');
+            localStorage.removeItem('empresa');
         }
 
-        // Guarda también el email si viene en la respuesta
+        // Email
         if (responseData.EMAIL || responseData.email) {
             const email = responseData.EMAIL ? responseData.EMAIL : responseData.email;
             localStorage.setItem('email', email);
+            console.log('[LOGIN] Guardado email:', email);
         }
 
-        migrarFavoritosTemporales(username);
-        verificarSesion();
+        // Mostrar TODO el localStorage tras login
+        console.log("[LOGIN] localStorage tras login:");
+        for (let key in localStorage) {
+            if (localStorage.hasOwnProperty(key)) {
+                console.log(key, localStorage.getItem(key));
+            }
+        }
 
-        // Cerrar modal de login
         modalLogin.style.display = "none";
-
-        // Disparar evento para actualizar favoritos
-        window.dispatchEvent(new Event('storage'));
-
+        window.location.reload();
     } catch (error) {
-        console.error('Error en el login:', error);
+        console.error('[LOGIN] Error en el login:', error);
         alert("Error al iniciar sesión: " + error.message);
         passwordInput.value = '';
     }
 });
-
-function migrarFavoritosTemporales(username) {
-    const tempFavs = JSON.parse(localStorage.getItem('favoritos_temp')) || [];
-    if (tempFavs.length > 0) {
-        const userFavsKey = `favoritos_${username}`;
-        const existingFavs = JSON.parse(localStorage.getItem(userFavsKey)) || [];
-        
-        // Combinar evitando duplicados
-        const combinedFavs = [...existingFavs];
-        tempFavs.forEach(tempFav => {
-            if (!existingFavs.some(fav => fav.id === tempFav.id)) {
-                combinedFavs.push(tempFav);
-            }
-        });
-        
-        localStorage.setItem(userFavsKey, JSON.stringify(combinedFavs));
-        localStorage.removeItem('favoritos_temp');
-    }
-}
