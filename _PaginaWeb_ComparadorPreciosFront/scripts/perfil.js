@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
     cargarDatosPerfil();
+    inicializarBotonPrecios();
     const btnCerrarSesion = document.getElementById('boton-cerrar-sesion');
     if (btnCerrarSesion) {
         btnCerrarSesion.addEventListener('click', cerrarSesion);
@@ -37,4 +38,50 @@ function cerrarSesion() {
         localStorage.removeItem(item);
     });
     window.location.href = '../index.html';
+}
+
+// ----------- NUEVO: Botón y modal para ver precios ofertados -----------
+function inicializarBotonPrecios() {
+    const tipoUsuario = localStorage.getItem('tipoUsuario');
+    const btnVerPrecios = document.getElementById('btnVerPrecios');
+    if (btnVerPrecios && tipoUsuario === 'proveedor') {
+        btnVerPrecios.style.display = 'inline-block';
+        btnVerPrecios.addEventListener('click', mostrarPreciosOfertados);
+    }
+}
+
+async function mostrarPreciosOfertados() {
+    const idProveedor = localStorage.getItem('idProveedor');
+    const listaPrecios = document.getElementById('listaPrecios');
+    if (!idProveedor || !listaPrecios) return;
+
+    try {
+        let resp = await fetch(`http://localhost:8084/proveedor/precios/${idProveedor}`);
+        if (resp.ok) {
+            let precios = await resp.json();
+            if (Array.isArray(precios) && precios.length > 0) {
+                let html = precios.map(p =>
+                    `<li>Producto: ${p.producto?.nombre || ''} | Precio: ${p.precioProvedor}€</li>`
+                ).join('');
+                listaPrecios.innerHTML = html;
+            } else {
+                listaPrecios.innerHTML = "<li>No tienes ningún precio ofertado.</li>";
+            }
+        } else {
+            listaPrecios.innerHTML = "<li>No tienes ningún precio ofertado.</li>";
+        }
+    } catch (e) {
+        listaPrecios.innerHTML = "<li>Error al cargar precios.</li>";
+    }
+    mostrarModalPrecios();
+}
+
+function mostrarModalPrecios() {
+    const modal = document.getElementById('modalPrecios');
+    if (modal) modal.style.display = 'flex';
+}
+
+function cerrarModalPrecios() {
+    const modal = document.getElementById('modalPrecios');
+    if (modal) modal.style.display = 'none';
 }

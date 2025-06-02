@@ -74,9 +74,20 @@
             <button id="boton-cerrar-sesion" class="btn-logout">
                 <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
             </button>
+
+            <button id="btnVerPrecios" style="display:none;">Ver Precios Ofertados</button>
         </div>
     </main>
 
+
+    <!-- Modal -->
+<div id="modalPrecios" style="display:none; position:fixed; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); align-items:center; justify-content:center;">
+  <div style="background:white; padding:20px; border-radius:10px; min-width:300px; max-width:90vw;">
+    <h3>Precios ofertados</h3>
+    <ul id="listaPrecios"></ul>
+    <button onclick="cerrarModalPrecios()">Cerrar</button>
+  </div>
+</div>
     
 
     <!-- Modal Editar Perfil -->
