@@ -35,7 +35,7 @@ public class ProveedorRestController {
 
 	
 	//------------------------------------BUSCAR LOS PRECIOS OFERTADOS DEL PROVEDOR -------------------------------------
-		@GetMapping("/precios/{idProducto}")
+		@GetMapping("/precios/{idProvedor}")
 		public ResponseEntity<?>  buscarPorProvedor(@PathVariable int idProvedor) {
 			
 			List<ProductosProvedores> precio = prodao.buscarLosPreciosOfertadosDelProvedor(idProvedor);
@@ -47,9 +47,7 @@ public class ProveedorRestController {
 					 return new ResponseEntity<String>("No tienes ningun precio ofertado", HttpStatus.NOT_FOUND);
 				
 					 
-			}
-		//------------------------------------BUSCAR LOS PRECIOS OFERTADOS DEL PROVEDOR-------------------------------------
-		
+			}		
 		
 		//------------------------------------------LOGIN--------------------------------------------
 		
@@ -72,12 +70,12 @@ public class ProveedorRestController {
 		@PostMapping("/alta")
 		public ResponseEntity<?> altaProveedor(@RequestBody Provedor nuevoProveedor) {
 	        try {
-	            // Validar que los datos del proveedor no estén vacíos
+	            
 	            if (nuevoProveedor == null || nuevoProveedor.getUsername() == null || nuevoProveedor.getUsername().isEmpty()) {
 	                return new ResponseEntity<>("Datos inválidos. El nombre de usuario es obligatorio.", HttpStatus.BAD_REQUEST);
 	            }
 
-	            // Insertar el proveedor en la base de datos
+	            
 	            Provedor proveedorGuardado = prdao.insertOne(nuevoProveedor);
 	            if (proveedorGuardado != null) {
 	                return new ResponseEntity<>(proveedorGuardado, HttpStatus.CREATED);
@@ -100,4 +98,5 @@ public class ProveedorRestController {
 		
 		
 		//-------------------------------------MODIFICAR-----------------------------------------------
+		
 }

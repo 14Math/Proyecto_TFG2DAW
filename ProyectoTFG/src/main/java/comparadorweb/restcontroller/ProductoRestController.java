@@ -57,7 +57,7 @@ public class ProductoRestController {
 
 	    // Limitar el número de productos devueltos
 	    if (productos.size() > limit) {
-	        productos = productos.subList(0, limit); // Tomar solo los primeros 'limit' productos
+	        productos = productos.subList(0, limit); 
 	    }
 
 	    return new ResponseEntity<>(productos, HttpStatus.OK);
@@ -128,7 +128,7 @@ public class ProductoRestController {
 		
 		@PostMapping("/valoracion")
 		public ResponseEntity<?> anadirValoracion(@RequestBody ClienteProducto valoracion, @RequestParam String username) {
-		    // Buscar cliente por username
+		    
 		    Cliente cliente = cdao.buscarporUsuario(username);
 		    if (cliente == null) {
 		        return new ResponseEntity<>("Usuario no encontrado", HttpStatus.UNAUTHORIZED);
@@ -146,10 +146,10 @@ public class ProductoRestController {
 		//-------------------------------------AÑADIR VALORACIONES-----------------------------------
 		
 	
-	//-------------------------------------ALTA---------------------------------------
+	//-------------------------------------ALTADELPRECIO---------------------------------------
 	
 	
-	@PostMapping("/alta/precioProvedor")
+	@PostMapping("/alta/ofertarPrecio")
 	public ResponseEntity<ProductosProvedores> alta(@RequestBody PrecioProveedorDto precioProveedorDto) {
 		
 		ProductosProvedores pp = new ProductosProvedores();
@@ -162,7 +162,7 @@ public class ProductoRestController {
 	}
 	
 	
-	//-------------------------------------ALTA---------------------------------------
+	//-------------------------------------ALTADELPRECIO---------------------------------------
 	
 	
 

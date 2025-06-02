@@ -30,7 +30,6 @@ async function cargarValoraciones() {
             listaHtml = "<p>Error al cargar valoraciones.</p>";
             resumenHtml = "";
         }
-        // ¡Usa los IDs que necesitas!
         let contLista = document.getElementById('todas-valoraciones');
         if (contLista) contLista.innerHTML = listaHtml;
         let contResumen = document.getElementById('resumen-valoraciones');
@@ -46,50 +45,56 @@ async function cargarValoraciones() {
 document.addEventListener('DOMContentLoaded', () => {
     cargarValoraciones();
 
-    // Mostrar u ocultar el formulario según login
+    // Mostrar u ocultar el formulario según login y tipo de usuario
     const username = localStorage.getItem('username');
+    const tipoUsuario = localStorage.getItem('tipoUsuario');
     const bloque = document.getElementById('bloqueAgregarValoracion');
-    if (!username && bloque) {
-        bloque.style.display = 'none';
-    } else if (bloque) {
-        bloque.style.display = 'block';
+    if (bloque) {
+        if (!username || tipoUsuario === 'proveedor') {
+            bloque.style.display = 'none';
+        } else {
+            bloque.style.display = 'block';
+        }
     }
 });
 
 // Enviar la valoración
-document.getElementById('formValoracion').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const opinion = document.getElementById('opinion').value.trim();
-    const valoracion = parseInt(document.getElementById('valoracion').value);
-    const username = localStorage.getItem('username');
-    const idProducto = localStorage.getItem("idProducto");
+const form = document.getElementById('formValoracion');
+if (form) {
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const opinion = document.getElementById('opinion').value.trim();
+        const valoracion = parseInt(document.getElementById('valoracion').value);
+        const username = localStorage.getItem('username');
+        const idProducto = localStorage.getItem("idProducto");
 
-    if(!opinion || !valoracion || !idProducto) {
-        alert("Completa todos los campos");
-        return;
-    }
-    // Ajusta el DTO si tu backend lo necesita diferente
-    const data = {
-        opinion,
-        valoracion,
-        productos: { idProducto: parseInt(idProducto) }
-    };
-
-    try {
-        const res = await fetch(`http://localhost:8084/productos/valoracion?username=${username}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        });
-        if (res.ok) {
-            alert("¡Valoración enviada!");
-            this.reset();
-            await cargarValoraciones();
-        } else {
-            const err = await res.text();
-            alert("Error: " + err);
+        if(!opinion || !valoracion || !idProducto) {
+            alert("Completa todos los campos");
+            return;
         }
-    } catch (err) {
-        alert("Error de conexión");
-    }
-});
+        // Ajusta el DTO si tu backend lo necesita diferente
+        const data = {
+            opinion,
+            valoracion,
+            productos: { idProducto: parseInt(idProducto) }
+        };
+
+        try {
+            const res = await fetch(`http://localhost:8084/productos/valoracion?username=${username}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            if (res.ok) {
+                alert("¡Valoración enviada!");
+                this.reset();
+                await cargarValoraciones();
+            } else {
+                const err = await res.text();
+                alert("Error: " + err);
+            }
+        } catch (err) {
+            alert("Error de conexión");
+        }
+    });
+}

@@ -1,4 +1,3 @@
-// scriptProductosCategorias.js - Versión compatible con tu CSS
 document.addEventListener('DOMContentLoaded', async () => {
     const productosContainer = document.getElementById('productosCategoria');
     const tituloCategoria = document.getElementById('tituloCategoria');
@@ -10,22 +9,17 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Mostrar título de categoría
     if (nombreCategoria) {
-        tituloCategoria.textContent = nombreCategoria;
+        tituloCategoria.textContent = nombreCategoria.toUpperCase();
     }
 
-    // Función para cargar productos de la categoría
+    // Función para cargar productos
     const cargarProductosPorCategoria = async () => {
         try {
-            if (!idCategoria) {
-                mostrarMensaje("No se ha especificado una categoría.");
-                return;
-            }
-
-            productosContainer.innerHTML = '<p>Cargando productos...</p>';
+            productosContainer.innerHTML = '<p class="mensaje">Cargando productos...</p>';
             
             const response = await axios.get(`http://localhost:8084/categorias/productos/${idCategoria}`);
             
-            if (response.data && response.data.length > 0) {
+            if (response.data?.length > 0) {
                 renderizarProductos(response.data);
             } else {
                 mostrarMensaje("No hay productos en esta categoría.");
@@ -64,22 +58,24 @@ document.addEventListener('DOMContentLoaded', async () => {
     const mostrarMensaje = (mensaje) => {
         productosContainer.innerHTML = `<p class="mensaje">${mensaje}</p>`;
     };
+
     if (idCategoria) {
-        cargarProductosPorCategoria();
+        await cargarProductosPorCategoria();
     }
 });
 
+// Funciones globales
 window.verOfertas = (idProducto) => {
     localStorage.setItem("idProducto", idProducto);
-    window.location.href = "../precioProvedores.html"; // Redirigir
+    window.location.href = "../precioProvedores.html";
 };
 
-// Función para favoritos
 window.toggleFavorite = function(button, productId) {
     button.classList.toggle('active');
     const icon = button.querySelector('i');
     icon.classList.toggle('far');
     icon.classList.toggle('fas');
-    // Aquí deberías añadir la lógica para guardar en favoritos
+    
+    // Lógica para guardar en favoritos
+    console.log(`Producto ${productId} ${button.classList.contains('active') ? 'añadido a' : 'eliminado de'} favoritos`);
 };
-

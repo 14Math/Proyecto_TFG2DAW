@@ -53,14 +53,14 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Función para crear el HTML de un producto
+    
     const crearProductoHTML = (producto) => {
         const divProducto = document.createElement('div');
         divProducto.classList.add('producto');
         divProducto.dataset.productId = producto.idProducto;
 
-        divProducto.innerHTML = `
-            <div>
+        divProducto.innerHTML = 
+            `<div>
                 <img src="../imagenes/${producto.nombre}.jpg" alt="${producto.nombre}">
             </div>
             <div class="Categoria">${producto.categorias?.nombre || "Sin Categoría"}</div>
@@ -72,8 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 <button class="favorite" onclick="toggleFavorite(this, ${producto.idProducto})">
                     <i class="far fa-heart"></i>
                 </button>
-            </div>
-        `;
+            </div>`
+        ;
 
         return divProducto;
     };

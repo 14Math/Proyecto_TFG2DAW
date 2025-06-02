@@ -1,0 +1,121 @@
+:root {
+    --main-bg: #fff;
+    --accent: #1976d2;
+    --accent-light: #e3f2fd;
+    --accent-lighter: #f5fbff;
+    --text-main: #2c3e50;
+    --text-muted: #6c757d;
+    --border: #90caf9;
+    --danger: #d63333;
+    --success: #28a745;
+    --card-shadow: 0 4px 20px rgba(25, 118, 210, 0.12);
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+.card {
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    border: none;
+    background: var(--main-bg);
+    overflow: hidden;
+}
+
+.card-header {
+    padding: 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-title {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: white;
+    margin-bottom: 0;
+}
+
+.form-label {
+    color: var(--text-main);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.form-control, .form-select {
+    background: var(--accent-lighter) !important;
+    color: var(--text-main);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 0.25rem rgba(25, 118, 210, 0.15);
+}
+
+input[readonly] {
+    background-color: #f8f9fa !important;
+    color: var(--text-muted);
+    cursor: not-allowed;
+}
+
+.input-group-text {
+    background-color: var(--accent) !important;
+    color: white !important;
+    border: none !important;
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    border: none;
+    padding: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #1565c0;
+    transform: translateY(-1px);
+}
+
+.btn-outline-primary {
+    color: var(--accent);
+    border-color: var(--accent);
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--accent);
+    color: white;
+}
+
+.alert {
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+}
+
+.mensaje {
+    text-align: center;
+    font-weight: 500;
+    min-height: 24px;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Efecto hover para la tarjeta */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(25, 118, 210, 0.15);
+    transition: all 0.3s ease;
+}

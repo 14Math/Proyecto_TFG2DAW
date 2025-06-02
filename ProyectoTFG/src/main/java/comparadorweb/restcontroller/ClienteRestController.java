@@ -49,17 +49,17 @@ public class ClienteRestController {
 	//--------------------------------------ALTA--------------------------------------------------
 	
 	@PostMapping("/alta")
-	public ResponseEntity<?> altaCliente(@RequestBody Cliente nuevoCliente) {
+	public ResponseEntity<?> altaCliente(@RequestBody Cliente cliente) {
         try {
-            // Validar que los datos del cliente no estén vacíos
-            if (nuevoCliente == null || nuevoCliente.getUsername() == null || nuevoCliente.getUsername().isEmpty()) {
+            
+            if (cliente == null || cliente.getUsername() == null || cliente.getUsername().isEmpty()) {
                 return new ResponseEntity<>("Datos inválidos. El nombre de usuario es obligatorio.", HttpStatus.BAD_REQUEST);
             }
 
-            // Insertar el cliente en la base de datos
-            Cliente clienteGuardado = cdao.insertOne(nuevoCliente);
-            if (clienteGuardado != null) {
-                return new ResponseEntity<>(clienteGuardado, HttpStatus.CREATED);
+            
+            Cliente clienteNuevo = cdao.insertOne(cliente);
+            if (clienteNuevo != null) {
+                return new ResponseEntity<>(clienteNuevo, HttpStatus.CREATED);
             } else {
                 return new ResponseEntity<>("Error al registrar el cliente.", HttpStatus.INTERNAL_SERVER_ERROR);
             }

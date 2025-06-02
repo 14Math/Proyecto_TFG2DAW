@@ -5,8 +5,9 @@ package comparadorweb.dao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-
+import comparadorweb.entidades.ProductosProvedores;
 import comparadorweb.entidades.Provedor;
+import comparadorweb.repository.ProductosProvedoresRepository;
 import comparadorweb.repository.ProvedorRepository;
 
 @Repository
@@ -14,6 +15,8 @@ public class ProvedorDaoImpl implements ProvedorDao {
 
 	@Autowired
 	private ProvedorRepository prorepo;
+	
+	
 
 	@Override
 	public Provedor insertOne(Provedor provedores) {
@@ -61,6 +64,8 @@ public class ProvedorDaoImpl implements ProvedorDao {
 		// TODO Auto-generated method stub
 		return prorepo.findByUsernameAndPassword(username, password);
 	}
+
+
 
 	
 

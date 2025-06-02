@@ -1,100 +1,111 @@
 document.getElementById('searchForm').addEventListener('submit', async function (event) {
     event.preventDefault();
 
-    const searchTerm = document.getElementById('productIdInput').value;
+    const searchTerm = document.getElementById('productIdInput').value.trim();
+    const resultadoBusqueda = document.getElementById('resultadoBusqueda');
 
     if (searchTerm) {
-        const producto = await getBuscarProductoPorNombre(searchTerm);
+        resultadoBusqueda.innerHTML = '<div class="loading">Buscando...</div>';
+        
+        try {
+            const producto = await getBuscarProductoPorNombre(searchTerm);
 
-        if (producto) {
-            console.log("Producto encontrado:", producto);
-            mostrarProducto(producto);
-        } else {
-            console.log("Producto no encontrado");
-            document.getElementById('resultadoBusqueda').textContent = "Producto no encontrado.";
+            if (producto) {
+                console.log("Producto encontrado:", producto);
+                mostrarProducto(producto);
+            } else {
+                console.log("Producto no encontrado");
+                resultadoBusqueda.innerHTML = `
+                    <div class="no-results">
+                        <p>No se encontró ningún producto con el nombre "${searchTerm}"</p>
+                    </div>
+                `;
+            }
+        } catch (error) {
+            console.error("Error en la búsqueda:", error);
+            resultadoBusqueda.innerHTML = `
+                <div class="error">
+                    <p>Hubo un error al realizar la búsqueda. Por favor, inténtalo de nuevo.</p>
+                </div>
+            `;
         }
     } else {
-        console.log("Por favor, ingrese un nombre de producto.");
-        document.getElementById('resultadoBusqueda').textContent = "Por favor, ingrese un nombre de producto.";
+        resultadoBusqueda.innerHTML = `
+            <div class="empty-search">
+                <p>Por favor, ingresa un nombre de producto para buscar.</p>
+            </div>
+        `;
     }
 });
-
 
 document.getElementById('toggleSearchType').addEventListener('click', function () {
     const searchTypeInput = document.getElementById('searchType');
     const inputField = document.getElementById('productIdInput');
+    const searchButton = document.getElementById('searchButton');
+    
     if (searchTypeInput.value === 'id') {
         searchTypeInput.value = 'nombre';
         inputField.placeholder = 'Buscar por Nombre';
         this.textContent = 'Buscar por ID';
+        searchButton.innerHTML = '<i class="fas fa-search"></i> Buscar por Nombre';
     } else {
         searchTypeInput.value = 'id';
         inputField.placeholder = 'Buscar por ID';
         this.textContent = 'Buscar por Nombre';
+        searchButton.innerHTML = '<i class="fas fa-search"></i> Buscar por ID';
     }
 });
-
-
 
 async function getBuscarProductoPorNombre(nombre) {
     try {
         const response = await axios.get(`http://localhost:8084/productos/buscarPorNombre/${nombre}`);
         return response.data;
     } catch (error) {
-        console.error("Producto no encontrado o nombre incorrecto:", error);
-        return null;
+        console.error("Error al buscar producto:", error);
+        throw error;
     }
 }
 
 function mostrarProducto(item) {
-    const Productos = document.getElementById('resultadoBusqueda'); // Usamos el div resultadoBusqueda como contenedor
+    const resultadoBusqueda = document.getElementById('resultadoBusqueda');
+    resultadoBusqueda.innerHTML = '';
 
-    // Limpiar resultados anteriores
-    Productos.innerHTML = '';
+    const productoDiv = document.createElement('div');
+    productoDiv.className = 'producto';
+    productoDiv.dataset.productId = item.idProducto;
 
-    // Crear un div para cada producto
-    let divProducto = document.createElement('div');
-    divProducto.classList.add('producto'); // Agrega una clase para estilos
+    productoDiv.innerHTML = `
+        <div class="producto-imagen">
+            <img src="../imagenes/${item.nombre}.jpg" alt="${item.nombre}">
+        </div>
+        <div class="glass-effect"></div>
+        <div class="producto-contenido">
+            <div class="Categoria">${item.categorias?.nombre || "ELECTRONICA"}</div>
+            <div class="Nombre">${item.nombre}</div>
+            <div class="Marca">${item.marca}</div>
+            <div class="Precio">Desde: ${item.precioVenta}€</div>
+            <div class="btnVerOfertas">
+                <button onclick="verOfertas(${item.idProducto})">Ver Ofertas</button>
+                <button class="favorite" onclick="toggleFavorite(this, ${item.idProducto})">
+                    <i class="far fa-heart"></i>
+                </button>
+            </div>
+        </div>
+    `;
 
-    // Crear div para la imagen
-    let divImagen = document.createElement('div');
-    let imagen = document.createElement('img');
-    imagen.src = `../imagenes/${item.nombre}.jpg`; // Ruta dinámica
-    imagen.alt = item.nombre; // Texto alternativo
-    divImagen.appendChild(imagen);
-    divProducto.appendChild(divImagen);
-
-    // Crear divs para cada dato del producto
-    let divCategoria = document.createElement('div');
-    divCategoria.textContent = item.categorias.nombre; // Ajuste para categoria.nombre
-    divCategoria.classList.add('Categoria');
-
-    divProducto.appendChild(divCategoria);
-
-    let divNombre = document.createElement('div');
-    divNombre.textContent = item.nombre;
-    divNombre.classList.add('Nombre');
-
-    divProducto.appendChild(divNombre);
-
-    let divMarca = document.createElement('div');
-    divMarca.textContent = 'Marca: ' + item.marca;
-    divMarca.classList.add('Marca');
-
-    divProducto.appendChild(divMarca);
-
-    let divPrecio = document.createElement('div');
-    divPrecio.textContent = 'Desde: ' + item.precioVenta + '€'; // Ajuste para precio_venta
-    divPrecio.classList.add('Precio');
-
-    divProducto.appendChild(divPrecio);
-
-    let divOfertas = document.createElement('div');
-    divOfertas.innerHTML = `<button onclick="verOfertas(${item.idProducto})">Ver Ofertas</button>`; // Botón con HTML
-    divOfertas.classList.add('btnVerOfertas')
-
-    divProducto.appendChild(divOfertas);
-
-    // Agregar el div del producto al contenedor principal
-    Productos.appendChild(divProducto);
+    resultadoBusqueda.appendChild(productoDiv);
 }
+
+// Función para ver ofertas
+window.verOfertas = (idProducto) => {
+    localStorage.setItem("idProducto", idProducto);
+    window.location.href = "precioProvedores.html";
+};
+
+// Función para favoritos (simulada)
+window.toggleFavorite = (element, idProducto) => {
+    element.classList.toggle('active');
+    element.querySelector('i').classList.toggle('fas');
+    element.querySelector('i').classList.toggle('far');
+    console.log(`Producto ${idProducto} marcado como favorito: ${element.classList.contains('active')}`);
+};
