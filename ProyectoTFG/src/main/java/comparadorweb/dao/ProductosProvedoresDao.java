@@ -13,7 +13,7 @@ public interface ProductosProvedoresDao {
 	
 	ProductosProvedores insertProductoProvedor (ProductosProvedores productosProvedores);
 	int updateProductoProvedor (double precioProvedor);
-	int deleteproductoProvedor (String precioProvedor);
+	int deleteproductoProvedor (int idPro);
 
 
 }

@@ -39,9 +39,18 @@ public class ProductosProvedoresDaoImpl implements ProductosProvedoresDao{
 	}
 
 	@Override
-	public int deleteproductoProvedor(String precioProvedor) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteproductoProvedor(int idPro) {
+		 try {
+		        if (proprorepo.existsById(idPro)) {
+		            proprorepo.deleteById(idPro);
+		            return 1; 
+		        } else {
+		            return 0; 
+		        }
+		    } catch (Exception e) {
+		        e.printStackTrace();
+		        return -1; // Error
+		    }
 	}
 
 	@Override

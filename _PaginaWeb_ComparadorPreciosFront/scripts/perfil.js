@@ -1,5 +1,3 @@
-// PERFIL DE USUARIO (MUESTRA DATOS)
-
 document.addEventListener('DOMContentLoaded', () => {
     if (!verificarSesion()) {
         console.warn('No hay sesión activa');
@@ -61,9 +59,35 @@ async function mostrarPreciosOfertados() {
             let precios = await resp.json();
             if (Array.isArray(precios) && precios.length > 0) {
                 let html = precios.map(p =>
-                    `<li>Producto: ${p.producto?.nombre || ''} | Precio: ${p.precioProvedor}€</li>`
+                  `<li>
+                      Producto: ${p.producto?.nombre || ''} | Precio: ${p.precioProvedor}€
+                      <button class="btn-eliminar-oferta" data-idpro="${p.idPro}" style="float:right; color: #fff; background: #e74c3c; border:none; border-radius:5px; margin-left:10px; padding:2px 10px; cursor:pointer;">
+                        <i class="fa fa-trash"></i> Eliminar
+                      </button>
+                   </li>`
                 ).join('');
                 listaPrecios.innerHTML = html;
+
+                // Añadir listeners a los nuevos botones
+                document.querySelectorAll('.btn-eliminar-oferta').forEach(btn => {
+                    btn.onclick = async function() {
+                        const idPro = this.getAttribute('data-idpro');
+                        if (confirm('¿Seguro que quieres eliminar esta oferta?')) {
+                            try {
+                                let resp = await fetch(`http://localhost:8084/proveedor/eliminar/precio/${idPro}`, {
+                                    method: 'DELETE'
+                                });
+                                if (resp.ok) {
+                                    mostrarPreciosOfertados();
+                                } else {
+                                    alert('No se pudo eliminar la oferta. Intenta de nuevo.');
+                                }
+                            } catch (e) {
+                                alert('Error al eliminar la oferta.');
+                            }
+                        }
+                    }
+                });
             } else {
                 listaPrecios.innerHTML = "<li>No tienes ningún precio ofertado.</li>";
             }
