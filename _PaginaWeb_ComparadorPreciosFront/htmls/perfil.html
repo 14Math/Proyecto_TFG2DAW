@@ -68,15 +68,18 @@
         </div>
 
         <div class="profile-actions">
-            <button id="boton-editar-perfil" class="btn-edit-profile">
-                <i class="fa-solid fa-pen-to-square"></i> Editar Perfil
-            </button>
-            <button id="boton-cerrar-sesion" class="btn-logout">
-                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
-            </button>
-
-            <button id="btnVerPrecios" style="display:none;">Ver Precios Ofertados</button>
-        </div>
+    <button id="boton-editar-perfil" class="btn-edit-profile">
+        <i class="fa-solid fa-pen-to-square"></i> Editar Perfil
+    </button>
+    <button id="boton-cerrar-sesion" class="btn-logout">
+        <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+    </button>
+    <button id="btnVerPrecios" style="display:none;">Ver Precios Ofertados</button>
+    <!-- NUEVO: Botón solo visible para administrador -->
+    <button id="btnVerUsuarios" style="display:none;" class="btn btn-primary" title="Ver usuarios">
+  <i class="fa-solid fa-users"></i> Ver Usuarios
+</button>
+</div>
     </main>
 
 
@@ -107,6 +110,23 @@
             </button>
         </form>
     </div>
+</div>
+
+<!-- Modal mejorado -->
+<div id="modalUsuarios" class="modal" tabindex="-1" aria-modal="true" role="dialog">
+  <div class="modal-content" style="max-width:500px; width:95%;">
+    <button type="button" class="close" id="cerrarModalUsuarios" aria-label="Cerrar">
+      &times;
+    </button>
+    <h2 style="text-align:center; margin-bottom:20px;">
+      <i class="fa-solid fa-users" style="color:#3498db;"></i> <span id="tituloModalUsuarios">Lista de Usuarios</span>
+    </h2>
+    <div class="btn-group" style="display:flex; justify-content:center; margin-bottom:15px;">
+      <button id="btnMostrarClientes" type="button" class="btn btn-outline-primary active" style="min-width:120px;"><i class="fa fa-user"></i> Clientes</button>
+      <button id="btnMostrarProveedores" type="button" class="btn btn-outline-secondary" style="min-width:120px;"><i class="fa fa-briefcase"></i> Proveedores</button>
+    </div>
+    <ul id="listaUsuarios" style="list-style:none; padding:0; max-height:45vh; overflow-y:auto;"></ul>
+  </div>
 </div>
 
     <!-- Scripts -->

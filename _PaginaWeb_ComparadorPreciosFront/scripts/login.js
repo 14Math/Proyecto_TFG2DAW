@@ -51,6 +51,15 @@ loginForm.addEventListener('submit', async (event) => {
     localStorage.setItem('idProveedor', responseData.idProvedor);
     console.log('Guardado idProveedor en localStorage:', responseData.idProvedor);
     localStorage.removeItem('idCliente');
+    // ADMINISTRADOR
+if (tipoUsuario === 'administrador' && (responseData.ID_ADMIN || responseData.idAdmin)) {
+    const idAdmin = responseData.ID_ADMIN ? responseData.ID_ADMIN : responseData.idAdmin;
+    localStorage.setItem('idAdmin', idAdmin);
+    localStorage.removeItem('idCliente');
+    localStorage.removeItem('idProveedor');
+    localStorage.removeItem('empresa');
+    console.log('[LOGIN] Guardado idAdmin:', idAdmin);
+}
 }
 
         // Empresa proveedor
