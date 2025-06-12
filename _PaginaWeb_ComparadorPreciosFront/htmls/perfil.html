@@ -68,64 +68,116 @@
         </div>
 
         <div class="profile-actions">
-    <button id="boton-editar-perfil" class="btn-edit-profile">
-        <i class="fa-solid fa-pen-to-square"></i> Editar Perfil
-    </button>
-    <button id="boton-cerrar-sesion" class="btn-logout">
-        <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
-    </button>
-    <button id="btnVerPrecios" style="display:none;">Ver Precios Ofertados</button>
-    <!-- NUEVO: Botón solo visible para administrador -->
-    <button id="btnVerUsuarios" style="display:none;" class="btn btn-primary" title="Ver usuarios">
-  <i class="fa-solid fa-users"></i> Ver Usuarios
-</button>
-</div>
+            <button id="boton-editar-perfil" class="btn-edit-profile">
+                <i class="fa-solid fa-pen-to-square"></i> Editar Perfil
+            </button>
+            <button id="boton-cerrar-sesion" class="btn-logout">
+                <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+            </button>
+            <button id="btnVerPrecios" style="display:none;">Ver Precios Ofertados</button>
+            <!-- NUEVO: Botón solo visible para administrador -->
+            <button id="btnVerUsuarios" style="display:none;" class="btn btn-primary" title="Ver usuarios">
+                <i class="fa-solid fa-users"></i> Ver Usuarios
+            </button>
+
+            <!-- NUEVO: Botón solo para administrador -->
+            <button id="btnAddProducto" style="display:none;" class="btn btn-success" title="Añadir producto">
+                <i class="fa fa-plus"></i> Añadir producto
+            </button>
+        </div>
     </main>
 
 
     <!-- Modal Precios ofertados (actualizado) -->
-<div id="modalPrecios" style="display:none; position:fixed; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); align-items:center; justify-content:center;">
-  <div style="background:white; padding:20px; border-radius:10px; min-width:300px; max-width:90vw;">
-    <h3>Precios ofertados</h3>
-    <ul id="listaPrecios"></ul>
-    <button onclick="cerrarModalPrecios()">Cerrar</button>
-  </div>
-</div>
-    
+    <div id="modalPrecios"
+        style="display:none; position:fixed; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); align-items:center; justify-content:center;">
+        <div style="background:white; padding:20px; border-radius:10px; min-width:300px; max-width:90vw;">
+            <h3>Precios ofertados</h3>
+            <ul id="listaPrecios"></ul>
+            <button onclick="cerrarModalPrecios()">Cerrar</button>
+        </div>
+    </div>
+
 
     <!-- Modal Editar Perfil -->
-<div id="modalEditarPerfil" class="modal">
-    <div class="modal-content">
-        <span class="close" id="cerrarModalEditarPerfil">&times;</span>
-        <h2>Editar Perfil</h2>
-        <form id="form-editar-perfil">
-            <input id="input-username" type="text" required placeholder="Nombre de usuario">
-            <input id="input-email" type="email" required placeholder="Correo electrónico">
-            <input id="input-password" type="password" placeholder="Nueva contraseña (opcional)">
-            <div id="input-empresa-container" style="display: none;">
-                <input id="input-empresa" type="text" placeholder="Nombre de la empresa">
-            </div>
-            <button type="submit">
-                <i class="fa-solid fa-user-pen"></i> Guardar Cambios
-            </button>
-        </form>
+    <div id="modalEditarPerfil" class="modal">
+        <div class="modal-content">
+            <span class="close" id="cerrarModalEditarPerfil">&times;</span>
+            <h2>Editar Perfil</h2>
+            <form id="form-editar-perfil">
+                <input id="input-username" type="text" required placeholder="Nombre de usuario">
+                <input id="input-email" type="email" required placeholder="Correo electrónico">
+                <input id="input-password" type="password" placeholder="Nueva contraseña (opcional)">
+                <div id="input-empresa-container" style="display: none;">
+                    <input id="input-empresa" type="text" placeholder="Nombre de la empresa">
+                </div>
+                <button type="submit">
+                    <i class="fa-solid fa-user-pen"></i> Guardar Cambios
+                </button>
+            </form>
+        </div>
     </div>
-</div>
 
-<!-- Modal mejorado -->
-<div id="modalUsuarios" class="modal" tabindex="-1" aria-modal="true" role="dialog">
-  <div class="modal-content" style="max-width:500px; width:95%;">
-    <button type="button" class="close" id="cerrarModalUsuarios" aria-label="Cerrar">
-      &times;
-    </button>
-    <h2 style="text-align:center; margin-bottom:20px;">
-      <i class="fa-solid fa-users" style="color:#3498db;"></i> <span id="tituloModalUsuarios">Lista de Usuarios</span>
-    </h2>
-    <div class="btn-group" style="display:flex; justify-content:center; margin-bottom:15px;">
-      <button id="btnMostrarClientes" type="button" class="btn btn-outline-primary active" style="min-width:120px;"><i class="fa fa-user"></i> Clientes</button>
-      <button id="btnMostrarProveedores" type="button" class="btn btn-outline-secondary" style="min-width:120px;"><i class="fa fa-briefcase"></i> Proveedores</button>
+    <!-- Modal Para ver la lista de clientes y proveedores-->
+    <div id="modalUsuarios" class="modal" tabindex="-1" aria-modal="true" role="dialog">
+        <div class="modal-content" style="max-width:500px; width:95%;">
+            <button type="button" class="close" id="cerrarModalUsuarios" aria-label="Cerrar">
+                &times;
+            </button>
+            <h2 style="text-align:center; margin-bottom:20px;">
+                <i class="fa-solid fa-users" style="color:#3498db;"></i> <span id="tituloModalUsuarios">Lista de
+                    Usuarios</span>
+            </h2>
+            <div class="btn-group" style="display:flex; justify-content:center; margin-bottom:15px;">
+                <button id="btnMostrarClientes" type="button" class="btn btn-outline-primary active"
+                    style="min-width:120px;"><i class="fa fa-user"></i> Clientes</button>
+                <button id="btnMostrarProveedores" type="button" class="btn btn-outline-secondary"
+                    style="min-width:120px;"><i class="fa fa-briefcase"></i> Proveedores</button>
+            </div>
+            <ul id="listaUsuarios" style="list-style:none; padding:0; max-height:45vh; overflow-y:auto;"></ul>
+        </div>
     </div>
-    <ul id="listaUsuarios" style="list-style:none; padding:0; max-height:45vh; overflow-y:auto;"></ul>
+
+    <!-- Modal para añadir producto (mejorado) -->
+<div id="modalAddProducto" class="modal" style="display:none; position:fixed; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); align-items:center; justify-content:center;">
+  <div class="modal-content" style="background:white; padding:20px; border-radius:10px; min-width:340px; max-width:95vw;">
+    <span class="close" id="cerrarModalAddProducto" style="float:right; font-size:24px; cursor:pointer;">&times;</span>
+    <h2>Añadir producto</h2>
+    <form id="formAddProducto" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label for="nombreProducto" class="form-label">Nombre:</label>
+        <input type="text" class="form-control" id="nombreProducto" name="nombre" required>
+      </div>
+      <div class="mb-3">
+        <label for="marcaProducto" class="form-label">Marca:</label>
+        <input type="text" class="form-control" id="marcaProducto" name="marca" required>
+      </div>
+      <div class="mb-3">
+        <label for="autorProducto" class="form-label">Autor:</label>
+        <input type="text" class="form-control" id="autorProducto" name="autor">
+      </div>
+      <div class="mb-3">
+        <label for="descripcionProducto" class="form-label">Descripción:</label>
+        <textarea class="form-control" id="descripcionProducto" name="descripcion" required></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="precioProducto" class="form-label">Precio (€):</label>
+        <input type="number" step="0.01" class="form-control" id="precioProducto" name="precioVenta" required>
+      </div>
+      <div class="mb-3">
+        <label for="categoriaProducto" class="form-label">Categoría:</label>
+        <select class="form-control" id="categoriaProducto" name="idCategoria" required>
+          <option value="">Seleccione una categoría</option>
+          <!-- Las opciones se llenan dinámicamente -->
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="imagenProducto" class="form-label">Imagen (JPG):</label>
+        <input type="file" class="form-control" id="imagenProducto" name="imagen" accept=".jpg,.jpeg" required>
+      </div>
+      <button type="submit" class="btn btn-success">Añadir</button>
+    </form>
+    <div id="addProductoMsg" style="margin-top:10px;"></div>
   </div>
 </div>
 
@@ -133,6 +185,7 @@
     <!-- Al final del body -->
     <script src="../scripts/perfil.js"></script>
     <script src="../scripts/editarPerfil.js"></script>
+    <script src="../scripts/admin.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

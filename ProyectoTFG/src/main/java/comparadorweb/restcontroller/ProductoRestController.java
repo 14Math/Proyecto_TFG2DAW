@@ -1,5 +1,6 @@
 package comparadorweb.restcontroller;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,16 +53,20 @@ public class ProductoRestController {
 	
 	//------------------------------------BUSCAR TODOS-------------------------------------
 	@GetMapping("/todos/")
-	public ResponseEntity<List<Producto>> todos(@RequestParam(value = "limit", required = false, defaultValue = "50") int limit) {
-	    List<Producto> productos = pdao.buscarTodos();
+    public ResponseEntity<List<Producto>> todos(
+        @RequestParam(value = "page", required = false, defaultValue = "0") int page,
+        @RequestParam(value = "size", required = false, defaultValue = "20") int size) {
 
-	    // Limitar el número de productos devueltos
-	    if (productos.size() > limit) {
-	        productos = productos.subList(0, limit); 
-	    }
+        List<Producto> productos = pdao.buscarTodos();
+        int fromIndex = page * size;
+        int toIndex = Math.min(fromIndex + size, productos.size());
 
-	    return new ResponseEntity<>(productos, HttpStatus.OK);
-	}
+        if (fromIndex >= productos.size()) {
+            return new ResponseEntity<>(Collections.emptyList(), HttpStatus.OK);
+        }
+        List<Producto> pagina = productos.subList(fromIndex, toIndex);
+        return new ResponseEntity<>(pagina, HttpStatus.OK);
+    }
 	//------------------------------------BUSCAR TODOS-------------------------------------
 		
 	

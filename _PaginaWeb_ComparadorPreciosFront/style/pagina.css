@@ -1,0 +1,97 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 32px 0 24px 0;
+  list-style: none;
+  padding: 0;
+}
+
+.pagination li {
+  margin: 0 5px;
+}
+
+.pagination a,
+.pagination span {
+  display: inline-block;
+  min-width: 32px;
+  padding: 8px 12px;
+  text-align: center;
+  color: #4285f4;
+  font-size: 18px;
+  background: transparent;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+}
+
+.pagination a:hover,
+.pagination .active {
+  background: #e3f0fe;
+  color: #174ea6;
+  font-weight: bold;
+}
+
+.pagination .disabled {
+  color: #bdbdbd;
+  pointer-events: none;
+  background: transparent;
+}
+
+.pagination .next,
+.pagination .prev {
+  font-size: 20px;
+  font-weight: bold;
+  background: none;
+  border-radius: 50%;
+}
+
+@media (max-width: 600px) {
+  .pagination a, .pagination span {
+    font-size: 16px;
+    min-width: 24px;
+    padding: 6px 8px;
+  }
+}
+
+/* COMPLEMENTO /
+/ Estilos para la paginación */
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination li a {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #74C0FC;
+    border: 1px solid #74C0FC;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.pagination li.active a {
+    background-color: #74C0FC;
+    color: white;
+    border-color: #74C0FC;
+}
+
+.pagination li.disabled a {
+    color: #ccc;
+    border-color: #ccc;
+    pointer-events: none;
+    cursor: default;
+}
+
+.pagination li:not(.disabled):not(.active) a:hover {
+    background-color: #e9f5ff;
+}

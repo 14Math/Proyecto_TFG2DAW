@@ -45,17 +45,31 @@ public class AdministradorRestController {
 	//------------------------------------------AÑADIRPRODUCTO-------------------------------
 	@PostMapping("/añadir")
 	public ResponseEntity<?> añadirProducto(@RequestBody Producto producto) {
-        try {
-        	Producto productoNuevo = pdao.insertOne(producto);
-            if (productoNuevo != null) {
-                return new ResponseEntity<>(productoNuevo, HttpStatus.CREATED);
-            } else {
-                return new ResponseEntity<>("Error al añadir un producto", HttpStatus.INTERNAL_SERVER_ERROR);
-            }
-        } catch (Exception e) {
-            return new ResponseEntity<>("Error inesperado: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
+	    try {
+	        // 1. Si viene imagenBase64, la guardamos como archivo
+	        if (producto.getImagenBase64() != null && !producto.getImagenBase64().isEmpty()) {
+	            byte[] datosImagen = java.util.Base64.getDecoder().decode(producto.getImagenBase64());
+	            // El nombre será igual al nombre del producto, extensión .jpg
+	            String nombreLimpio = producto.getNombre().replaceAll("[^a-zA-Z0-9_-]", "_"); // limpia para archivo
+	            String rutaDestino = "C:\\IFP\\Proyecto_TFG2DAW\\_PaginaWeb_ComparadorPreciosFront\\imagenes\\" + nombreLimpio + ".jpg";
+	            try (java.io.FileOutputStream fos = new java.io.FileOutputStream(rutaDestino)) {
+	                fos.write(datosImagen);
+	            }
+	        }
+
+	        // 2. Guardar el producto en la BBDD (sin imagenBase64)
+	        producto.setImagenBase64(null); // ¡Muy importante no guardar el base64 en la BBDD!
+	        Producto productoNuevo = pdao.insertOne(producto);
+	        if (productoNuevo != null) {
+	            return new ResponseEntity<>(productoNuevo, HttpStatus.CREATED);
+	        } else {
+	            return new ResponseEntity<>("Error al añadir un producto", HttpStatus.INTERNAL_SERVER_ERROR);
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        return new ResponseEntity<>("Error inesperado: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
+	}
 	//------------------------------------------AÑADIRPRODUCTO-------------------------------
 	
 	
