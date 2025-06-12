@@ -8,11 +8,15 @@ import comparadorweb.entidades.Provedor;
 
 public interface ProvedorDao {
 	
+	List<Provedor> mostrarTodos();
+	
 	Provedor buscarUno(int idProvedor); 
 	Provedor buscarporUsuarioPassword(String username, String password);
 	
 	
 	Provedor insertOne (Provedor provedores);
 	Provedor updateOne (Provedor provedores);
+	int deleteOne(Provedor provedores);
+	void eliminarOfertasDeProveedor(int idProvedor);
 
 }

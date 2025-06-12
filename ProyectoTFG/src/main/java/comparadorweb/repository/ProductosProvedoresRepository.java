@@ -16,5 +16,7 @@ public interface ProductosProvedoresRepository extends JpaRepository<ProductosPr
 	@Query("from ProductosProvedores pr where pr.provedor.idProvedor =?1")
 	public List<ProductosProvedores> findByProvedor(int idProvedor);
 	
+	void deleteByProvedorIdProvedor(int idProvedor);
+	
 
 }

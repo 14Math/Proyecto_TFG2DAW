@@ -13,7 +13,7 @@ public interface productoDao {
 	List<Producto> buscarTodosPorCategoria(int idCategoria);
 	List<Producto> buscarTodos();
 	List<ClienteProducto> mostrarValoraciones(int idProducto);
-	int insertOne (Producto productos);
+	Producto insertOne (Producto productos);
 
 }
 																									

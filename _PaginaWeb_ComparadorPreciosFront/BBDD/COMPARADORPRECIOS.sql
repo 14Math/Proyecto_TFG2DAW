@@ -20,6 +20,19 @@ EMPRESA VARCHAR(45) NOT NULL UNIQUE,
 FECHA_REGISTRO DATE
 );
 
+CREATE TABLE ADMINISTRADOR (
+    ID_ADMIN INT PRIMARY KEY AUTO_INCREMENT,
+    NOMBRE VARCHAR(100) NOT NULL,
+    EMAIL VARCHAR(150) UNIQUE NOT NULL,
+    PASSWORD VARCHAR(255) NOT NULL,
+    FECHA_REGISTRO DATE DEFAULT (CURRENT_DATE)
+);
+
+insert into administrador values 
+(null, 'keven', 'keven@gmail.com', 'adminkv123', current_date()),
+(null, 'mathew', 'mathew@gmail.com', 'adminmt123', current_date()),
+(null, 'alejandra', 'alejandra@gmail.com', 'adminaj123', current_date());
+
 
 -- Insertar datos en la tabla CLIENTE
 INSERT INTO CLIENTES (USERNAME, PASSWORD, EMAIL,   FECHA_REGISTRO)

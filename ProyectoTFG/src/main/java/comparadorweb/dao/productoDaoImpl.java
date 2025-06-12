@@ -25,9 +25,19 @@ public class productoDaoImpl implements productoDao{
 
 
 	@Override
-	public int insertOne(Producto productos) {
+	public Producto insertOne(Producto productos) {
 		// TODO Auto-generated method stub
-		return (prepo.save(productos) != null)? 1 : 0;
+		try {
+			if (prepo.existsById(productos.getIdProducto()))
+				return null;
+			else  
+				return prepo.save(productos);
+			 
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 

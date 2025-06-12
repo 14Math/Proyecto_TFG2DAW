@@ -11,5 +11,7 @@ public interface ClienteProductoRepository extends JpaRepository<ClienteProducto
 	
 	@Query("from ClienteProducto cp where cp.productos.idProducto =?1")
 	public List<ClienteProducto> findByValoracion(int idProducto);
+	
+    void deleteByClientesIdCliente(int idCliente);
 
 }
